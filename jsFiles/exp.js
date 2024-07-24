@@ -197,7 +197,7 @@ console.log(wedges.one)
             {sectors: [ wedges.one, wedges.four, wedges.five, wedges.seven ], arrangement: "O1, Af2, F1, Am1"},
             {sectors: [ wedges.one, wedges.four, wedges.five, wedges.eight ], arrangement: "O1, Af2, F1, Am2"},
             {sectors: [ wedges.one, wedges.four, wedges.six, wedges.seven ], arrangement: "O1, Af2, F2, Am1"},
-            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.eight], arrangement: "O1, Af2, F2, Am2"}
+            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.eight], arrangement: "O1, Af2, F2, Am2"},
             //9-12
             {sectors: [ wedges.two, wedges.three, wedges.five, wedges.seven ], arrangement: "O2, Af1, F1, Am1"},
             {sectors: [ wedges.two, wedges.three, wedges.five, wedges.eight ], arrangement: "O2, Af1, F1, Am2"},
@@ -207,12 +207,13 @@ console.log(wedges.one)
             {sectors: [ wedges.two, wedges.four, wedges.five, wedges.seven ], arrangement: "O2, Af2, F1, Am1"},
             {sectors: [ wedges.two, wedges.four, wedges.five, wedges.eight ], arrangement: "O2, Af2, F1, Am2"},
             {sectors: [ wedges.two, wedges.four, wedges.six, wedges.seven ], arrangement: "O2, Af2, F2, Am1"},
-            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.eight ], arrangement: "O2, Af2, F2, Am2"},
+            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.eight ], arrangement: "O2, Af2, F2, Am2"}
 
         // got to include the other wheels
 
         ];
 
+console.log(wedges.one)
     let scoreTracker = 0; // track current score
 
     let round = 1;  // track current round
