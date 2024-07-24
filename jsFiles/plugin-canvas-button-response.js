@@ -53,12 +53,13 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
               pretty_name: "Canvas size",
               default: [500, 500],
           },
-          /** Player's total score. */
+          /* Player's total score. 
           score: {
-              type: jspsych.ParameterType.INT,
+              type: jspsych.ParameterType.STRING,
               pretty_name: "Score",
               default: 0,
-          },
+          },*/
+          
           /** Player's starting number of spins. */
           spin_num: {
               type: jspsych.ParameterType.INT,
@@ -84,7 +85,7 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
           var html = 
               '<div class="score-board">' +
                 '<div class="score-board-title">Total Score</div>' +
-                '<div class="score-board-score" id="score" >' + trial.score + '</div>' +
+//                '<div class="score-board-score" id="score" >' + trial.score + '</div>' +
                 '<div class="score-board-spins" id="spin-num">('+ trial.spin_num + ' spins remaining)</div>' +
               '</div>' +
               '<div id="jspsych-canvas-button-response-stimulus">' +
@@ -123,7 +124,7 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
               // gather the data to store for the trial
               var trial_data = {
                   outcomes: spinnerData.outcomes,
-                  score: spinnerData.score,
+  //                score: spinnerData.score,
                   rt: spinnerData.rt,
               };
               // clear the display

@@ -39,10 +39,8 @@ const exp = (function() {
         intro_preChk: [
             `<div class='parent'>
                 <p><strong>Welcome to Spin the Wheel!</strong></p>
-                <p>In Spin the Wheel, you'll spin a series of prize wheels.</p>
-                <p>Each time you spin a prize wheel, you'll earn points.
-                <br>The number of points you earn depends on where the wheel lands.</p>
-                <p>Your goal is to earn as many points as possible by spinning the prize wheels!</p>
+                <p>In Spin the Wheel, you'll spin a series of wheels.</p>
+                <p>Each time you land on a wheel, you'll see a video.
             </div>`,
 
             `<div class='parent'>
@@ -52,8 +50,8 @@ const exp = (function() {
             </div>`,
 
             `<div class='parent'>
-                <p>There are 18 prize wheels in total.<br>You will spin each prize wheel 5 times before continuing to the next wheel.</p>
-                <p>After spinning a wheel 5 times, you'll answer a question about your feelings.</br>
+                <p>There are 2 prize wheels in total.<br>You will spin each wheel 20 times before continuing to the next wheel.</p>
+                <p>After spinning a wheel 20 times, you'll answer a question about your feelings.</br>
                 Specifically, you'll report how ${settings.dvText}.</p>
             </div>`],
 
@@ -90,11 +88,15 @@ const exp = (function() {
 
         let correctAnswers = [`5`];
 
+
+
         if (settings.dv == 'flow') {
             correctAnswers.push(`My level of immersion and engagement.`);
         } else if (settings.dv == 'happiness') {
             correctAnswers.push(`My level of happiness.`);
         };
+        
+
 
         const errorMessage = {
             type: jsPsychInstructions,
@@ -103,6 +105,8 @@ const exp = (function() {
             allow_keys: false,
         };
 
+
+        
         const attnChk = {
             type: jsPsychSurveyMultiChoice,
             preamble: `<div class='parent'>
@@ -126,6 +130,7 @@ const exp = (function() {
                   data.totalErrors = totalErrors;
             },
         };
+
 
         const conditionalNode = {
           timeline: [errorMessage],
@@ -178,6 +183,7 @@ const exp = (function() {
         eight: {color:"#007f0e", label:"viralmemeguy", emotion: "amusement2"}
     };
 
+console.log(wedges.one)
 
     // define each wheel
     const wheels = [
@@ -229,7 +235,7 @@ const exp = (function() {
         }
     };
 
-    /*
+    
 
     // trial: flow DV
     const flowMeasure = {
@@ -251,9 +257,9 @@ const exp = (function() {
             saveSurveyData(data);
         }
     };
-*/
 
-    /*
+
+    
     // trial: happiness DV
     const happinessMeasure = {
         type: jsPsychSurveyLikert,
@@ -276,13 +282,13 @@ const exp = (function() {
         }
     };
 
-*/
+
     // flow proneness
 
 
     // timeline: main task
 
-/*
+
     let dv;
     if (settings.dv == "happiness") {
         dv = happinessMeasure;
@@ -290,7 +296,7 @@ const exp = (function() {
         dv = flowMeasure;
     };
 
-*/
+
     p.task = {
         timeline: [spin],
        // timeline: [spin, dv],
