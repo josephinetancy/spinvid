@@ -208,7 +208,6 @@ console.log(wedges.one)
 
         ];
 
-console.log(wedges.one)
     let scoreTracker = 0; // track current score
 
     let round = 1;  // track current round
