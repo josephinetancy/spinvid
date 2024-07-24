@@ -207,5 +207,6 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
   CanvasButtonResponsePlugin.info = info;
 
   return CanvasButtonResponsePlugin;
+console.log(trial.spin_num)
 
 })(jsPsychModule);
