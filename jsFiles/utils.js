@@ -190,12 +190,12 @@ const createSpinner = function(canvas, spinnerData, score, sectors) {
   const rand = (m, M) => Math.random() * (M - m) + m;
 
   const updateScore = (points, color) => {
-    score += points;
-    spinnerData.score = score;
-    spin_num--;
-    let s = 's';
-    spin_num == 1 ? s == '' : s == 's';
-    //scoreMsg.innerHTML = `<span style="color:${color}; font-weight: bolder">${score}</span>`;
+   // score += points;
+   // spinnerData.score = score;
+  //  spin_num--;
+  //  let s = 's';
+   // spin_num == 1 ? s == '' : s == 's';
+    scoreMsg.innerHTML = `<span style="color:${color}; font-weight: bolder">${score}</span>`;
     scoreMsg.innerHTML = `<span style="font-weight: bold">${score}</span>`;
     spinNumMsg.innerHTML = `(${spin_num} spin${s} remaining)`;
     setTimeout(() => {

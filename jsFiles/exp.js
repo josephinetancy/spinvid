@@ -168,75 +168,43 @@ const exp = (function() {
 
     // define each wedge
     const wedges = {
-        one: {color:"#fe0000", label:"1"},
-        two: {color:"#800001", label:"2"},
-        three: {color:"#fe6a00", label:"3"},
-        four: {color:"#803400", label:"4"},
-        five: {color:"#ffd800", label:"5"},
-        six: {color:"#806b00", label:"6"},
-        seven: {color:"#00fe21", label:"7"},
-        eight: {color:"#007f0e", label:"8"},
-        nine: {color:"#0094fe", label:"9"},
-        ten: {color:"#00497e", label:"10"},
-        eleven: {color:"#0026ff", label:"11"},
-        twelve: {color:"#001280", label:"12"},
-        thirteen: {color:"#b100fe", label:"13"},
+        one: {color:"#fe0000", label:"crazy memes crazy fights", emotion: "outrage1"},
+        two: {color:"#800001", label:"karenfootage", emotion: "outrage2"},
+        three: {color:"#fe6a00", label:"yoda4ever", emotion: "affection1"},
+        four: {color:"#803400", label:"buitengebieden", emotion: "affection2"},
+        five: {color:"#ffd800", label:"wowterrifying", emotion: "fear1"},
+        six: {color:"#806b00", label:"scaryclip", emotion: "fear2"},
+        seven: {color:"#00fe21", label:"theworldoffunny", emotion: "amusement1"},
+        eight: {color:"#007f0e", label:"viralmemeguy", emotion: "amusement2"}
     };
 
 
     // define each wheel
     const wheels = [
+        //1-4
 
-        /*  1 1 1 1
-            3 4 5 6    ev = 4.5; v = 1.67
-            7 8 9 10   ev = 8.5; v = 1.67
-            1 3 6 8    ev = 4.5; v = 9.67
-            5 7 10 12  ev = 8.5; v = 9.67
-        */
-            {sectors: [ wedges.three, wedges.four, wedges.five, wedges.six ], ev: 4.5, var: 1.67, arrangement: 1111},
-            {sectors: [ wedges.seven, wedges.eight, wedges.nine, wedges.ten ], ev: 8.5, var: 1.67, arrangement: 1111},
-            {sectors: [ wedges.one, wedges.three, wedges.six, wedges.eight ], ev: 4.5, var: 9.67, arrangement: 1111},
-            {sectors: [ wedges.five, wedges.seven, wedges.ten, wedges.twelve ], ev: 8.5, var: 9.67, arrangement: 1111},
+            {sectors: [ wedges.one, wedges.three, wedges.five, wedges.seven ], arrangement: "O1, Af1, F1, Am1"},
+            {sectors: [ wedges.one, wedges.three, wedges.five, wedges.eight ], arrangement: "O1, Af1, F1, Am2"},
+            {sectors: [ wedges.one, wedges.three, wedges.six, wedges.seven ], arrangement: "O1, Af1, F2, Am1"},
+            {sectors: [ wedges.one, wedges.three, wedges.six, wedges.eight], arrangement: "O1, Af1, F2, Am2"},
+            //5-8
+            {sectors: [ wedges.one, wedges.four, wedges.five, wedges.seven ], arrangement: "O1, Af2, F1, Am1"},
+            {sectors: [ wedges.one, wedges.four, wedges.five, wedges.eight ], arrangement: "O1, Af2, F1, Am2"},
+            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.seven ], arrangement: "O1, Af2, F2, Am1"},
+            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.eight], arrangement: "O1, Af2, F2, Am2"}
+            //9-12
+            {sectors: [ wedges.two, wedges.three, wedges.five, wedges.seven ], arrangement: "O2, Af1, F1, Am1"},
+            {sectors: [ wedges.two, wedges.three, wedges.five, wedges.eight ], arrangement: "O2, Af1, F1, Am2"},
+            {sectors: [ wedges.two, wedges.three, wedges.six, wedges.seven ], arrangement: "O2, Af1, F2, Am1"},
+            {sectors: [ wedges.two, wedges.three, wedges.six, wedges.eight ], arrangement: "O2, Af1, F2, Am2"},
+            //13-16
+            {sectors: [ wedges.two, wedges.four, wedges.five, wedges.seven ], arrangement: "O2, Af2, F1, Am1"},
+            {sectors: [ wedges.two, wedges.four, wedges.five, wedges.eight ], arrangement: "O2, Af2, F1, Am2"},
+            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.seven ], arrangement: "O2, Af2, F2, Am1"},
+            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.eight ], arrangement: "O2, Af2, F2, Am2"},
 
-        /*  2 1 1 
-            3 3 5 7     ev = 4.5; v = 2.25
-            7 7 9 11    ev = 8.5; v = 2.25
-            2 2 6 8     ev = 4.5; v = 9
-            6 6 10 12    ev = 8.5; v = 9
-        */
-            {sectors: [ wedges.three, wedges.three, wedges.five, wedges.seven ], ev: 4.5, var: 3.67, arrangement: 211},
-            {sectors: [ wedges.seven, wedges.seven, wedges.nine, wedges.eleven ], ev: 8.5, var: 3.67, arrangement: 211},
-            {sectors: [ wedges.two, wedges.two, wedges.six, wedges.eight ], ev: 4.5, var: 9, arrangement: 211},
-            {sectors: [ wedges.six, wedges.six, wedges.ten, wedges.twelve ], ev: 8.5, var: 9, arrangement: 211},
+        // got to include the other wheels
 
-        /*  2 2
-            3 3 6 6    ev = 4.5; v = 3
-            7 7 10 10  ev = 8.5; v = 3
-            2 2 7 7    ev = 4.5; v = 8.33
-            6 6 11 11  ev = 4.5; v = 8.33
-        */
-            {sectors: [ wedges.three, wedges.three, wedges.six, wedges.six ], ev: 4.5, var: 3, arrangement: 22},
-            {sectors: [ wedges.seven, wedges.seven, wedges.ten, wedges.ten ], ev: 8.5, var: 3, arrangement: 22},
-            {sectors: [ wedges.two, wedges.two, wedges.seven, wedges.seven ], ev: 4.5, var: 8.33, arrangement: 22},
-            {sectors: [ wedges.six, wedges.six, wedges.eleven, wedges.eleven ], ev: 8.5, var: 8.33, arrangement: 22},
-
-        /*  3 1
-            4 4 4 6    ev = 4.5; v = 1
-            8 8 8 10   ev = 8.5; v = 1
-            3 3 3 9    ev = 4.5; v = 9
-            7 7 7 13   ev = 8.5; v = 9
-        */
-            {sectors: [ wedges.four, wedges.four, wedges.four, wedges.six ], ev: 4.5, var: 1, arrangement: 31},
-            {sectors: [ wedges.eight, wedges.eight, wedges.eight, wedges.ten ], ev: 8.5, var: 1, arrangement: 31},
-            {sectors: [ wedges.three, wedges.three, wedges.three, wedges.nine ], ev: 4.5, var: 9, arrangement: 31},
-            {sectors: [ wedges.seven, wedges.seven, wedges.seven, wedges.thirteen ], ev: 8.5, var: 9, arrangement: 31},
-
-        /*  4
-            5 5 5 5 5   ev = 5; v = 0
-            9 9 9 9 9   ev = 9; v = 0
-        */
-            {sectors: [ wedges.four, wedges.four, wedges.four, wedges.four ], ev: 4, var: 0, arrangement: 4},
-            {sectors: [ wedges.nine, wedges.nine, wedges.nine, wedges.nine ], ev: 9, var: 0, arrangement: 4},
         ];
 
     let scoreTracker = 0; // track current score
@@ -261,6 +229,8 @@ const exp = (function() {
         }
     };
 
+    /*
+
     // trial: flow DV
     const flowMeasure = {
         type: jsPsychSurveyLikert,
@@ -281,7 +251,9 @@ const exp = (function() {
             saveSurveyData(data);
         }
     };
+*/
 
+    /*
     // trial: happiness DV
     const happinessMeasure = {
         type: jsPsychSurveyLikert,
@@ -304,11 +276,13 @@ const exp = (function() {
         }
     };
 
+*/
     // flow proneness
 
 
     // timeline: main task
 
+/*
     let dv;
     if (settings.dv == "happiness") {
         dv = happinessMeasure;
@@ -316,8 +290,10 @@ const exp = (function() {
         dv = flowMeasure;
     };
 
+*/
     p.task = {
-        timeline: [spin, dv],
+        timeline: [spin],
+       // timeline: [spin, dv],
         repetitions: 1,
         timeline_variables: wheels,
         randomize_order: true,
@@ -500,18 +476,21 @@ const exp = (function() {
     *
     */
 
-    p.save_data = {
+
+/*/    p.save_data = {
         type: jsPsychPipe,
         action: "save",
         experiment_id: "3ea7j3v4FYxI",
         filename: filename,
         data_string: ()=>jsPsych.data.get().csv()
-    };
+    }; */
 
     return p;
 
 }());
 
-const timeline = [exp.consent, exp.intro, exp.task, exp.demographics, exp.save_data];
+//const timeline = [exp.consent, exp.intro, exp.task, exp.demographics, exp.save_data];
+
+const timeline = [exp.consent, exp.intro, exp.task, exp.demographics];
 
 jsPsych.run(timeline);
