@@ -187,26 +187,27 @@ console.log(wedges.one)
 
     // define each wheel
     const wheels = [
-            {sectors: [ wedges.one, wedges.three, wedges.five, wedges.seven ], arrangement: "O1, Af1, F1, Am1"},
-            {sectors: [ wedges.one, wedges.three, wedges.five, wedges.eight ], arrangement: "O1, Af1, F1, Am2"},
-            {sectors: [ wedges.one, wedges.three, wedges.six, wedges.seven ], arrangement: "O1, Af1, F2, Am1"},
-            {sectors: [ wedges.one, wedges.three, wedges.six, wedges.eight], arrangement: "O1, Af1, F2, Am2"},
-            {sectors: [ wedges.one, wedges.four, wedges.five, wedges.seven ], arrangement: "O1, Af2, F1, Am1"},
-            {sectors: [ wedges.one, wedges.four, wedges.five, wedges.eight ], arrangement: "O1, Af2, F1, Am2"},
-            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.seven ], arrangement: "O1, Af2, F2, Am1"},
-            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.eight ], arrangement: "O1, Af2, F2, Am2"},
-            {sectors: [ wedges.two, wedges.three, wedges.five, wedges.seven ], arrangement: "O2, Af1, F1, Am1"},
-            {sectors: [ wedges.two, wedges.three, wedges.five, wedges.eight ], arrangement: "O2, Af1, F1, Am2"},
-            {sectors: [ wedges.two, wedges.three, wedges.six, wedges.seven ], arrangement: "O2, Af1, F2, Am1"},
-            {sectors: [ wedges.two, wedges.three, wedges.six, wedges.eight ], arrangement: "O2, Af1, F2, Am2"},
-            {sectors: [ wedges.two, wedges.four, wedges.five, wedges.seven ], arrangement: "O2, Af2, F1, Am1"},
-            {sectors: [ wedges.two, wedges.four, wedges.five, wedges.eight ], arrangement: "O2, Af2, F1, Am2"},
-            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.seven ], arrangement: "O2, Af2, F2, Am1"},
-            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.eight ], arrangement: "O2, Af2, F2, Am2"}
+            {sectors: [ wedges.one, wedges.three, wedges.five, wedges.seven ], arrangement: "O1, Af1, F1, Am1", wheel: "1"},
+            {sectors: [ wedges.one, wedges.three, wedges.five, wedges.eight ], arrangement: "O1, Af1, F1, Am2", wheel: "2"},
+            {sectors: [ wedges.one, wedges.three, wedges.six, wedges.seven ], arrangement: "O1, Af1, F2, Am1", wheel: "3"},
+            {sectors: [ wedges.one, wedges.three, wedges.six, wedges.eight], arrangement: "O1, Af1, F2, Am2", wheel: "4"},
+            {sectors: [ wedges.one, wedges.four, wedges.five, wedges.seven ], arrangement: "O1, Af2, F1, Am1", wheel: "5"},
+            {sectors: [ wedges.one, wedges.four, wedges.five, wedges.eight ], arrangement: "O1, Af2, F1, Am2", wheel: "6"},
+            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.seven ], arrangement: "O1, Af2, F2, Am1", wheel: "7"},
+            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.eight ], arrangement: "O1, Af2, F2, Am2", wheel: "8"},
+            {sectors: [ wedges.two, wedges.three, wedges.five, wedges.seven ], arrangement: "O2, Af1, F1, Am1", wheel: "9"},
+            {sectors: [ wedges.two, wedges.three, wedges.five, wedges.eight ], arrangement: "O2, Af1, F1, Am2", wheel: "10"},
+            {sectors: [ wedges.two, wedges.three, wedges.six, wedges.seven ], arrangement: "O2, Af1, F2, Am1", wheel: "11"},
+            {sectors: [ wedges.two, wedges.three, wedges.six, wedges.eight ], arrangement: "O2, Af1, F2, Am2", wheel: "12"},
+            {sectors: [ wedges.two, wedges.four, wedges.five, wedges.seven ], arrangement: "O2, Af2, F1, Am1", wheel: "13"},
+            {sectors: [ wedges.two, wedges.four, wedges.five, wedges.eight ], arrangement: "O2, Af2, F1, Am2", wheel: "14"},
+            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.seven ], arrangement: "O2, Af2, F2, Am1", wheel: "15"},
+            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.eight ], arrangement: "O2, Af2, F2, Am2", wheel: "16"}
 
         // got to include the other wheels
 
         ];
+
 
     let scoreTracker = 0; // track current score
 
@@ -223,13 +224,15 @@ console.log(wedges.one)
             return scoreTracker
         },
         post_trial_gap: 1000,
-        data: {ev: jsPsych.timelineVariable('ev'), var: jsPsych.timelineVariable('var'), arrangement: jsPsych.timelineVariable('arrangement')},
+        data: {arrangement: jsPsych.timelineVariable('arrangement'), wheel: jsPsych.timelineVariable('wheel')},
         on_finish: function(data) {
-            data.round = round;
-            scoreTracker = data.score
+          //  data.round = round;
+            data.round = round
+        //    scoreTracker = data.score
         }
     };
 
+console.log(round)
     
 
     // trial: flow DV
@@ -241,14 +244,13 @@ console.log(wedges.one)
             labels: ['0<br>A little', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10<br>Extremely']},
         ],
         randomize_question_order: false,
-        scale_width: 600,
-        data: {ev: jsPsych.timelineVariable('ev'), var: jsPsych.timelineVariable('var'), arrangement: jsPsych.timelineVariable('arrangement')},
+        scale_width: 600,data: {arrangement: jsPsych.timelineVariable('arrangement'), wheel: jsPsych.timelineVariable('wheel')},
         on_finish: function(data) {
             data.round = round;
-            let scoreArray = jsPsych.data.get().select('score').values;
-            let outcomesArray = jsPsych.data.get().select('outcomes').values;
-            data.score = scoreArray[scoreArray.length - 1];
-            data.outcomes = outcomesArray[outcomesArray.length - 1];
+ //           let scoreArray = jsPsych.data.get().select('score').values;
+ //           let outcomesArray = jsPsych.data.get().select('outcomes').values;
+ //           data.score = scoreArray[scoreArray.length - 1];
+//          data.outcomes = outcomesArray[outcomesArray.length - 1];
             saveSurveyData(data);
         }
     };
@@ -268,10 +270,10 @@ console.log(wedges.one)
         data: {ev: jsPsych.timelineVariable('ev'), var: jsPsych.timelineVariable('var'), arrangement: jsPsych.timelineVariable('arrangement')},
         on_finish: function(data) {
             data.round = round;
-            let scoreArray = jsPsych.data.get().select('score').values;
-            let outcomesArray = jsPsych.data.get().select('outcomes').values;
-            data.score = scoreArray[scoreArray.length - 2];
-            data.outcomes = outcomesArray[outcomesArray.length - 2];
+ //           let scoreArray = jsPsych.data.get().select('score').values;
+ //           let outcomesArray = jsPsych.data.get().select('outcomes').values;
+ //           data.score = scoreArray[scoreArray.length - 2];
+  //          data.outcomes = outcomesArray[outcomesArray.length - 2];
             saveSurveyData(data);
             round++;
         }
