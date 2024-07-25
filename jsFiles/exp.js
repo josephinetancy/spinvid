@@ -243,8 +243,7 @@ const video = {
         choices: ['yes', 'no'],
         prompt: "<p>Did you watch the video?</p>",
         response_allowed_while_playing: false
-        }
-    };
+        };
     
 
     // trial: flow DV
