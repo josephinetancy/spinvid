@@ -194,13 +194,13 @@ const createSpinner = function(canvas, spinnerData, score, sectors) {
    // spinnerData.score = score;
     spin_num--;
     let s = 's';
-    spin_num == 1 ? s == '' : s == 's';
+    spin_num == 1 ? s == '' : s == 's'; //this is just for grammar
     console.log(spin_num);
-    scoreMsg.innerHTML = `<span style="color:${color}; font-weight: bolder">${score}</span>`;
-    scoreMsg.innerHTML = `<span style="font-weight: bold">${score}</span>`;
+ //   scoreMsg.innerHTML = `<span style="color:${color}; font-weight: bolder">${score}</span>`;
+ //   scoreMsg.innerHTML = `<span style="font-weight: bold">${score}</span>`;
     spinNumMsg.innerHTML = `(${spin_num} spin${s} remaining)`;
     setTimeout(() => {
-      scoreMsg.innerHTML = `${score}`
+//      scoreMsg.innerHTML = `${score}`
       isSpinning = false;
       drawSector(sectors, null);
       onWheel ? canvas.style.cursor = "grab" : canvas.style.cursor = "";
