@@ -233,6 +233,18 @@ console.log(wedges.one)
     };
 
 console.log(round)
+
+
+const video = {
+        type: jsPsychVideoButtonResponse,
+        stimulus: [
+            'video/karen.mp4'
+            ],
+        choices: ['yes', 'no'],
+        prompt: "<p>Did you watch the video?</p>",
+        response_allowed_while_playing: false
+        }
+    };
     
 
     // trial: flow DV
@@ -295,7 +307,7 @@ console.log(round)
 
 
     p.task = {
-        timeline: [spin],
+        timeline: [spin, video],
        // timeline: [spin, dv],
         repetitions: 1,
         timeline_variables: wheels,
