@@ -233,9 +233,7 @@ console.log(wedges.one)
     };
 
 console.log(round)
-
-
-const video = {
+    const video = {
         type: jsPsychVideoButtonResponse,
         stimulus: [
             'video/karen.mp4'
