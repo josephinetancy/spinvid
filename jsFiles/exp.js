@@ -223,7 +223,7 @@ console.log(wedges.one)
         score: function() {
             return scoreTracker
         },
-        post_trial_gap: 1000,
+        post_trial_gap: 10000,
         data: {arrangement: jsPsych.timelineVariable('arrangement'), wheel: jsPsych.timelineVariable('wheel')},
         on_finish: function(data) {
           //  data.round = round;
