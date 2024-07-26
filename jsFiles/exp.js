@@ -187,6 +187,8 @@ console.log(wedges.one)
 
     // define each wheel
     const wheels = [
+
+        //1-16
             {sectors: [ wedges.one, wedges.three, wedges.five, wedges.seven ], arrangement: "O1, Af1, F1, Am1", wheel: "1"},
             {sectors: [ wedges.one, wedges.three, wedges.five, wedges.eight ], arrangement: "O1, Af1, F1, Am2", wheel: "2"},
             {sectors: [ wedges.one, wedges.three, wedges.six, wedges.seven ], arrangement: "O1, Af1, F2, Am1", wheel: "3"},
@@ -204,7 +206,19 @@ console.log(wedges.one)
             {sectors: [ wedges.two, wedges.four, wedges.six, wedges.seven ], arrangement: "O2, Af2, F2, Am1", wheel: "15"},
             {sectors: [ wedges.two, wedges.four, wedges.six, wedges.eight ], arrangement: "O2, Af2, F2, Am2", wheel: "16"}
 
-        // got to include the other wheels
+        // F, F, Am, Am
+
+            {sectors: [ wedges.five, wedges.six, wedges.seven, wedges.eight ], arrangement: "F1, F2, Am1, Am2", wheel: "17"},
+
+            // F, F, Aff, Aff
+            {sectors: [ wedges.five, wedges.six, wedges.three, wedges.four ], arrangement: "F1, F2, Am1, Am2", wheel: "18"},
+
+            //O, O, Am, Am
+            {sectors: [ wedges.one, wedges.two, wedges.seven, wedges.eight ], arrangement: "O2, Af2, F2, Am2", wheel: "19"},
+
+            //O, O, Aff, Aff
+
+            {sectors: [ wedges.one, wedges.two, wedges.three, wedges.four ], arrangement: "O2, Af2, F2, Am2", wheel: "20"}
 
         ];
 
@@ -251,14 +265,14 @@ console.log(wedges.one)
     };
 
 //       
-console.log(round)
+console.log("this is the" + round)
 
     // trial: flow DV
     const flowMeasure = {
         type: jsPsychSurveyLikert,
         questions: [
             {prompt: `During the last round of Spin the Wheel,<br>to what extent did you feel immersed and engaged in what you were doing?`,
-            name: `dv_value`,
+            name: `dv_value`,x
             labels: ['0<br>A little', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10<br>Extremely']},
         ],
         randomize_question_order: false,
@@ -315,9 +329,13 @@ console.log(round)
     p.task = {
         timeline: [spin, video],
        // timeline: [spin, dv],
-        repetitions: 1,
+        repetitions: 20,
         timeline_variables: wheels,
-        randomize_order: true,
+        sample: {
+            type: 'alternate_groups',
+            groups: [[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]], [[16,17,18,19]],
+            randomize_group_order: true
+        }
     };
 
    /*
