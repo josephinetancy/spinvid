@@ -228,6 +228,7 @@ console.log(wedges.one)
         data: {arrangement: jsPsych.timelineVariable('arrangement'), wheel: jsPsych.timelineVariable('wheel')},
         on_finish: function(data) {
           //  data.round = round;
+            video;
             data.round = round
         //    scoreTracker = data.score
         }
