@@ -64,7 +64,7 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
           spin_num: {
               type: jspsych.ParameterType.INT,
               pretty_name: "Score",
-              default: 20, //this shows the spin_num number on the button
+              default: 10, //this shows the spin_num number on the button
           },
       },
   };
