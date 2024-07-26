@@ -332,24 +332,8 @@ console.log(wedges.one)
     };
 
 
-    p.task_1 = {
-        timeline: [spin],
-        timeline_variables: wheels,
-        repetitions: 10,
-        sample: {
-            type: 'with_replacement',
-            size: 1
-        }
-    };
-
+//this is what I did before but i think i need to separate them?
     p.task = {
-        timeline: [p.task_1, video],
-       // timeline: [spin, dv],
-        repetitions: 10 //this should be the number of repetitions for each spin + video combo..
-    };
-
-//this is what I did before but i think i need to separate them? 
-   /* p.task = {
         timeline: [spin, video],
        // timeline: [spin, dv],
         repetitions: 20, //this should be the number of repetitions for each spin + video combo..
@@ -359,7 +343,7 @@ console.log(wedges.one)
             groups: [[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], [16,17,18,19]],
             randomize_group_order: true
         }
-    }; */
+    }; 
 
    /*
     *
