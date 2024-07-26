@@ -154,8 +154,8 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
           }
           // end trial
           const waitForEnd = setInterval(function() {
-            if(spinnerData.outcomes.length = 1) {
-          //  if(spinnerData.outcomes.length >= 5) {
+           // if(spinnerData.outcomes.length = 1) {
+            if(spinnerData.outcomes.length >= 5) { //what does this do?
               clearInterval(waitForEnd);
               setTimeout(after_response, 1000);
             }

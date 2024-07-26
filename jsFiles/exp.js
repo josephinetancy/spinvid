@@ -173,14 +173,14 @@ const exp = (function() {
 
     // define each wedge
     const wedges = {
-        one: {color:"#fe0000", label:"crazy memes crazy fights", emotion: "outrage1"},
-        two: {color:"#800001", label:"karenfootage", emotion: "outrage2"},
-        three: {color:"#fe6a00", label:"yoda4ever", emotion: "affection1"},
-        four: {color:"#803400", label:"buitengebieden", emotion: "affection2"},
-        five: {color:"#ffd800", label:"wowterrifying", emotion: "fear1"},
-        six: {color:"#806b00", label:"scaryclip", emotion: "fear2"},
-        seven: {color:"#00fe21", label:"theworldoffunny", emotion: "amusement1"},
-        eight: {color:"#007f0e", label:"viralmemeguy", emotion: "amusement2"}
+        one: {color:"#000080", label:"crazy memes crazy fights", emotion: "outrage1"},
+        two: {color:"#0000FF", label:"karenfootage", emotion: "outrage2"},
+        three: {color:"#B22222", label:"yoda4ever", emotion: "affection1"},
+        four: {color:"#CD5C5C", label:"buitengebieden", emotion: "affection2"},
+        five: {color:"#FFFACD", label:"wowterrifying", emotion: "fear1"},
+        six: {color:"#FFFF00", label:"scaryclip", emotion: "fear2"},
+        seven: {color:"#7FFF00", label:"theworldoffunny", emotion: "amusement1"},
+        eight: {color:"#7CFC00", label:"viralmemeguy", emotion: "amusement2"}
     };
 
 console.log(wedges.one)
@@ -242,7 +242,6 @@ console.log(wedges.one)
         data: {arrangement: jsPsych.timelineVariable('arrangement'), wheel: jsPsych.timelineVariable('wheel')},
         on_finish: function(data) {
           //  data.round = round;
-            video;
             data.round = round
         //    scoreTracker = data.score
         }
@@ -251,8 +250,10 @@ console.log(wedges.one)
 
     const video = {
         type: jsPsychVideoButtonResponse,
-        stimulus: [
-            'video/karen.mp4'
+        timeline: [
+            {stimulus: 'video/karen.mp4'},
+            {stimulus: 'video/karen2.mp4'},
+            {stimulus: 'video/karen3.mpf'}
             ],
          choices: ['yes', 'no'],
          prompt: "<p>Did you watch the video?</p>",
@@ -261,6 +262,7 @@ console.log(wedges.one)
             data.round = round;
             saveSurveyData(data);
             round++;
+            console.log(round)
         }
     };
 
@@ -327,7 +329,7 @@ console.log("this is the" + round)
 
 
     p.task = {
-        timeline: [spin],
+        timeline: [spin, video],
        // timeline: [spin, dv],
         repetitions: 1,
         timeline_variables: wheels,
