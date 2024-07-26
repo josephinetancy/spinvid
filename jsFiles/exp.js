@@ -250,11 +250,13 @@ console.log(wedges.one)
 
     const video = {
         type: jsPsychVideoButtonResponse,
-        timeline: [
+        stimulus: [
+            'video/karen.mp4'],
+        /* timeline: [
             { stimulus: 'video/karen.mp4', prompt: 'this shows karen'},
             { stimulus: 'video/karen2.mp4', prompt: 'this shows karen2'},
             { stimulus: 'video/karen3.mp4', prompt: 'this shows karen3'}
-            ],
+            ], */
          choices: ['yes', 'no'],
          response_allowed_while_playing: false,
          randomize_order: true,
