@@ -30,11 +30,11 @@ const exp = (function() {
 
 /*
     *
-    *   PRELOADING VIDEOS
+    *   PRELOADING VIDEOS : put it in utils?
     *
     */
 
-
+/*
     var video = ["video/karen.mp4", "video/karen2.mp4", "video/karen3.mp4"]
 
    p.preload = {
@@ -42,7 +42,7 @@ const exp = (function() {
         video: video
     };
 
-
+*/
    /*
     *
     *   INSTRUCTIONS
@@ -264,13 +264,13 @@ console.log(wedges.one)
 
     const video_load = {
         type: jsPsychVideoKeyboardResponse,
-    //    stimulus: [
-    //        'video/karen.mp4'],
-        timeline: [
-            { stimulus: "video/karen.mp4", prompt: 'this shows karen'},
-            { stimulus: "video/karen2.mp4", prompt: 'this shows karen2'},
-            { stimulus: "video/karen3.mp4", prompt: 'this shows karen3'}
-            ], 
+        stimulus: [
+            'video/karen.mp4'],
+    //    timeline: [
+    //        { stimulus: "video/karen.mp4", prompt: 'this shows karen'},
+    //        { stimulus: "video/karen2.mp4", prompt: 'this shows karen2'},
+     //       { stimulus: "video/karen3.mp4", prompt: 'this shows karen3'}
+     //       ], 
          choices: "NO_KEYS",
          sample: {
             type: 'with-replacement', 
