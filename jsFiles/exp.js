@@ -28,6 +28,20 @@ const exp = (function() {
 
     console.log(settings.dv)
 
+/*
+    *
+    *   PRELOADING VIDEOS
+    *
+    */
+
+
+    var video = ["video/karen.mp4", "video/karen2.mp4", "video/karen3.mp4"]
+
+   p.preload = {
+        type: jsPsychPreload,
+        video: video
+    }
+
 
    /*
     *
@@ -248,21 +262,21 @@ console.log(wedges.one)
     };
 
 
-    const video = {
-        type: jsPsychVideoButtonResponse,
+    const video_load = {
+        type: jsPsychVideoKeyboardResponse,
     //    stimulus: [
     //        'video/karen.mp4'],
         timeline: [
-            { stimulus: 'video/karen.mp4', prompt: 'this shows karen'},
-            { stimulus: 'video/karen2.mp4', prompt: 'this shows karen2'},
-            { stimulus: 'video/karen3.mp4', prompt: 'this shows karen3'}
+            { stimulus: "video/karen.mp4", prompt: 'this shows karen'},
+            { stimulus: "video/karen2.mp4", prompt: 'this shows karen2'},
+            { stimulus: "video/karen3.mp4", prompt: 'this shows karen3'}
             ], 
-         choices: ['yes', 'no'],
+         choices: "NO_KEYS"
          sample: {
             type: 'with-replacement', 
             size: 10
          },
-         response_allowed_while_playing: false,
+         trial_ends_after_video: true,
          randomize_order: true,
          on_finish: function(data) {
             data.round = round;
@@ -334,7 +348,7 @@ console.log(wedges.one)
 
 //this is what I did before but i think i need to separate them?
     p.task = {
-        timeline: [spin, video],
+        timeline: [spin, video_load],
        // timeline: [spin, dv],
         repetitions: 20, //this should be the number of repetitions for each spin + video combo..
         timeline_variables: wheels,
@@ -537,6 +551,6 @@ console.log(wedges.one)
 
 //const timeline = [exp.consent, exp.intro, exp.task, exp.demographics, exp.save_data];
 
-const timeline = [exp.consent, exp.intro, exp.task, exp.demographics];
+const timeline = [exp.preload, exp.consent, exp.intro, exp.task, exp.demographics];
 
 jsPsych.run(timeline);
