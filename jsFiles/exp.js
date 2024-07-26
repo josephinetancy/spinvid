@@ -40,7 +40,7 @@ const exp = (function() {
    p.preload = {
         type: jsPsychPreload,
         video: video
-    }
+    };
 
 
    /*
