@@ -214,18 +214,6 @@ console.log(wedges.one)
     let round = 1;  // track current round
 
 
-    const video = {
-        type: jsPsychVideoButtonResponse,
-        stimulus: [
-            'video/karen.mp4'
-            ],
-//        choices: ['yes', 'no'],
- //       prompt: "<p>Did you watch the video?</p>",
- //       response_allowed_while_playing: false
-        };
-    
-
-
     // trial: spinner
     const spin = {
         type: jsPsychCanvasButtonResponse,
@@ -238,12 +226,24 @@ console.log(wedges.one)
         },
         post_trial_gap: 1000,
         data: {arrangement: jsPsych.timelineVariable('arrangement'), wheel: jsPsych.timelineVariable('wheel')},
-        on_finish: video, function(data) {
+        on_finish: function(data) {
           //  data.round = round;
             data.round = round
         //    scoreTracker = data.score
         }
     };
+
+
+    const video = {
+        type: jsPsychVideoButtonResponse,
+        stimulus: [
+            'video/karen.mp4'
+            ],
+//        choices: ['yes', 'no'],
+ //       prompt: "<p>Did you watch the video?</p>",
+ //       response_allowed_while_playing: false
+        };
+
 
 console.log(round)
 
@@ -307,7 +307,7 @@ console.log(round)
 
 
     p.task = {
-        timeline: [spin, dv],
+        timeline: [spin, video],
        // timeline: [spin, dv],
         repetitions: 1,
         timeline_variables: wheels,
