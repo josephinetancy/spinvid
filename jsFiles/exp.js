@@ -272,7 +272,7 @@ console.log("this is the" + round)
         type: jsPsychSurveyLikert,
         questions: [
             {prompt: `During the last round of Spin the Wheel,<br>to what extent did you feel immersed and engaged in what you were doing?`,
-            name: `dv_value`,x
+            name: `dv_value`,
             labels: ['0<br>A little', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10<br>Extremely']},
         ],
         randomize_question_order: false,
