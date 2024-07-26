@@ -551,6 +551,6 @@ console.log(wedges.one)
 
 //const timeline = [exp.consent, exp.intro, exp.task, exp.demographics, exp.save_data];
 
-const timeline = [exp.preload, exp.consent, exp.intro, exp.task, exp.demographics];
+const timeline = [exp.consent, exp.intro, exp.task, exp.demographics];
 
 jsPsych.run(timeline);
