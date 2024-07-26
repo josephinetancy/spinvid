@@ -327,9 +327,9 @@ console.log("this is the" + round)
 
 
     p.task = {
-        timeline: [spin, video],
+        timeline: [spin],
        // timeline: [spin, dv],
-        repetitions: 20,
+        repetitions: 1,
         timeline_variables: wheels,
         sample: {
             type: 'alternate_groups',
