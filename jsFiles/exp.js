@@ -234,6 +234,12 @@ console.log(wedges.one)
         stimulus: function(c, spinnerData) {
             createSpinner(c, spinnerData, scoreTracker, jsPsych.timelineVariable('sectors'));
         },
+        timeline_variables: wheels,
+        sample: {
+            type: 'alternate_groups',
+            groups: [[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], [16,17,18,19]],
+            randomize_group_order: true
+        },
         canvas_size: [500, 500],
         score: function() {
             return scoreTracker
@@ -250,14 +256,18 @@ console.log(wedges.one)
 
     const video = {
         type: jsPsychVideoButtonResponse,
-        stimulus: [
-            'video/karen.mp4'],
-        /* timeline: [
+    //    stimulus: [
+    //        'video/karen.mp4'],
+        timeline: [
             { stimulus: 'video/karen.mp4', prompt: 'this shows karen'},
             { stimulus: 'video/karen2.mp4', prompt: 'this shows karen2'},
             { stimulus: 'video/karen3.mp4', prompt: 'this shows karen3'}
-            ], */
+            ], 
          choices: ['yes', 'no'],
+         sample: {
+            type: 'with-replacement', 
+            size: 20
+         }
          response_allowed_while_playing: false,
          randomize_order: true,
          on_finish: function(data) {
@@ -327,8 +337,14 @@ console.log(wedges.one)
         dv = flowMeasure;
     };
 
-
     p.task = {
+        timeline: [spin, video],
+       // timeline: [spin, dv],
+        repetitions: 20, //this should be the number of repetitions for each spin + video combo..
+    };
+
+
+   /* p.task = {
         timeline: [spin, video],
        // timeline: [spin, dv],
         repetitions: 20, //this should be the number of repetitions for each spin + video combo..
@@ -338,7 +354,7 @@ console.log(wedges.one)
             groups: [[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], [16,17,18,19]],
             randomize_group_order: true
         }
-    };
+    }; */
 
    /*
     *
