@@ -267,7 +267,7 @@ console.log(wedges.one)
          sample: {
             type: 'with-replacement', 
             size: 20
-         }
+         },
          response_allowed_while_playing: false,
          randomize_order: true,
          on_finish: function(data) {
