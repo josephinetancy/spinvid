@@ -251,9 +251,9 @@ console.log(wedges.one)
     const video = {
         type: jsPsychVideoButtonResponse,
         timeline: [
-            {stimulus: 'video/karen.mp4', prompt: 'this shows karen'},
-            {stimulus: 'video/karen2.mp4', prompt: 'this shows karen2'},
-            {stimulus: 'video/karen3.mp4', prompt: 'this shows karen3'}
+            {stimulus: 'video/karen.mp4', prompt: 'this shows karen'}
+        //    {stimulus: 'video/karen2.mp4', prompt: 'this shows karen2'},
+        //    {stimulus: 'video/karen3.mp4', prompt: 'this shows karen3'}
             ],
          choices: ['yes', 'no'],
          prompt: "<p>Did you watch the video?</p>",
@@ -267,8 +267,6 @@ console.log(wedges.one)
     };
 
 //       
-console.log("this is the" + round)
-
     // trial: flow DV
     const flowMeasure = {
         type: jsPsychSurveyLikert,
@@ -331,7 +329,7 @@ console.log("this is the" + round)
     p.task = {
         timeline: [spin, video],
        // timeline: [spin, dv],
-        repetitions: 1,
+        repetitions: 20, //this should be the number of repetitions for each spin + video combo..
         timeline_variables: wheels,
         sample: {
             type: 'alternate_groups',

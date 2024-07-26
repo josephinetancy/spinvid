@@ -155,7 +155,7 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
           // end trial
           const waitForEnd = setInterval(function() {
            // if(spinnerData.outcomes.length = 1) {
-            if(spinnerData.outcomes.length >= 10) { //this changes the actual number of spins - this will lead to the video spin_num
+            if(spinnerData.outcomes.length >= 1) { //this changes the actual number of spins - this is the number of spins before it will lead to the video spin_num
               clearInterval(waitForEnd);
               setTimeout(after_response, 1000);
             }
