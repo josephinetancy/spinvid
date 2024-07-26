@@ -239,10 +239,19 @@ console.log(wedges.one)
         stimulus: [
             'video/karen.mp4'
             ],
+        on_finish: function(data) {
+            data.round = round;
+ //           let scoreArray = jsPsych.data.get().select('score').values;
+ //           let outcomesArray = jsPsych.data.get().select('outcomes').values;
+ //           data.score = scoreArray[scoreArray.length - 2];
+  //          data.outcomes = outcomesArray[outcomesArray.length - 2];
+            saveSurveyData(data);
+            round++;
+        };
+
 //        choices: ['yes', 'no'],
  //       prompt: "<p>Did you watch the video?</p>",
- //       response_allowed_while_playing: false
-        };
+ //       response_allowed_while_playing: false;
 
 
 console.log(round)
