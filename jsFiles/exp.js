@@ -271,7 +271,7 @@ console.log(wedges.one)
             { stimulus: "video/karen2.mp4", prompt: 'this shows karen2'},
             { stimulus: "video/karen3.mp4", prompt: 'this shows karen3'}
             ], 
-         choices: "NO_KEYS"
+         choices: "NO_KEYS",
          sample: {
             type: 'with-replacement', 
             size: 10
