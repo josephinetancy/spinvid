@@ -241,13 +241,12 @@ console.log(wedges.one)
             ],
          choices: ['yes', 'no'],
          prompt: "<p>Did you watch the video?</p>",
-         response_allowed_while_playing: false;
-        on_finish: function(data) {
+         response_allowed_while_playing: false,
+         on_finish: function(data) {
             data.round = round;
             saveSurveyData(data);
             round++;
         }
-
     };
 
 //       
