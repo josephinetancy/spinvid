@@ -213,26 +213,7 @@ console.log(wedges.one)
 
     let round = 1;  // track current round
 
-    // trial: spinner
-    const spin = {
-        type: jsPsychCanvasButtonResponse,
-        stimulus: function(c, spinnerData) {
-            createSpinner(c, spinnerData, scoreTracker, jsPsych.timelineVariable('sectors'));
-        },
-        canvas_size: [500, 500],
-        score: function() {
-            return scoreTracker
-        },
-        post_trial_gap: 10000,
-        data: {arrangement: jsPsych.timelineVariable('arrangement'), wheel: jsPsych.timelineVariable('wheel')},
-        on_finish: function(data) {
-          //  data.round = round;
-            data.round = round
-        //    scoreTracker = data.score
-        }
-    };
 
-console.log(round)
     const video = {
         type: jsPsychVideoButtonResponse,
         stimulus: [
@@ -243,6 +224,28 @@ console.log(round)
  //       response_allowed_while_playing: false
         };
     
+
+
+    // trial: spinner
+    const spin = {
+        type: jsPsychCanvasButtonResponse,
+        stimulus: function(c, spinnerData) {
+            createSpinner(c, spinnerData, scoreTracker, jsPsych.timelineVariable('sectors'));
+        },
+        canvas_size: [500, 500],
+        score: function() {
+            return scoreTracker
+        },
+        post_trial_gap: 1000,
+        data: {arrangement: jsPsych.timelineVariable('arrangement'), wheel: jsPsych.timelineVariable('wheel')},
+        on_finish: video, function(data) {
+          //  data.round = round;
+            data.round = round
+        //    scoreTracker = data.score
+        }
+    };
+
+console.log(round)
 
     // trial: flow DV
     const flowMeasure = {
@@ -304,7 +307,7 @@ console.log(round)
 
 
     p.task = {
-        timeline: [spin, video],
+        timeline: [spin, dv],
        // timeline: [spin, dv],
         repetitions: 1,
         timeline_variables: wheels,
