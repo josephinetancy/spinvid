@@ -247,7 +247,9 @@ console.log(wedges.one)
   //          data.outcomes = outcomesArray[outcomesArray.length - 2];
             saveSurveyData(data);
             round++;
-        };
+        }
+
+    };
 
 //        choices: ['yes', 'no'],
  //       prompt: "<p>Did you watch the video?</p>",
