@@ -88,7 +88,7 @@ const createSpinner = function(canvas, spinnerData, score, sectors) {
   let oldAngle = 0;            // wheel angle prior to last perturbation
   let currentAngle = null;     // wheel angle after last perturbation
   let onWheel = false;         // true when cursor is on wheel, false otherwise
-  let spin_num = 1             // number of spins
+  let spin_num = 5             // possible spin_num variable
 
 
   /* define spinning functions */

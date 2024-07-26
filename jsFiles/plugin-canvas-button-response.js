@@ -64,7 +64,7 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
           spin_num: {
               type: jspsych.ParameterType.INT,
               pretty_name: "Score",
-              default: 20,
+              default: 10, //possible spin_num variable?
           },
       },
   };
@@ -155,7 +155,7 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
           // end trial
           const waitForEnd = setInterval(function() {
            // if(spinnerData.outcomes.length = 1) {
-            if(spinnerData.outcomes.length >= 5) { //what does this do?
+            if(spinnerData.outcomes.length >= 1) { //this changes the actual number of spins spin_num
               clearInterval(waitForEnd);
               setTimeout(after_response, 1000);
             }
