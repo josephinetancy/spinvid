@@ -279,8 +279,8 @@ console.log(wedges.one)
          trial_ends_after_video: true,
          randomize_order: true,
          on_finish: function(data) {
-            data.round = round;
-            saveSurveyData(data);
+ //           data.round = round;
+//            saveSurveyData(data);
             round++;
             console.log(round)
         }
