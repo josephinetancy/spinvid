@@ -171,23 +171,6 @@ const exp = (function() {
     *
     */
 
-    const videoPaths = {
-        outrage1: 'video/@crazy memes\ncrazy fights.mp4',
-        outrage2: 'video/@karenfootage.mp4',
-        affection1: 'video/@yoda4ever.mp4',
-        affection2: 'video/@buitengebieden.mp4',
-        fear1: 'video/@wowterrifying.mp4',
-        fear2: 'video/@scaryclip_.mp4',
-        amusement1: 'video/@theworldoffunny.mp4',
-        amusement2: 'video/@viralmemeguy2.mp4'
-    };
-
-    // Function to get video paths based on wheel sectors
-    function getPreloadVideos(sectors) {
-        const uniqueEmotions = new Set(sectors.map(sector => sector.emotion));
-        return Array.from(uniqueEmotions).map(emotion => videoPaths[emotion]);
-    }
-
 
     // define each wedge
     const wedges = {
@@ -242,25 +225,11 @@ const exp = (function() {
         ];
 
 
-    // Function to preload videos based on the selected wheel
-    function preloadVideosForWheel(wheelIndex) {
-        const wheel = wheels[wheelIndex];
-        const preloadList = getPreloadVideos(wheel.sectors);
-        console.log(`Preloading videos for wheel ${wheelIndex}:`, preloadList);
-        p.preload = {
-            type: jsPsychPreload,
-            video: preloadList
-        };
-    }
-
 
     const highMIwheel = [wheels[Math.floor(Math.random() * 14)]];// random integer from 0 - 15
     //const highMIwheel = [wheels[20]]; testing
     const lowMIwheel = [wheels[Math.floor(Math.random() * 4) + 16]]; // random integer from 16 - 19
 
-    // Preload videos based on the selected wheels
-    preloadVideosForWheel(wheels.indexOf(highMIwheel[0]));
-    preloadVideosForWheel(wheels.indexOf(lowMIwheel[0]));
 
     let scoreTracker = 0; // track current score
 
@@ -317,10 +286,10 @@ const exp = (function() {
             const videoPath = `video/${account}/${vidNumber}.mp4`;
             return [videoPath]; 
         },
-        width: 640,
-        height: 480,
-        trial_ends_after_video: true,
-        on_finish: function(data) {
+            width: 640,
+            height: 480,
+            trial_ends_after_video: true,
+            on_finish: function(data) {
             round++;
         }
     };
@@ -389,6 +358,15 @@ const exp = (function() {
     preload
 
     */
+
+    video_preloading = ['video/1.mp4', 'video/2.mp4'];
+
+
+    p.preload = {
+        type: jsPsychPreload,
+        video: video_preloading
+
+    }
 
 
     p.task_highMI = {
@@ -596,6 +574,6 @@ const exp = (function() {
 
 //const timeline = [exp.consent, exp.intro, exp.task, exp.demographics, exp.save_data];
 
-const timeline = [exp.preload, exp.task_highMI, dv, exp.task_lowMI, dv];
+const timeline = [preload, exp.task_highMI, dv, exp.task_lowMI, dv];
 
 jsPsych.run(timeline);
