@@ -51,7 +51,7 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
               type: jspsych.ParameterType.INT,
               array: true,
               pretty_name: "Canvas size",
-              default: [500, 500],
+              default: [300, 300],
           },
           /* Player's total score. 
           score: {
@@ -64,7 +64,7 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
           spin_num: {
               type: jspsych.ParameterType.INT,
               pretty_name: "Score",
-              default: 10, //this shows the spin_num number on the button
+              default: 4, //this shows the spin_num number on the button
           },
       },
   };
@@ -157,7 +157,7 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
            // if(spinnerData.outcomes.length = 1) {
             if(spinnerData.outcomes.length >= 1) { //this changes the actual number of spins - this is the number of spins before it will lead to the video spin_num
               clearInterval(waitForEnd);
-              setTimeout(after_response, 1000);
+              setTimeout(after_response, 1200); // i changed this
             }
           }, 100);
           // hide image if timing is set

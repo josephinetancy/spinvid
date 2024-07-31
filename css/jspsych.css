@@ -596,7 +596,7 @@
   display: block;
 }
 
-
+/*
 .score-board {
   position: relative;
   display: flex;
@@ -609,7 +609,24 @@
   margin-bottom: 48px;
 
 }
+*/
 
+
+.score-board {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:100px; width:300px; 
+  margin: auto;
+  border: 3px solid;
+  border-color: grey;
+  background: #ededed;
+  margin-bottom: 48px;
+
+}
+
+/*
 .score-board-title {
   position: absolute;
   top: 10px;
@@ -622,9 +639,10 @@
   font-size:40px;
 }
 
+*/
+
 .score-board-spins {
-  position: absolute;
-  top: 110px;
+  text-align: center;
   font-size:25px;
 }
 

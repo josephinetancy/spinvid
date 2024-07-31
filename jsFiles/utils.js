@@ -1,7 +1,26 @@
+//checking data
+
+const jsPsych = initJsPsych({
+    on_finish: (data) => {
+        // Log all the collected data to the console
+        console.log('Trial data:', jsPsych.data.get().json());
+
+        // Optional: Display data on the page
+        document.body.innerHTML = 
+            `<div align='center' style="margin: 10%">
+                <p>Trial Data:</p>
+                <pre>${JSON.stringify(jsPsych.data.get().json(), null, 2)}</pre>
+            </div>`;
+        }
+    });
+
+
+/*
 
 // initialize jsPsych
 const jsPsych = initJsPsych({
     on_finish: (data) => {
+      console.log()
         data.boot = boot;
         if(!boot) {
             document.body.innerHTML = 
@@ -14,7 +33,7 @@ const jsPsych = initJsPsych({
             }, 1000);
         }
     },
-});
+}); */
 
 // set and save subject ID
 let subject_id = jsPsych.data.getURLVariable("PROLIFIC_PID");
@@ -56,7 +75,7 @@ const createSpinner = function(canvas, spinnerData, score, sectors) {
   const pointer = document.querySelector("#spin");
 
   /* get score message */
-  const scoreMsg = document.getElementById("score");
+//  const scoreMsg = document.getElementById("score");
 
   /* get spin number message */
   const spinNumMsg = document.getElementById("spin-num");
@@ -88,7 +107,7 @@ const createSpinner = function(canvas, spinnerData, score, sectors) {
   let oldAngle = 0;            // wheel angle prior to last perturbation
   let currentAngle = null;     // wheel angle after last perturbation
   let onWheel = false;         // true when cursor is on wheel, false otherwise
-  let spin_num = 10             // spin_num that is on the canvas button 
+  let spin_num = 4            // spin_num that is on the canvas button 
 
 
   /* define spinning functions */
@@ -124,7 +143,6 @@ const createSpinner = function(canvas, spinnerData, score, sectors) {
       correctSpeed.shift();
       correctSpeed.push(speed);
     };
-    console.log(correctSpeed);
     render(currentAngle);
   };
 
@@ -148,14 +166,13 @@ const createSpinner = function(canvas, spinnerData, score, sectors) {
   };
 
   const giveMoment = function(speed) {
-
     // stop accelerating when max speed is reached
     if (Math.abs(speed) >= angVelMax) isAccelerating = false;
-
     // accelerate
     if (isAccelerating) {
       speed *= 1.06; // Accelerate
       const req = window.requestAnimationFrame(giveMoment.bind(this, speed));
+      console.log('spin_num when accelerating' + spin_num)
       oldAngle += speed;
       lastAngles.shift();
       lastAngles.push(oldAngle);
@@ -177,10 +194,12 @@ const createSpinner = function(canvas, spinnerData, score, sectors) {
         // stop spinner
         speed = 0;
         currentAngle = oldAngle;
+        console.log('spin_num when decelerating' + spin_num)
         let sector = sectors[getIndex()];
-        spinnerData.outcomes.push(parseFloat(sector.label));
+        spinnerData.outcomes.push(sector.label);
         drawSector(sectors, getIndex());
         updateScore(parseFloat(sector.label), sector.color);
+        console.log('Spin Number after update:', spin_num); //why does spin number keep adding
         window.cancelAnimationFrame(req);
       };
     };
@@ -192,10 +211,10 @@ const createSpinner = function(canvas, spinnerData, score, sectors) {
   const updateScore = (points, color) => {
    // score += points;
    // spinnerData.score = score;
+    console.log('Spin Number before update:', spin_num);
     spin_num--;
-    let s = 's';
-    spin_num == 1 ? s == '' : s == 's'; //this is just for grammar?
-    console.log(spin_num);
+    console.log('Spin Number after decrement:', spin_num);
+    let s = spin_num == 1 ? '' : 's';
  //   scoreMsg.innerHTML = `<span style="color:${color}; font-weight: bolder">${score}</span>`;
  //   scoreMsg.innerHTML = `<span style="font-weight: bold">${score}</span>`;
     spinNumMsg.innerHTML = `(${spin_num} spin${s} remaining)`;
@@ -273,40 +292,47 @@ const createSpinner = function(canvas, spinnerData, score, sectors) {
 
   //* Draw sectors and prizes texts to canvas */
   const drawSector = (sectors, sector) => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Draw sectors first
     for (let i = 0; i < sectors.length; i++) {
-      const ang = arc * i;
-      ctx.save();
-      // COLOR
-      ctx.beginPath();
-      ctx.fillStyle = sectors[i].color;
-      ctx.moveTo(rad, rad);
-      ctx.arc(rad, rad, rad, ang, ang + arc);
-      ctx.lineTo(rad, rad);
-      ctx.fill();
-      // TEXT
-      ctx.translate(rad, rad);
-      ctx.rotate( (ang + arc / 2) + arc );
-      ctx.textAlign = "center";
-      ctx.fillStyle = "#fff";
-      if (isSpinning && i == sector) {
-        ctx.font = "bolder 65px sans-serif"
-        ctx.strokeStyle = 'black';
-        ctx.lineWidth = 3;
-        ctx.strokeText(sectors[i].label, 0, -140);
-        ctx.fillText(sectors[i].label, 0, -140);
-      } else {
-        ctx.font = "bold 50px sans-serif"
-        ctx.strokeStyle = 'black';
-        ctx.lineWidth = 3;
-        ctx.strokeText(sectors[i].label, 0, -140);
-        ctx.fillText(sectors[i].label, 0, -140);
-      }
-     // ctx.fillText(sector.label, rad - 80, 10);
-     // textUnderline(ctx,sectors[i].label, 0, -135, "#fff", "50px", "center");
-      // RESTORE
-      ctx.restore();
+        const ang = arc * i;
+        ctx.save();
+        // COLOR
+        ctx.beginPath();
+        ctx.fillStyle = sectors[i].color;
+        ctx.moveTo(rad, rad);
+        ctx.arc(rad, rad, rad, ang, ang + arc);
+        ctx.lineTo(rad, rad);
+        ctx.fill();
+        ctx.restore(); // Restore to reset transformations
     }
-  };
+
+    // Draw text on top of all sectors
+    for (let i = 0; i < sectors.length; i++) {
+        const ang = arc * i;
+        ctx.save();
+        ctx.translate(rad, rad);
+        ctx.rotate((ang + arc / 2) + arc);
+        ctx.textAlign = "center";
+        ctx.fillStyle = "#fff";
+        ctx.font = isSpinning && i === sector ? "bolder 40px sans-serif" : "bold 32px sans-serif";
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 3;
+
+        // LABEL BY NEWLINE CHARACTER
+        const lines = sectors[i].label.split('\n');
+        const lineHeight = 40; // Adjust as needed for line spacing
+
+        lines.forEach((line, index) => {
+            const yPosition = -140 + (index * lineHeight);
+            ctx.strokeText(line, 0, yPosition);
+            ctx.fillText(line, 0, yPosition);
+        });
+
+        ctx.restore(); // Restore to reset transformations
+    }
+};
 
   drawSector(sectors, null);
 

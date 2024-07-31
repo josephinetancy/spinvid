@@ -7,9 +7,9 @@ const exp = (function() {
 
    /*
     *
-    *   CONDITION ASSIGNMENT    
+    *   CONDITION ASSIGNMENT: NOT RELEVANT
     *
-    */
+    
 
 
     let settings = {
@@ -28,21 +28,8 @@ const exp = (function() {
 
     console.log(settings.dv)
 
-/*
-    *
-    *   PRELOADING VIDEOS : put it in utils?
-    *
     */
 
-/*
-    var video = ["video/karen.mp4", "video/karen2.mp4", "video/karen3.mp4"]
-
-   p.preload = {
-        type: jsPsychPreload,
-        video: video
-    };
-
-*/
    /*
     *
     *   INSTRUCTIONS
@@ -66,7 +53,7 @@ const exp = (function() {
             `<div class='parent'>
                 <p>There are 2 prize wheels in total.<br>You will spin each wheel 20 times before continuing to the next wheel.</p>
                 <p>After spinning a wheel 20 times, you'll answer a question about your feelings.</br>
-                Specifically, you'll report how ${settings.dvText}.</p>
+                Specifically, you'll report how INSERT SOMETHING HERE.</p>
             </div>`],
 
         intro_postChk: [
@@ -84,7 +71,7 @@ const exp = (function() {
         ],
     };
 
-    function MakeIntro(settings) {
+    function MakeIntro() {
 
         const intro_preChk = {
             type: jsPsychInstructions,
@@ -103,14 +90,14 @@ const exp = (function() {
         let correctAnswers = [`5`];
 
 
-
+/* IRRELEVANT
         if (settings.dv == 'flow') {
             correctAnswers.push(`My level of immersion and engagement.`);
         } else if (settings.dv == 'happiness') {
             correctAnswers.push(`My level of happiness.`);
         };
         
-
+*/
 
         const errorMessage = {
             type: jsPsychInstructions,
@@ -175,7 +162,7 @@ const exp = (function() {
         cont_btn: "advance",
     };
 
-    p.intro = new MakeIntro(settings);
+    p.intro = new MakeIntro();
 
     
    /*
@@ -187,60 +174,84 @@ const exp = (function() {
 
     // define each wedge
     const wedges = {
-        one: {color:"#000080", label:"crazy memes crazy fights", emotion: "outrage1"},
-        two: {color:"#0000FF", label:"karenfootage", emotion: "outrage2"},
-        three: {color:"#B22222", label:"yoda4ever", emotion: "affection1"},
-        four: {color:"#CD5C5C", label:"buitengebieden", emotion: "affection2"},
-        five: {color:"#FFFACD", label:"wowterrifying", emotion: "fear1"},
-        six: {color:"#FFFF00", label:"scaryclip", emotion: "fear2"},
-        seven: {color:"#7FFF00", label:"theworldoffunny", emotion: "amusement1"},
-        eight: {color:"#7CFC00", label:"viralmemeguy", emotion: "amusement2"}
+        one: {color:"#000080", label:"@crazy memes\ncrazy fights", emotion: "outrage1"},
+        two: {color:"#0000FF", label:"@karenfootage", emotion: "outrage2"},
+        three: {color:"#B22222", label:"@yoda4ever", emotion: "affection1"},
+        four: {color:"#CD5C5C", label:"@buitengebieden", emotion: "affection2"},
+        five: {color:"#FFFACD", label:"@wowterrifying", emotion: "fear1"},
+        six: {color:"#FFFF00", label:"@scaryclip_", emotion: "fear2"},
+        seven: {color:"#7FFF00", label:"@theworldoffunny", emotion: "amusement1"},
+        eight: {color:"#7CFC00", label:"@viralmemeguy2", emotion: "amusement2"}
     };
 
-console.log(wedges.one)
-
     // define each wheel
+
     const wheels = [
 
         //1-16
-            {sectors: [ wedges.one, wedges.three, wedges.five, wedges.seven ], arrangement: "O1, Af1, F1, Am1", wheel: "1"},
-            {sectors: [ wedges.one, wedges.three, wedges.five, wedges.eight ], arrangement: "O1, Af1, F1, Am2", wheel: "2"},
-            {sectors: [ wedges.one, wedges.three, wedges.six, wedges.seven ], arrangement: "O1, Af1, F2, Am1", wheel: "3"},
-            {sectors: [ wedges.one, wedges.three, wedges.six, wedges.eight], arrangement: "O1, Af1, F2, Am2", wheel: "4"},
-            {sectors: [ wedges.one, wedges.four, wedges.five, wedges.seven ], arrangement: "O1, Af2, F1, Am1", wheel: "5"},
-            {sectors: [ wedges.one, wedges.four, wedges.five, wedges.eight ], arrangement: "O1, Af2, F1, Am2", wheel: "6"},
-            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.seven ], arrangement: "O1, Af2, F2, Am1", wheel: "7"},
-            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.eight ], arrangement: "O1, Af2, F2, Am2", wheel: "8"},
-            {sectors: [ wedges.two, wedges.three, wedges.five, wedges.seven ], arrangement: "O2, Af1, F1, Am1", wheel: "9"},
-            {sectors: [ wedges.two, wedges.three, wedges.five, wedges.eight ], arrangement: "O2, Af1, F1, Am2", wheel: "10"},
-            {sectors: [ wedges.two, wedges.three, wedges.six, wedges.seven ], arrangement: "O2, Af1, F2, Am1", wheel: "11"},
-            {sectors: [ wedges.two, wedges.three, wedges.six, wedges.eight ], arrangement: "O2, Af1, F2, Am2", wheel: "12"},
-            {sectors: [ wedges.two, wedges.four, wedges.five, wedges.seven ], arrangement: "O2, Af2, F1, Am1", wheel: "13"},
-            {sectors: [ wedges.two, wedges.four, wedges.five, wedges.eight ], arrangement: "O2, Af2, F1, Am2", wheel: "14"},
-            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.seven ], arrangement: "O2, Af2, F2, Am1", wheel: "15"},
-            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.eight ], arrangement: "O2, Af2, F2, Am2", wheel: "16"},
+            {sectors: [ wedges.one, wedges.three, wedges.five, wedges.seven ], arrangement: "O1, Af1, F1, Am1", wheel: "0", MI: "high"},
+            {sectors: [ wedges.one, wedges.three, wedges.five, wedges.eight ], arrangement: "O1, Af1, F1, Am2", wheel: "1", MI: "high"},
+            {sectors: [ wedges.one, wedges.three, wedges.six, wedges.seven ], arrangement: "O1, Af1, F2, Am1", wheel: "2", MI: "high"},
+            {sectors: [ wedges.one, wedges.three, wedges.six, wedges.eight], arrangement: "O1, Af1, F2, Am2", wheel: "3", MI: "high"},
+            {sectors: [ wedges.one, wedges.four, wedges.five, wedges.seven ], arrangement: "O1, Af2, F1, Am1", wheel: "4", MI: "high"},
+            {sectors: [ wedges.one, wedges.four, wedges.five, wedges.eight ], arrangement: "O1, Af2, F1, Am2", wheel: "5", MI: "high"},
+            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.seven ], arrangement: "O1, Af2, F2, Am1", wheel: "6", MI: "high"},
+            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.eight ], arrangement: "O1, Af2, F2, Am2", wheel: "7", MI: "high"},
+            {sectors: [ wedges.two, wedges.three, wedges.five, wedges.seven ], arrangement: "O2, Af1, F1, Am1", wheel: "8", MI: "high"},
+            {sectors: [ wedges.two, wedges.three, wedges.five, wedges.eight ], arrangement: "O2, Af1, F1, Am2", wheel: "9", MI: "high"},
+            {sectors: [ wedges.two, wedges.three, wedges.six, wedges.seven ], arrangement: "O2, Af1, F2, Am1", wheel: "10", MI: "high"},
+            {sectors: [ wedges.two, wedges.three, wedges.six, wedges.eight ], arrangement: "O2, Af1, F2, Am2", wheel: "11", MI: "high"},
+            {sectors: [ wedges.two, wedges.four, wedges.five, wedges.seven ], arrangement: "O2, Af2, F1, Am1", wheel: "12", MI: "high"},
+            {sectors: [ wedges.two, wedges.four, wedges.five, wedges.eight ], arrangement: "O2, Af2, F1, Am2", wheel: "13", MI: "high"},
+            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.seven ], arrangement: "O2, Af2, F2, Am1", wheel: "14", MI: "high"},
+            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.eight ], arrangement: "O2, Af2, F2, Am2", wheel: "15", MI: "high"},
 
         // F, F, Am, Am
 
-            {sectors: [ wedges.five, wedges.six, wedges.seven, wedges.eight ], arrangement: "F1, F2, Am1, Am2", wheel: "17"},
+            {sectors: [ wedges.five, wedges.six, wedges.seven, wedges.eight ], arrangement: "F1, F2, Am1, Am2", wheel: "16", MI: "low"},
 
             // F, F, Aff, Aff
-            {sectors: [ wedges.five, wedges.six, wedges.three, wedges.four ], arrangement: "F1, F2, Am1, Am2", wheel: "18"},
+            {sectors: [ wedges.five, wedges.six, wedges.three, wedges.four ], arrangement: "F1, F2, Aff1, Aff2", wheel: "17", MI: "low"},
 
             //O, O, Am, Am
-            {sectors: [ wedges.one, wedges.two, wedges.seven, wedges.eight ], arrangement: "O2, Af2, F2, Am2", wheel: "19"},
+            {sectors: [ wedges.one, wedges.two, wedges.seven, wedges.eight ], arrangement: "O1, O2, Am1, Am2", wheel: "18", MI: "low"},
 
             //O, O, Aff, Aff
 
-            {sectors: [ wedges.one, wedges.two, wedges.three, wedges.four ], arrangement: "O2, Af2, F2, Am2", wheel: "20"}
+            {sectors: [ wedges.one, wedges.two, wedges.four, wedges.five ], arrangement: "O1, O2, Aff1, Aff2", wheel: "19", MI: "low"},
+
+         //   {sectors: [ wedges.one, wedges.one, wedges.one, wedges.one ], arrangement: "O1, O2, Aff1, Aff2", wheel: "19", MI: "low"} testing
 
         ];
+
+
+
+    const highMIwheel = [wheels[Math.floor(Math.random() * 14)]];// random integer from 0 - 15
+    //const highMIwheel = [wheels[20]]; testing
+    const lowMIwheel = [wheels[Math.floor(Math.random() * 4) + 16]]; // random integer from 16 - 19
 
 
     let scoreTracker = 0; // track current score
 
     let round = 1;  // track current round
 
+    let account = 'default'; //this is the account
+
+    let usedVideos = new Set();
+
+    let vidNumber = Math.floor(Math.random()*15);
+
+    function generateUniqueVidNumber(max) {
+        let newVidNumber;
+        if (usedVideos.size === max) {
+        usedVideos.clear();  // Reset if all videos have been used
+        }
+        do {
+        newVidNumber = Math.floor(Math.random() * max);
+        } while (usedVideos.has(newVidNumber));
+        usedVideos.add(newVidNumber);
+        return newVidNumber;
+}
 
     // trial: spinner
     const spin = {
@@ -253,36 +264,33 @@ console.log(wedges.one)
             return scoreTracker
         },
         post_trial_gap: 1000,
-        data: {arrangement: jsPsych.timelineVariable('arrangement'), wheel: jsPsych.timelineVariable('wheel')},
+        data: {
+            arrangement: jsPsych.timelineVariable('arrangement'), 
+            wheel: jsPsych.timelineVariable('wheel'), 
+            MI: jsPsych.timelineVariable('MI')
+        },
         on_finish: function(data) {
-          //  data.round = round;
-            data.round = round
+            data.round = round;
+         //   account = data.outcomes[0] || '';
+            account = (data.outcomes[0] || '').trim(); 
+            vidNumber = generateUniqueVidNumber(15);
+            data.vidNumber = vidNumber;
+            console.log(data);
         //    scoreTracker = data.score
         }
     };
 
-
     const video_load = {
         type: jsPsychVideoKeyboardResponse,
-        stimulus: [
-            'video/karen.mp4'],
-    //    timeline: [
-    //        { stimulus: "video/karen.mp4", prompt: 'this shows karen'},
-    //        { stimulus: "video/karen2.mp4", prompt: 'this shows karen2'},
-     //       { stimulus: "video/karen3.mp4", prompt: 'this shows karen3'}
-     //       ], 
-         choices: "a",
-         sample: {
-            type: 'with-replacement', 
-            size: 10
-         },
-         trial_ends_after_video: true,
-         randomize_order: true,
-         on_finish: function(data) {
- //           data.round = round;
-//            saveSurveyData(data);
+        stimulus: function() {
+            const videoPath = `video/${account}/${vidNumber}.mp4`;
+            return [videoPath]; 
+        },
+            width: 640,
+            height: 480,
+            trial_ends_after_video: true,
+            on_finish: function(data) {
             round++;
-            console.log(round)
         }
     };
 
@@ -331,32 +339,32 @@ console.log(wedges.one)
         }
     };
 
-
-    // flow proneness
+    dv = flowMeasure;// just for right now
 
 
     // timeline: main task
 
-
+/*
     let dv;
     if (settings.dv == "happiness") {
         dv = happinessMeasure;
     } else {
         dv = flowMeasure;
     };
+*/
 
 
-//this is what I did before but i think i need to separate them?
-    p.task = {
+    p.task_highMI = {
         timeline: [spin, video_load],
-       // timeline: [spin, dv],
-        repetitions: 20, //this should be the number of repetitions for each spin + video combo..
-        timeline_variables: wheels,
-        sample: {
-            type: 'alternate_groups',
-            groups: [[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15], [16,17,18,19]],
-            randomize_group_order: true
-        }
+        repetitions: 4, //this should be the number of repetitions for each spin + video combo..
+        timeline_variables: highMIwheel
+    }; 
+
+
+    p.task_lowMI = {
+        timeline: [spin, video_load],
+        repetitions: 4, //this should be the number of repetitions for each spin + video combo..
+        timeline_variables: lowMIwheel
     }; 
 
    /*
@@ -551,6 +559,6 @@ console.log(wedges.one)
 
 //const timeline = [exp.consent, exp.intro, exp.task, exp.demographics, exp.save_data];
 
-const timeline = [exp.consent, exp.intro, exp.task, exp.demographics];
+const timeline = [exp.task_highMI, dv, exp.task_lowMI, dv]; //will this override the dv?
 
 jsPsych.run(timeline);
