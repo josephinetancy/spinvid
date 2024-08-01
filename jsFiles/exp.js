@@ -206,11 +206,10 @@ const exp = (function() {
     }
 
        // Function to preload videos for a specific wheel
-    function preloadVideosForWheel(wheelIndex) {
-        const wheel = wheels[wheelIndex];
+    function preloadVideosForWheel(wheel) {
         const preloadList = getPreloadVideos(wheel.sectors);
-        console.log(`Preloading videos for wheel ${wheelIndex}:`, preloadList);
-        p.preload = {
+        console.log(`Preloading videos for wheel ${wheel.wheel}:`, preloadList);
+        return {
             type: jsPsychPreload,
             video: preloadList
         };
@@ -287,8 +286,8 @@ const exp = (function() {
     const lowMIwheel = [wheels[Math.floor(Math.random() * 4) + 16]]; // random integer from 16 - 19
 
     // Preload videos based on the selected wheels
-    preloadVideosForWheel(wheels.indexOf(highMIwheel[0]));
-    preloadVideosForWheel(wheels.indexOf(lowMIwheel[0]));
+    p.preloadHighMI = preloadVideosForWheel(highMIwheel);
+    p.preloadLowMI = preloadVideosForWheel(lowMIwheel);
 
     let scoreTracker = 0; // track current score
 
@@ -624,6 +623,6 @@ const exp = (function() {
 
 //const timeline = [exp.consent, exp.intro, exp.task, exp.demographics, exp.save_data];
 
-const timeline = [exp.preload, exp.task_highMI, dv, exp.task_lowMI, dv];
+const timeline = [exp.preloadHighMI, exp.preloadLowMI, exp.task_highMI, dv, exp.task_lowMI, dv];
 
 jsPsych.run(timeline);
