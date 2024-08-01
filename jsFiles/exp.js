@@ -171,21 +171,49 @@ const exp = (function() {
     *
     */
 
-    const videoPaths = {
-        outrage1: 'video/@crazy memes\ncrazy fights.mp4',
-        outrage2: 'video/@karenfootage.mp4',
-        affection1: 'video/@yoda4ever.mp4',
-        affection2: 'video/@buitengebieden.mp4',
-        fear1: 'video/@wowterrifying.mp4',
-        fear2: 'video/@scaryclip_.mp4',
-        amusement1: 'video/@theworldoffunny.mp4',
-        amusement2: 'video/@viralmemeguy2.mp4'
+    const videoBasePaths = {
+        outrage1: 'video/@crazy memes\\crazy fights/',
+        outrage2: 'video/@karenfootage/',
+        affection1: 'video/@yoda4ever/',
+        affection2: 'video/@buitengebieden/',
+        fear1: 'video/@wowterrifying/',
+        fear2: 'video/@scaryclip_/',
+        amusement1: 'video/@theworldoffunny/',
+        amusement2: 'video/@viralmemeguy2/'
     };
+
+    // Function to generate video paths
+    function generateVideoPaths(basePath, count = 15) {
+        // Handle special characters like '\n' in path
+        const sanitizedPath = basePath.replace(/\n/g, '/');
+        
+        return Array.from({ length: count }, (_, i) => `${sanitizedPath}${i}.mp4`);
+    }
 
     // Function to get video paths based on wheel sectors
     function getPreloadVideos(sectors) {
         const uniqueEmotions = new Set(sectors.map(sector => sector.emotion));
-        return Array.from(uniqueEmotions).map(emotion => videoPaths[emotion]);
+        const preloadList = [];
+
+        uniqueEmotions.forEach(emotion => {
+            const basePath = videoBasePaths[emotion];
+            if (basePath) {
+                preloadList.push(...generateVideoPaths(basePath, 15));
+            }
+        });
+
+        return preloadList;
+    }
+
+       // Function to preload videos for a specific wheel
+    function preloadVideosForWheel(wheelIndex) {
+        const wheel = wheels[wheelIndex];
+        const preloadList = getPreloadVideos(wheel.sectors);
+        console.log(`Preloading videos for wheel ${wheelIndex}:`, preloadList);
+        p.preload = {
+            type: jsPsychPreload,
+            video: preloadList
+        };
     }
 
 
