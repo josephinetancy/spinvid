@@ -353,20 +353,6 @@ const exp = (function() {
     };
 */
 
-    /*
-
-    preload
-
-    */
-
-    video_preloading = ['video/1.mp4', 'video/2.mp4'];
-
-
-    p.preload = {
-        type: jsPsychPreload,
-        video: video_preloading
-
-    }
 
 
     p.task_highMI = {
@@ -574,6 +560,6 @@ const exp = (function() {
 
 //const timeline = [exp.consent, exp.intro, exp.task, exp.demographics, exp.save_data];
 
-const timeline = [preload, exp.task_highMI, dv, exp.task_lowMI, dv];
+const timeline = [exp.task_highMI, dv, exp.task_lowMI, dv];
 
 jsPsych.run(timeline);
