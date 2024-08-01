@@ -211,8 +211,8 @@ const exp = (function() {
         const preloadList = getPreloadVideos(wheel.sectors);
         console.log(`Preloading videos for wheel ${wheel.wheel}:`, preloadList);
         return {
-            type: jsPsychPreload,
-            video: preloadList
+        type: jsPsychPreload,
+        video: preloadList
         };
     }
 
@@ -271,15 +271,14 @@ const exp = (function() {
 
 
     // Function to preload videos based on the selected wheel
-    function preloadVideosForWheel(wheelIndex) {
-        const wheel = wheels[wheelIndex];
-        const preloadList = getPreloadVideos(wheel.sectors);
-        console.log(`Preloading videos for wheel ${wheelIndex}:`, preloadList);
-        p.preload = {
-            type: jsPsychPreload,
-            video: preloadList
-        };
-    }
+    function preloadVideosForWheel(wheel) {
+    const preloadList = getPreloadVideos(wheel.sectors);
+    console.log(`Preloading videos for wheel ${wheel.wheel}:`, preloadList);
+    return {
+        type: jsPsychPreload,
+        video: preloadList
+    };
+}
 
 
     const highMIwheel = [wheels[Math.floor(Math.random() * 14)]];// random integer from 0 - 15
@@ -287,8 +286,8 @@ const exp = (function() {
     const lowMIwheel = [wheels[Math.floor(Math.random() * 4) + 16]]; // random integer from 16 - 19
 
     // Preload videos based on the selected wheels
-    p.preloadHighMI = preloadVideosForWheel(highMIwheel);
-    p.preloadLowMI = preloadVideosForWheel(lowMIwheel);
+    p.preloadHighMI = preloadVideosForWheel(highMIwheel[0]);
+    p.preloadLowMI = preloadVideosForWheel(lowMIwheel[0]);
 
     let scoreTracker = 0; // track current score
 
