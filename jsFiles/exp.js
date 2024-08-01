@@ -623,6 +623,6 @@ const exp = (function() {
 
 //const timeline = [exp.consent, exp.intro, exp.task, exp.demographics, exp.save_data];
 
-const timeline = [exp.preloadHighMI, exp.preloadLowMI, exp.task_highMI, dv, exp.task_lowMI, dv];
+const timeline = [exp.preloadHighMI, exp.task_highMI, dv, exp.preloadLowMI, exp.task_lowMI, dv];
 
 jsPsych.run(timeline);

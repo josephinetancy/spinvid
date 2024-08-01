@@ -1,7 +1,6 @@
 //checking data
 
 const jsPsych = initJsPsych({
-  max_load_time: 120000;
     on_finish: (data) => {
         // Log all the collected data to the console
         console.log('Trial data:', jsPsych.data.get().json());
