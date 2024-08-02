@@ -7,31 +7,6 @@ const exp = (function() {
 
    /*
     *
-    *   CONDITION ASSIGNMENT: NOT RELEVANT
-    *
-    
-
-
-    let settings = {
-        dv: 'flow',
-    };
-
-    if (settings.dv == 'happiness') {
-        settings.dvText = '<strong>happy</strong> you currently feel';
-    } else {
-        settings.dvText = '<strong>immersed and engaged</strong> you felt while spinning the previous wheel';
-    };
-
-    jsPsych.data.addProperties({
-        dv: settings.dv,
-    });
-
-    console.log(settings.dv)
-
-    */
-
-   /*
-    *
     *   INSTRUCTIONS
     *
     */
@@ -41,19 +16,19 @@ const exp = (function() {
             `<div class='parent'>
                 <p><strong>Welcome to Spin the Wheel!</strong></p>
                 <p>In Spin the Wheel, you'll spin a series of wheels.</p>
-                <p>Each time you land on a wheel, you'll see a video.
+                <p>Each time you land on a wheel, you'll see a video based on what you land.
             </div>`,
 
             `<div class='parent'>
-                <p>To spin a prize wheel, just grab it with your cursor and give it a spin!
+                <p>To spin the wheel, just grab it with your cursor and give it a spin!
                 <br>Watch the animation below to see how it's done.</p>
                 <img src="./img/spinGif.gif" style="width:60%; height:60%">
             </div>`,
 
             `<div class='parent'>
-                <p>There are 2 prize wheels in total.<br>You will spin each wheel 20 times before continuing to the next wheel.</p>
+                <p>There are 2 wheels in total.<br>You will spin each wheel 20 times before continuing to the next wheel. Each time you land, you will see a video that corresponds to that account.</p>
                 <p>After spinning a wheel 20 times, you'll answer a question about your feelings.</br>
-                Specifically, you'll report how INSERT SOMETHING HERE.</p>
+                Specifically, you'll report how immersed and engaged you felt.</p>
             </div>`],
 
         intro_postChk: [
@@ -87,17 +62,8 @@ const exp = (function() {
             post_trial_gap: 500,
         };
 
-        let correctAnswers = [`5`];
+        let correctAnswers = [`20`];
 
-
-/* IRRELEVANT
-        if (settings.dv == 'flow') {
-            correctAnswers.push(`My level of immersion and engagement.`);
-        } else if (settings.dv == 'happiness') {
-            correctAnswers.push(`My level of happiness.`);
-        };
-        
-*/
 
         const errorMessage = {
             type: jsPsychInstructions,
@@ -175,13 +141,13 @@ const exp = (function() {
     // define each wedge
     const wedges = {
         one: {color:"#000080", label:"@crazy memes\ncrazy fights", emotion: "outrage1"},
-        two: {color:"#0000FF", label:"@karenfootage", emotion: "outrage2"},
+        two: {color:"#0000FF", label:"@karen clips", emotion: "outrage2"},
         three: {color:"#B22222", label:"@yoda4ever", emotion: "affection1"},
         four: {color:"#CD5C5C", label:"@buitengebieden", emotion: "affection2"},
-        five: {color:"#FFFACD", label:"@wowterrifying", emotion: "fear1"},
-        six: {color:"#FFFF00", label:"@scaryclip_", emotion: "fear2"},
-        seven: {color:"#7FFF00", label:"@theworldoffunny", emotion: "amusement1"},
-        eight: {color:"#7CFC00", label:"@viralmemeguy2", emotion: "amusement2"}
+        five: {color:"#FFFACD", label:"@wow terrifying", emotion: "fear1"},
+        six: {color:"#FFFF00", label:"@scary clip", emotion: "fear2"},
+        seven: {color:"#7FFF00", label:"@the world of funny", emotion: "amusement1"},
+        eight: {color:"#7CFC00", label:"@viral meme\nguy 2", emotion: "amusement2"}
     };
 
     // define each wheel
@@ -218,7 +184,7 @@ const exp = (function() {
 
             //O, O, Aff, Aff
 
-            {sectors: [ wedges.one, wedges.two, wedges.four, wedges.five ], arrangement: "O1, O2, Aff1, Aff2", wheel: "19", MI: "low"},
+            {sectors: [ wedges.one, wedges.two, wedges.three, wedges.four ], arrangement: "O1, O2, Aff1, Aff2", wheel: "19", MI: "low"},
 
          //   {sectors: [ wedges.one, wedges.one, wedges.one, wedges.one ], arrangement: "O1, O2, Aff1, Aff2", wheel: "19", MI: "low"} testing
 
@@ -241,6 +207,10 @@ const exp = (function() {
 
     let vidNumber = Math.floor(Math.random()*15);
 
+    let spin_num = 4; //change this to the number of spins. This will change the number of spins AFTER the wheel decelerates. 
+
+    let numOfWheels = 2 // change this to to the number of wheels present in the experiment.
+
     function generateUniqueVidNumber(max) {
         let newVidNumber;
         if (usedVideos.size === max) {
@@ -257,7 +227,7 @@ const exp = (function() {
     const spin = {
         type: jsPsychCanvasButtonResponse,
         stimulus: function(c, spinnerData) {
-            createSpinner(c, spinnerData, scoreTracker, jsPsych.timelineVariable('sectors'));
+            createSpinner(c, spinnerData, scoreTracker, jsPsych.timelineVariable('sectors'), spin_num); 
         },
         canvas_size: [500, 500],
         score: function() {
@@ -276,6 +246,7 @@ const exp = (function() {
             vidNumber = generateUniqueVidNumber(15);
             data.vidNumber = vidNumber;
             console.log(data);
+            spin_num--;
         //    scoreTracker = data.score
         }
     };
@@ -560,6 +531,6 @@ const exp = (function() {
 
 //const timeline = [exp.consent, exp.intro, exp.task, exp.demographics, exp.save_data];
 
-const timeline = [exp.task_highMI, dv, exp.task_lowMI, dv];
+const timeline = [exp.consent, exp.intro, exp.task_highMI, dv, exp.task_lowMI, dv, exp.demographics];
 
 jsPsych.run(timeline);

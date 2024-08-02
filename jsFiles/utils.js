@@ -66,7 +66,7 @@ const getTotalErrors = (data, correctAnswers) => {
 };
 
 // code for spinner task
-const createSpinner = function(canvas, spinnerData, score, sectors) {
+const createSpinner = function(canvas, spinnerData, score, sectors, spin_num, numOfWheels) {
 
   /* get context */
   const ctx = canvas.getContext("2d"); 
@@ -107,7 +107,6 @@ const createSpinner = function(canvas, spinnerData, score, sectors) {
   let oldAngle = 0;            // wheel angle prior to last perturbation
   let currentAngle = null;     // wheel angle after last perturbation
   let onWheel = false;         // true when cursor is on wheel, false otherwise
-  let spin_num = 4            // spin_num that is on the canvas button 
 
 
   /* define spinning functions */
@@ -172,7 +171,7 @@ const createSpinner = function(canvas, spinnerData, score, sectors) {
     if (isAccelerating) {
       speed *= 1.06; // Accelerate
       const req = window.requestAnimationFrame(giveMoment.bind(this, speed));
-      console.log('spin_num when accelerating' + spin_num)
+    //  console.log('spin_num when accelerating' + spin_num)
       oldAngle += speed;
       lastAngles.shift();
       lastAngles.push(oldAngle);
@@ -194,12 +193,11 @@ const createSpinner = function(canvas, spinnerData, score, sectors) {
         // stop spinner
         speed = 0;
         currentAngle = oldAngle;
-        console.log('spin_num when decelerating' + spin_num)
+        //console.log('spin_num when decelerating' + spin_num)
         let sector = sectors[getIndex()];
         spinnerData.outcomes.push(sector.label);
         drawSector(sectors, getIndex());
         updateScore(parseFloat(sector.label), sector.color);
-        console.log('Spin Number after update:', spin_num); //why does spin number keep adding
         window.cancelAnimationFrame(req);
       };
     };
@@ -211,13 +209,15 @@ const createSpinner = function(canvas, spinnerData, score, sectors) {
   const updateScore = (points, color) => {
    // score += points;
    // spinnerData.score = score;
-    console.log('Spin Number before update:', spin_num);
-    spin_num--;
-    console.log('Spin Number after decrement:', spin_num);
-    let s = spin_num == 1 ? '' : 's';
- //   scoreMsg.innerHTML = `<span style="color:${color}; font-weight: bolder">${score}</span>`;
- //   scoreMsg.innerHTML = `<span style="font-weight: bold">${score}</span>`;
-    spinNumMsg.innerHTML = `(${spin_num} spin${s} remaining)`;
+      spin_num--; 
+      let s = spin_num <= 1 ? '' : 's';
+      if (spin_num <= 0) {
+          numOfWheels--; 
+          if (numOfWheels <= 0) {
+            spin_num = 4;
+      }
+    }
+    spinNumMsg.innerHTML = `(${spin_num} spin${s} remaining)`; // this changes the number of spins AFTER it decelerates 
     setTimeout(() => {
 //      scoreMsg.innerHTML = `${score}`
       isSpinning = false;
@@ -316,13 +316,13 @@ const createSpinner = function(canvas, spinnerData, score, sectors) {
         ctx.rotate((ang + arc / 2) + arc);
         ctx.textAlign = "center";
         ctx.fillStyle = "#fff";
-        ctx.font = isSpinning && i === sector ? "bolder 40px sans-serif" : "bold 32px sans-serif";
+        ctx.font = isSpinning && i === sector ? "bolder 35px sans-serif" : "bold 27px sans-serif";
         ctx.strokeStyle = 'black';
         ctx.lineWidth = 3;
 
         // LABEL BY NEWLINE CHARACTER
         const lines = sectors[i].label.split('\n');
-        const lineHeight = 40; // Adjust as needed for line spacing
+        const lineHeight = 27; // Adjust as needed for line spacing
 
         lines.forEach((line, index) => {
             const yPosition = -140 + (index * lineHeight);

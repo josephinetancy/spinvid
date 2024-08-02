@@ -1,3 +1,5 @@
+let remainingSpins = 4; // Initial number of spins. Change this if want to change the number of spins.
+
 var jsPsychCanvasButtonResponse = (function (jspsych) {
   'use strict';
 
@@ -82,11 +84,14 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
       }
       trial(display_element, trial) {
           // create canvas
+
+          const spinText = remainingSpins <= 1 ? 'spin remaining' : 'spins remaining';
+
           var html = 
               '<div class="score-board">' +
 //                '<div class="score-board-title">Total Score</div>' +
 //                '<div class="score-board-score" id="score" >' + trial.score + '</div>' +
-                '<div class="score-board-spins" id="spin-num">('+ trial.spin_num + ' spins remaining)</div>' +
+                '<div class="score-board-spins" id="spin-num">('+ remainingSpins + ' ' + spinText + ')</div>' +
               '</div>' +
               '<div id="jspsych-canvas-button-response-stimulus">' +
                 '<canvas id="jspsych-canvas-stimulus" height="' +
@@ -172,7 +177,20 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
                   end_trial();
               }, trial.trial_duration);
           }
+
+          console.log(trial.spin_num + 'trial.spin_num after all canvas button response is done');
+          console.log(remainingSpins + 'remaining_spins after all canvas button response is done');
+
+          remainingSpins--; 
+
+          if (remainingSpins <= 0) {
+            remainingSpins = 4; //CHANGE HERE TOO
+          } 
+
       }
+
+      
+
       simulate(trial, simulation_mode, simulation_options, load_callback) {
           if (simulation_mode == "data-only") {
               load_callback();
@@ -208,6 +226,5 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
   CanvasButtonResponsePlugin.info = info;
 
   return CanvasButtonResponsePlugin;
-console.log(trial.spin_num)
 
 })(jsPsychModule);
