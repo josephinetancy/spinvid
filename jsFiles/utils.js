@@ -214,7 +214,7 @@ const createSpinner = function(canvas, spinnerData, score, sectors, spin_num, nu
       if (spin_num <= 0) {
           numOfWheels--; 
           if (numOfWheels <= 0) {
-            spin_num = 4;
+            spin_num = 4; //change this to the number of spins
       }
     }
     spinNumMsg.innerHTML = `(${spin_num} spin${s} remaining)`; // this changes the number of spins AFTER it decelerates 

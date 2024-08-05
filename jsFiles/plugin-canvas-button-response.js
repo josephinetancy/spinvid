@@ -66,7 +66,7 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
           spin_num: {
               type: jspsych.ParameterType.INT,
               pretty_name: "Score",
-              default: 4, //this shows the spin_num number on the button
+              default: remainingSpins, //this shows the spin_num number on the button
           },
       },
   };
@@ -160,7 +160,7 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
           // end trial
           const waitForEnd = setInterval(function() {
            // if(spinnerData.outcomes.length = 1) {
-            if(spinnerData.outcomes.length >= 1) { //this changes the actual number of spins - this is the number of spins before it will lead to the video spin_num
+            if(spinnerData.outcomes.length >= 1) { //this changes the actual number of spins - this is the number of spins before it will lead to the video 
               clearInterval(waitForEnd);
               setTimeout(after_response, 1200); // i changed this
             }
@@ -177,9 +177,6 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
                   end_trial();
               }, trial.trial_duration);
           }
-
-          console.log(trial.spin_num + 'trial.spin_num after all canvas button response is done');
-          console.log(remainingSpins + 'remaining_spins after all canvas button response is done');
 
           remainingSpins--; 
 

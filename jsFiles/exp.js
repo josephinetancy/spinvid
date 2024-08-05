@@ -26,9 +26,11 @@ const exp = (function() {
             </div>`,
 
             `<div class='parent'>
-                <p>There are 2 wheels in total.<br>You will spin each wheel 20 times before continuing to the next wheel. Each time you land, you will see a video that corresponds to that account.</p>
-                <p>After spinning a wheel 20 times, you'll answer a question about your feelings.</br>
-                Specifically, you'll report how immersed and engaged you felt.</p>
+                <p>There are 2 wheels in total.
+                <p>You will spin each wheel <strong> 20 </strong> times before continuing to the next wheel.  
+                <br> On each wheel, there are 4 unique Twitter/X account names. 
+                <br> When you land on the account, you will watch a short video based on the account you land on.</p>
+                <p>After spinning a wheel 20 times, you'll report how <strong>immersed and engaged </strong> you felt.</p>
             </div>`],
 
         intro_postChk: [
@@ -62,7 +64,10 @@ const exp = (function() {
             post_trial_gap: 500,
         };
 
-        let correctAnswers = [`20`];
+        const correctAnswers = {
+            attnChk1 : `20`, 
+            attnChk2 : `My level of immersion and engagement.`, 
+        }
 
 
         const errorMessage = {
@@ -93,10 +98,22 @@ const exp = (function() {
             ],
             scale_width: 500,
             on_finish: (data) => {
-                  const totalErrors = getTotalErrors(data, correctAnswers);
+                  const totalErrors = getTotalErrors(data.response, correctAnswers);
                   data.totalErrors = totalErrors;
             },
         };
+
+        function getTotalErrors(response, correctAnswers) {
+            let errorCount = 0;
+
+            // Compare each response with correct answers
+            for (const key in correctAnswers) {
+                if (response[key] !== correctAnswers[key]) {
+                    errorCount++;
+                }
+            }
+            return errorCount;
+        }
 
 
         const conditionalNode = {
@@ -140,14 +157,14 @@ const exp = (function() {
 
     // define each wedge
     const wedges = {
-        one: {color:"#000080", label:"@crazy memes\ncrazy fights", emotion: "outrage1"},
-        two: {color:"#0000FF", label:"@karen clips", emotion: "outrage2"},
-        three: {color:"#B22222", label:"@yoda4ever", emotion: "affection1"},
-        four: {color:"#CD5C5C", label:"@buitengebieden", emotion: "affection2"},
-        five: {color:"#FFFACD", label:"@wow terrifying", emotion: "fear1"},
-        six: {color:"#FFFF00", label:"@scary clip", emotion: "fear2"},
-        seven: {color:"#7FFF00", label:"@the world of funny", emotion: "amusement1"},
-        eight: {color:"#7CFC00", label:"@viral meme\nguy 2", emotion: "amusement2"}
+        one: {color:"#000080", label:"@crazy memes\ncrazy fights", shortName: "O1"},
+        two: {color:"#0000FF", label:"@karen clips", shortName: "O2"},
+        three: {color:"#B22222", label:"@yoda4ever", shortName: "Af1"},
+        four: {color:"#CD5C5C", label:"@buitengebieden", shortName: "Af2"},
+        five: {color:"#FFFACD", label:"@wow terrifying", shortName: "F1"},
+        six: {color:"#FFFF00", label:"@scary clip", shortName: "F2"},
+        seven: {color:"#7FFF00", label:"@the world\nof funny", shortName: "Am1"},
+        eight: {color:"#7CFC00", label:"@viral meme\nguy 2", shortName: "Am2"}
     };
 
     // define each wheel
@@ -223,6 +240,20 @@ const exp = (function() {
         return newVidNumber;
 }
 
+
+    function getShortName(longName) {
+    // Iterate over each key in the wedges object
+        for (let key in wedges) {
+        // Check if the label matches the longName
+            if (wedges[key].label === longName) {
+            // Return the corresponding shortName
+            return wedges[key].shortName;
+        }
+    }
+    // Return null or an appropriate value if no match is found
+    return null;
+}
+
     // trial: spinner
     const spin = {
         type: jsPsychCanvasButtonResponse,
@@ -241,10 +272,11 @@ const exp = (function() {
         },
         on_finish: function(data) {
             data.round = round;
-         //   account = data.outcomes[0] || '';
-            account = (data.outcomes[0] || '').trim(); 
+            longName = (data.outcomes[0] || '').trim(); 
+            shortName = getShortName(longName);
             vidNumber = generateUniqueVidNumber(15);
             data.vidNumber = vidNumber;
+            data.shortName = shortName;
             console.log(data);
             spin_num--;
         //    scoreTracker = data.score
@@ -254,7 +286,8 @@ const exp = (function() {
     const video_load = {
         type: jsPsychVideoKeyboardResponse,
         stimulus: function() {
-            const videoPath = `video/${account}/${vidNumber}.mp4`;
+            const videoPath = `video/${shortName}/${vidNumber}.mp4`;
+            console.log(videoPath);
             return [videoPath]; 
         },
             width: 640,
@@ -531,6 +564,6 @@ const exp = (function() {
 
 //const timeline = [exp.consent, exp.intro, exp.task, exp.demographics, exp.save_data];
 
-const timeline = [exp.consent, exp.intro, exp.task_highMI, dv, exp.task_lowMI, dv, exp.demographics];
+const timeline = [exp.intro, exp.task_highMI, dv, exp.task_lowMI, dv, exp.demographics];
 
 jsPsych.run(timeline);
