@@ -5,6 +5,193 @@ const exp = (function() {
 
     var p = {};
 
+
+   /*
+    *
+    *   WHEEL SET UP
+    *
+    */
+
+
+    // define each wedge
+    const wedges = {
+        one: {color:"#000080", label:"@crazy memes\ncrazy fights", shortName: "O1"},
+        two: {color:"#0000FF", label:"@karen clips", shortName: "O2"},
+        three: {color:"#B22222", label:"@yoda4ever", shortName: "Af1"},
+        four: {color:"#CD5C5C", label:"@buitengebieden", shortName: "Af2"},
+        five: {color:"#FFFACD", label:"@wow terrifying", shortName: "F1"},
+        six: {color:"#FFFF00", label:"@scary clip", shortName: "F2"},
+        seven: {color:"#7FFF00", label:"@the world\nof funny", shortName: "Am1"},
+        eight: {color:"#7CFC00", label:"@viral meme\nguy 2", shortName: "Am2"}
+    };
+
+    // define each wheel
+
+    const wheels = [
+
+        //1-16
+            {sectors: [ wedges.one, wedges.three, wedges.five, wedges.seven ], arrangement: "O1, Af1, F1, Am1", wheel: "0", MI: "high"},
+            {sectors: [ wedges.one, wedges.three, wedges.five, wedges.eight ], arrangement: "O1, Af1, F1, Am2", wheel: "1", MI: "high"},
+            {sectors: [ wedges.one, wedges.three, wedges.six, wedges.seven ], arrangement: "O1, Af1, F2, Am1", wheel: "2", MI: "high"},
+            {sectors: [ wedges.one, wedges.three, wedges.six, wedges.eight], arrangement: "O1, Af1, F2, Am2", wheel: "3", MI: "high"},
+            {sectors: [ wedges.one, wedges.four, wedges.five, wedges.seven ], arrangement: "O1, Af2, F1, Am1", wheel: "4", MI: "high"},
+            {sectors: [ wedges.one, wedges.four, wedges.five, wedges.eight ], arrangement: "O1, Af2, F1, Am2", wheel: "5", MI: "high"},
+            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.seven ], arrangement: "O1, Af2, F2, Am1", wheel: "6", MI: "high"},
+            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.eight ], arrangement: "O1, Af2, F2, Am2", wheel: "7", MI: "high"},
+            {sectors: [ wedges.two, wedges.three, wedges.five, wedges.seven ], arrangement: "O2, Af1, F1, Am1", wheel: "8", MI: "high"},
+            {sectors: [ wedges.two, wedges.three, wedges.five, wedges.eight ], arrangement: "O2, Af1, F1, Am2", wheel: "9", MI: "high"},
+            {sectors: [ wedges.two, wedges.three, wedges.six, wedges.seven ], arrangement: "O2, Af1, F2, Am1", wheel: "10", MI: "high"},
+            {sectors: [ wedges.two, wedges.three, wedges.six, wedges.eight ], arrangement: "O2, Af1, F2, Am2", wheel: "11", MI: "high"},
+            {sectors: [ wedges.two, wedges.four, wedges.five, wedges.seven ], arrangement: "O2, Af2, F1, Am1", wheel: "12", MI: "high"},
+            {sectors: [ wedges.two, wedges.four, wedges.five, wedges.eight ], arrangement: "O2, Af2, F1, Am2", wheel: "13", MI: "high"},
+            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.seven ], arrangement: "O2, Af2, F2, Am1", wheel: "14", MI: "high"},
+            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.eight ], arrangement: "O2, Af2, F2, Am2", wheel: "15", MI: "high"},
+
+        // F, F, Am, Am
+
+            {sectors: [ wedges.five, wedges.six, wedges.seven, wedges.eight ], arrangement: "F1, F2, Am1, Am2", wheel: "16", MI: "low"},
+
+            // F, F, Aff, Aff
+            {sectors: [ wedges.five, wedges.six, wedges.three, wedges.four ], arrangement: "F1, F2, Aff1, Aff2", wheel: "17", MI: "low"},
+
+            //O, O, Am, Am
+            {sectors: [ wedges.one, wedges.two, wedges.seven, wedges.eight ], arrangement: "O1, O2, Am1, Am2", wheel: "18", MI: "low"},
+
+            //O, O, Aff, Aff
+
+            {sectors: [ wedges.one, wedges.two, wedges.three, wedges.four ], arrangement: "O1, O2, Aff1, Aff2", wheel: "19", MI: "low"},
+
+         //   {sectors: [ wedges.one, wedges.one, wedges.one, wedges.one ], arrangement: "O1, O2, Aff1, Aff2", wheel: "19", MI: "low"} testing
+
+        ];
+
+
+
+    const highMIwheel = [wheels[Math.floor(Math.random() * 14)]];// random integer from 0 - 15
+    //const highMIwheel = [wheels[20]]; testing
+    const lowMIwheel = [wheels[Math.floor(Math.random() * 4) + 16]]; // random integer from 16 - 19
+
+//wheel preloading
+    function getVideoPaths(wheel) {
+    const videos = [];
+    wheel.sectors.forEach(sector => {
+        for (let i = 0; i < 15; i++) {
+            videos.push(`video/${sector.shortName}/${i}.mp4`);
+        }
+    });
+    return videos;
+}
+
+    const highMIVideoPaths = getVideoPaths(highMIwheel[0]);
+    console.log(highMIVideoPaths)
+    const lowMIVideoPaths = getVideoPaths(lowMIwheel[0]);
+    console.log(lowMIVideoPaths)
+
+    p.preloadHighMI = {
+        type: jsPsychPreload,
+        videos: highMIVideoPaths,
+        message: 'Loading videos for the first wheel...',
+        on_success: function(file) {
+            console.log('Loaded: ', file);
+        }
+};
+
+    p.preloadLowMI = {
+        type: jsPsychPreload,
+        videos: lowMIVideoPaths,
+        message: 'Loading videos for the second wheel...'
+};
+
+/* 
+
+MORE WHEEL SET UP
+
+*/
+
+    let scoreTracker = 0; // track current score
+
+    let round = 1;  // track current round
+
+    let account = 'default'; //this is the account
+
+    let usedVideos = new Set();
+
+    let vidNumber = Math.floor(Math.random()*15);
+
+    let spin_num = 4; //change this to the number of spins. This will change the number of spins AFTER the wheel decelerates. 
+
+    let numOfWheels = 2 // change this to to the number of wheels present in the experiment.
+
+    function generateUniqueVidNumber(max) {
+        let newVidNumber;
+        if (usedVideos.size === max) {
+        usedVideos.clear();  // Reset if all videos have been used
+        }
+        do {
+        newVidNumber = Math.floor(Math.random() * max);
+        } while (usedVideos.has(newVidNumber));
+        usedVideos.add(newVidNumber);
+        return newVidNumber;
+}
+
+
+    function getShortName(longName) {
+    // Iterate over each key in the wedges object
+        for (let key in wedges) {
+        // Check if the label matches the longName
+            if (wedges[key].label === longName) {
+            // Return the corresponding shortName
+            return wedges[key].shortName;
+        }
+    }
+    // Return null or an appropriate value if no match is found
+    return null;
+}
+
+    // trial: spinner
+    const spin = {
+        type: jsPsychCanvasButtonResponse,
+        stimulus: function(c, spinnerData) {
+            createSpinner(c, spinnerData, scoreTracker, jsPsych.timelineVariable('sectors'), spin_num); 
+        },
+        canvas_size: [500, 500],
+        score: function() {
+            return scoreTracker
+        },
+        post_trial_gap: 1000,
+        data: {
+            arrangement: jsPsych.timelineVariable('arrangement'), 
+            wheel: jsPsych.timelineVariable('wheel'), 
+            MI: jsPsych.timelineVariable('MI')
+        },
+        on_finish: function(data) {
+            data.round = round;
+            longName = (data.outcomes[0] || '').trim(); 
+            shortName = getShortName(longName);
+            vidNumber = generateUniqueVidNumber(15);
+            data.vidNumber = vidNumber;
+            data.shortName = shortName;
+            console.log(data);
+            spin_num--;
+        //    scoreTracker = data.score
+        }
+    };
+
+    const video_load = {
+        type: jsPsychVideoKeyboardResponse,
+        stimulus: function() {
+            const videoPath = `video/${shortName}/${vidNumber}.mp4`;
+            console.log(videoPath);
+            return [videoPath]; 
+        },
+            width: 640,
+            height: 480,
+            trial_ends_after_video: true,
+            on_finish: function(data) {
+            round++;
+        }
+    };
+
    /*
     *
     *   INSTRUCTIONS
@@ -147,156 +334,7 @@ const exp = (function() {
 
     p.intro = new MakeIntro();
 
-    
-   /*
-    *
-    *   TASK
-    *
-    */
-
-
-    // define each wedge
-    const wedges = {
-        one: {color:"#000080", label:"@crazy memes\ncrazy fights", shortName: "O1"},
-        two: {color:"#0000FF", label:"@karen clips", shortName: "O2"},
-        three: {color:"#B22222", label:"@yoda4ever", shortName: "Af1"},
-        four: {color:"#CD5C5C", label:"@buitengebieden", shortName: "Af2"},
-        five: {color:"#FFFACD", label:"@wow terrifying", shortName: "F1"},
-        six: {color:"#FFFF00", label:"@scary clip", shortName: "F2"},
-        seven: {color:"#7FFF00", label:"@the world\nof funny", shortName: "Am1"},
-        eight: {color:"#7CFC00", label:"@viral meme\nguy 2", shortName: "Am2"}
-    };
-
-    // define each wheel
-
-    const wheels = [
-
-        //1-16
-            {sectors: [ wedges.one, wedges.three, wedges.five, wedges.seven ], arrangement: "O1, Af1, F1, Am1", wheel: "0", MI: "high"},
-            {sectors: [ wedges.one, wedges.three, wedges.five, wedges.eight ], arrangement: "O1, Af1, F1, Am2", wheel: "1", MI: "high"},
-            {sectors: [ wedges.one, wedges.three, wedges.six, wedges.seven ], arrangement: "O1, Af1, F2, Am1", wheel: "2", MI: "high"},
-            {sectors: [ wedges.one, wedges.three, wedges.six, wedges.eight], arrangement: "O1, Af1, F2, Am2", wheel: "3", MI: "high"},
-            {sectors: [ wedges.one, wedges.four, wedges.five, wedges.seven ], arrangement: "O1, Af2, F1, Am1", wheel: "4", MI: "high"},
-            {sectors: [ wedges.one, wedges.four, wedges.five, wedges.eight ], arrangement: "O1, Af2, F1, Am2", wheel: "5", MI: "high"},
-            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.seven ], arrangement: "O1, Af2, F2, Am1", wheel: "6", MI: "high"},
-            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.eight ], arrangement: "O1, Af2, F2, Am2", wheel: "7", MI: "high"},
-            {sectors: [ wedges.two, wedges.three, wedges.five, wedges.seven ], arrangement: "O2, Af1, F1, Am1", wheel: "8", MI: "high"},
-            {sectors: [ wedges.two, wedges.three, wedges.five, wedges.eight ], arrangement: "O2, Af1, F1, Am2", wheel: "9", MI: "high"},
-            {sectors: [ wedges.two, wedges.three, wedges.six, wedges.seven ], arrangement: "O2, Af1, F2, Am1", wheel: "10", MI: "high"},
-            {sectors: [ wedges.two, wedges.three, wedges.six, wedges.eight ], arrangement: "O2, Af1, F2, Am2", wheel: "11", MI: "high"},
-            {sectors: [ wedges.two, wedges.four, wedges.five, wedges.seven ], arrangement: "O2, Af2, F1, Am1", wheel: "12", MI: "high"},
-            {sectors: [ wedges.two, wedges.four, wedges.five, wedges.eight ], arrangement: "O2, Af2, F1, Am2", wheel: "13", MI: "high"},
-            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.seven ], arrangement: "O2, Af2, F2, Am1", wheel: "14", MI: "high"},
-            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.eight ], arrangement: "O2, Af2, F2, Am2", wheel: "15", MI: "high"},
-
-        // F, F, Am, Am
-
-            {sectors: [ wedges.five, wedges.six, wedges.seven, wedges.eight ], arrangement: "F1, F2, Am1, Am2", wheel: "16", MI: "low"},
-
-            // F, F, Aff, Aff
-            {sectors: [ wedges.five, wedges.six, wedges.three, wedges.four ], arrangement: "F1, F2, Aff1, Aff2", wheel: "17", MI: "low"},
-
-            //O, O, Am, Am
-            {sectors: [ wedges.one, wedges.two, wedges.seven, wedges.eight ], arrangement: "O1, O2, Am1, Am2", wheel: "18", MI: "low"},
-
-            //O, O, Aff, Aff
-
-            {sectors: [ wedges.one, wedges.two, wedges.three, wedges.four ], arrangement: "O1, O2, Aff1, Aff2", wheel: "19", MI: "low"},
-
-         //   {sectors: [ wedges.one, wedges.one, wedges.one, wedges.one ], arrangement: "O1, O2, Aff1, Aff2", wheel: "19", MI: "low"} testing
-
-        ];
-
-
-
-    const highMIwheel = [wheels[Math.floor(Math.random() * 14)]];// random integer from 0 - 15
-    //const highMIwheel = [wheels[20]]; testing
-    const lowMIwheel = [wheels[Math.floor(Math.random() * 4) + 16]]; // random integer from 16 - 19
-
-
-    let scoreTracker = 0; // track current score
-
-    let round = 1;  // track current round
-
-    let account = 'default'; //this is the account
-
-    let usedVideos = new Set();
-
-    let vidNumber = Math.floor(Math.random()*15);
-
-    let spin_num = 4; //change this to the number of spins. This will change the number of spins AFTER the wheel decelerates. 
-
-    let numOfWheels = 2 // change this to to the number of wheels present in the experiment.
-
-    function generateUniqueVidNumber(max) {
-        let newVidNumber;
-        if (usedVideos.size === max) {
-        usedVideos.clear();  // Reset if all videos have been used
-        }
-        do {
-        newVidNumber = Math.floor(Math.random() * max);
-        } while (usedVideos.has(newVidNumber));
-        usedVideos.add(newVidNumber);
-        return newVidNumber;
-}
-
-
-    function getShortName(longName) {
-    // Iterate over each key in the wedges object
-        for (let key in wedges) {
-        // Check if the label matches the longName
-            if (wedges[key].label === longName) {
-            // Return the corresponding shortName
-            return wedges[key].shortName;
-        }
-    }
-    // Return null or an appropriate value if no match is found
-    return null;
-}
-
-    // trial: spinner
-    const spin = {
-        type: jsPsychCanvasButtonResponse,
-        stimulus: function(c, spinnerData) {
-            createSpinner(c, spinnerData, scoreTracker, jsPsych.timelineVariable('sectors'), spin_num); 
-        },
-        canvas_size: [500, 500],
-        score: function() {
-            return scoreTracker
-        },
-        post_trial_gap: 1000,
-        data: {
-            arrangement: jsPsych.timelineVariable('arrangement'), 
-            wheel: jsPsych.timelineVariable('wheel'), 
-            MI: jsPsych.timelineVariable('MI')
-        },
-        on_finish: function(data) {
-            data.round = round;
-            longName = (data.outcomes[0] || '').trim(); 
-            shortName = getShortName(longName);
-            vidNumber = generateUniqueVidNumber(15);
-            data.vidNumber = vidNumber;
-            data.shortName = shortName;
-            console.log(data);
-            spin_num--;
-        //    scoreTracker = data.score
-        }
-    };
-
-    const video_load = {
-        type: jsPsychVideoKeyboardResponse,
-        stimulus: function() {
-            const videoPath = `video/${shortName}/${vidNumber}.mp4`;
-            console.log(videoPath);
-            return [videoPath]; 
-        },
-            width: 640,
-            height: 480,
-            trial_ends_after_video: true,
-            on_finish: function(data) {
-            round++;
-        }
-    };
+ 
 
 //       
     // trial: flow DV
@@ -564,6 +602,6 @@ const exp = (function() {
 
 //const timeline = [exp.consent, exp.intro, exp.task, exp.demographics, exp.save_data];
 
-const timeline = [exp.intro, exp.task_highMI, dv, exp.task_lowMI, dv, exp.demographics];
+const timeline = [exp.preloadHighMI, exp.intro, exp.task_highMI, dv, exp.task_lowMI, dv, exp.demographics];
 
 jsPsych.run(timeline);
