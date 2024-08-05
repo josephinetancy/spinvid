@@ -89,10 +89,14 @@ const exp = (function() {
 
     p.preloadHighMI = {
         type: jsPsychPreload,
-        videos: highMIVideoPaths,
+        video: highMIVideoPaths,
         message: 'Loading videos for the first wheel...',
         on_success: function(file) {
             console.log('Loaded: ', file);
+            console.log('Preload high MI is executed.');
+        },
+        on_error: function(file) {
+            console.error('Failed to load:', file);
         }
 };
 
@@ -600,8 +604,17 @@ MORE WHEEL SET UP
 
 }());
 
-//const timeline = [exp.consent, exp.intro, exp.task, exp.demographics, exp.save_data];
 
-const timeline = [exp.preloadHighMI, exp.intro, exp.task_highMI, dv, exp.task_lowMI, dv, exp.demographics];
+
+const timeline = [
+    exp.preloadHighMI, 
+    exp.intro, 
+    exp.task_highMI, 
+    dv, 
+    exp.preloadLowMI, 
+    exp.task_lowMI, 
+    dv, 
+    exp.demographics]; 
+
 
 jsPsych.run(timeline);
