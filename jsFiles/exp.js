@@ -90,10 +90,9 @@ const exp = (function() {
     p.preloadHighMI = {
         type: jsPsychPreload,
         video: highMIVideoPaths,
-        message: 'Loading videos for the first wheel...',
+        message: 'Loading spin the wheel...',
         on_success: function(file) {
             console.log('Loaded: ', file);
-            console.log('Preload high MI is executed.');
         },
         on_error: function(file) {
             console.error('Failed to load:', file);
@@ -103,7 +102,10 @@ const exp = (function() {
     p.preloadLowMI = {
         type: jsPsychPreload,
         videos: lowMIVideoPaths,
-        message: 'Loading videos for the second wheel...'
+        message: 'Loading videos for the second wheel...',
+        on_success: function(file) {
+        console.log('Loaded: ', file);
+    }
 };
 
 /* 
