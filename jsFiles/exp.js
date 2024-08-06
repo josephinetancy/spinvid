@@ -104,7 +104,7 @@ console.log(highMIwheel[0])
     p.preloadHighMI = {
         type: jsPsychPreload,
         video: highMIVideoPaths,
-        message: 'Loading first Wheel...',
+        message: `<p>Loading first wheel that will show the following accounts:</p>${descriptionListHigh}`,
         on_success: function(file) {
             console.log('Loaded: ', file);
         },
