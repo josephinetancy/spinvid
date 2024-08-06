@@ -329,12 +329,20 @@ MORE WHEEL SET UP
         this.timeline = [introTimeline];
     }
 
+
+
+    const testTask = {
+        type: 'html-keyboard-response',
+        stimulus: '<p>Testing task added to timeline.</p>',
+    };
+    
     p.consent = {
         type: jsPsychExternalHtml,
         url: "./html/consent.html",
         cont_btn: "advance",
         on_load: function() {
-            jsPsych.addNodeToEndOfTimeline(preloadHighMI, () => {
+            console.log("consent on_load function executed");
+            jsPsych.addNodeToEndOfTimeline(testTask, () => {
                 console.log("preloading initiated");
             });
         }
