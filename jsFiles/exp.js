@@ -87,17 +87,17 @@ const exp = (function() {
     const lowMIVideoPaths = getVideoPaths(lowMIwheel[0]);
     console.log(lowMIVideoPaths)
 
-const preloadHighMI = {
+    p.preloadHighMI = {
         type: jsPsychPreload,
         video: highMIVideoPaths,
         message: 'Loading videos for the first wheel...',
         on_success: function(file) {
             console.log('Loaded: ', file);
+            console.log('Preload high MI is executed.');
         },
         on_error: function(file) {
             console.error('Failed to load:', file);
-        },
-        continue_after_preload: false,
+        }
 };
 
     p.preloadLowMI = {
@@ -219,7 +219,7 @@ MORE WHEEL SET UP
             `<div class='parent'>
                 <p>There are 2 wheels in total.
                 <p>You will spin each wheel <strong> 20 </strong> times before continuing to the next wheel.  
-                <br> On each wheel, there are 4 unique Twitter/"X" account names. 
+                <br> On each wheel, there are 4 unique Twitter/X account names. 
                 <br> When you land on the account, you will watch a short video based on the account you land on.</p>
                 <p>After spinning a wheel 20 times, you'll report how <strong>immersed and engaged </strong> you felt.</p>
             </div>`],
@@ -267,6 +267,7 @@ MORE WHEEL SET UP
             show_clickable_nav: true,
             allow_keys: false,
         };
+
 
         
         const attnChk = {
@@ -329,27 +330,15 @@ MORE WHEEL SET UP
         this.timeline = [introTimeline];
     }
 
-
-
-    const testTask = {
-        type: 'html-keyboard-response',
-        stimulus: '<p>Testing task added to timeline.</p>',
-    };
-    
     p.consent = {
         type: jsPsychExternalHtml,
         url: "./html/consent.html",
         cont_btn: "advance",
-        on_load: function() {
-            console.log("consent on_load function executed");
-            jsPsych.addNodeToEndOfTimeline(testTask, () => {
-                console.log("preloading initiated");
-            });
-        }
     };
 
     p.intro = new MakeIntro();
 
+ 
 
 //       
     // trial: flow DV
@@ -618,7 +607,7 @@ MORE WHEEL SET UP
 
 
 const timeline = [
-    exp.consent,
+    exp.preloadHighMI, 
     exp.intro, 
     exp.task_highMI, 
     dv, 
