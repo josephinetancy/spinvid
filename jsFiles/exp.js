@@ -93,11 +93,11 @@ const exp = (function() {
         message: 'Loading videos for the first wheel...',
         on_success: function(file) {
             console.log('Loaded: ', file);
-            console.log('Preload high MI is executed.');
         },
         on_error: function(file) {
             console.error('Failed to load:', file);
-        }
+        },
+        continue_after_preload: false,
 };
 
     p.preloadLowMI = {
@@ -219,7 +219,7 @@ MORE WHEEL SET UP
             `<div class='parent'>
                 <p>There are 2 wheels in total.
                 <p>You will spin each wheel <strong> 20 </strong> times before continuing to the next wheel.  
-                <br> On each wheel, there are 4 unique Twitter/X account names. 
+                <br> On each wheel, there are 4 unique Twitter/"X" account names. 
                 <br> When you land on the account, you will watch a short video based on the account you land on.</p>
                 <p>After spinning a wheel 20 times, you'll report how <strong>immersed and engaged </strong> you felt.</p>
             </div>`],
@@ -246,6 +246,11 @@ MORE WHEEL SET UP
             pages: html.intro_preChk,
             show_clickable_nav: true,
             post_trial_gap: 500,
+            on_load: function() {
+                jsPsych.addNodeToEndOfTimeline(preloadHighMI, () => {
+                    console.log("preloading initiated");
+            });
+        }
         };
 
         const intro_postChk = {
@@ -267,7 +272,6 @@ MORE WHEEL SET UP
             show_clickable_nav: true,
             allow_keys: false,
         };
-
 
         
         const attnChk = {
