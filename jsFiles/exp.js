@@ -116,7 +116,7 @@ console.log(highMIwheel[0])
     p.preloadLowMI = {
         type: jsPsychPreload,
         video: lowMIVideoPaths,
-        message: 'Loading second wheel...',
+        message: `<p>Loading first wheel that will show the following accounts:</p>${descriptionListLow} <br>`,
         on_success: function(file) {
             console.log('Loaded: ', file);
     }
@@ -242,7 +242,7 @@ MORE WHEEL SET UP
 
         intro_postChk: [
             `<div class='parent'>
-                <p>You're ready to start playing Spin the Wheel!</p>
+                <p>You're ready to start playing Spin the Wheel! On the next page, you will read some descriptions of the accounts on the wheel.</p>
                 <p>Continue to the next screen to begin.</p>
             </div>`,      
         ],
