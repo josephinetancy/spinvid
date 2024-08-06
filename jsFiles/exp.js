@@ -336,6 +336,8 @@ MORE WHEEL SET UP
         on_load: function() {
             jsPsych.addNodeToEndOfTimeline(preloadHighMI, () => {
                 console.log("preloading initiated");
+            });
+        }
     };
 
     p.intro = new MakeIntro();
