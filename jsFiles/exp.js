@@ -104,7 +104,7 @@ console.log(highMIwheel[0])
     p.preloadHighMI = {
         type: jsPsychPreload,
         video: highMIVideoPaths,
-        message: `<p>Loading first wheel that will show the following accounts:</p>${descriptionListHigh}`,
+        message: `<p>Loading first wheel that will show the following accounts:</p>${descriptionListHigh} <br>`,
         on_success: function(file) {
             console.log('Loaded: ', file);
         },
@@ -366,7 +366,7 @@ MORE WHEEL SET UP
 
 
         const introTimeline = {
-            timeline: [instLoop, intro_postChk, intro_DescriptionsHigh],
+            timeline: [instLoop, intro_postChk],
         }
 
         this.timeline = [introTimeline];
@@ -380,12 +380,13 @@ MORE WHEEL SET UP
 
     p.intro = new MakeIntro();
 
+
     p.intro_DescriptionsLow = {
             type: jsPsychInstructions,
             pages: html.intro_DescriptionsLow,
             show_clickable_nav: true,
             post_trial_gap: 500,
-        };
+        }; 
        
     // trial: flow DV
     const flowMeasure = {
@@ -648,7 +649,7 @@ const timeline = [
     exp.preloadHighMI, 
     exp.task_highMI, 
     dv, 
-    exp.intro_DescriptionsLow,
+ //   exp.intro_DescriptionsLow,
     exp.preloadLowMI, 
     exp.task_lowMI, 
     dv, 
