@@ -15,14 +15,14 @@ const exp = (function() {
 
     // define each wedge
     const wedges = {
-        one: {color:"#000080", label:"@crazy memes\ncrazy fights", shortName: "O1"},
-        two: {color:"#0000FF", label:"@karen clips", shortName: "O2"},
-        three: {color:"#B22222", label:"@yoda4ever", shortName: "Af1"},
-        four: {color:"#CD5C5C", label:"@buitengebieden", shortName: "Af2"},
-        five: {color:"#FFFACD", label:"@wow terrifying", shortName: "F1"},
-        six: {color:"#FFFF00", label:"@scary clip", shortName: "F2"},
-        seven: {color:"#7FFF00", label:"@the world\nof funny", shortName: "Am1"},
-        eight: {color:"#7CFC00", label:"@viral meme\nguy 2", shortName: "Am2"}
+        one: {color:"#000080", label:"@crazy memes\ncrazy fights", shortName: "O1", description: "<li>The user <strong>'@crazy memes crazy fights'</strong> shows videos that make people mad.</li>"},
+        two: {color:"#0000FF", label:"@karen clips", shortName: "O2", description: "<li>The user <strong>'@karen clips'</strong>  shows videos that make people mad.</li>"},
+        three: {color:"#B22222", label:"@yoda4ever", shortName: "Af1", description: "<li>The user <strong>'@yoda4ever'</strong>  shows videos that make people warm.</li>"},
+        four: {color:"#CD5C5C", label:"@buitengebieden", shortName: "Af2", description: "<li>The user <strong>'@buitengebieden'</strong>  shows videos that make people warm.</li>"},
+        five: {color:"#FFFACD", label:"@wow terrifying", shortName: "F1", description: "<li>The user <strong>'@wow terrifying'</strong>  shows videos that make people scared.</li>"},
+        six: {color:"#FFFF00", label:"@scary clip", shortName: "F2", description: "<li>The user <strong>'@scary clip'</strong>  shows videos that make people scared.</li>"},
+        seven: {color:"#7FFF00", label:"@the world\nof funny", shortName: "Am1", description: "<li>The user <strong>'@the world of funny'</strong>  shows videos that make people laugh.</li>"},
+        eight: {color:"#7CFC00", label:"@viral meme\nguy 2", shortName: "Am2", description: "<li>The user <strong>'@viral meme guy 2'</strong>  shows videos that make people laugh.</li>"}
     };
 
     // define each wheel
@@ -82,15 +82,29 @@ const exp = (function() {
     return videos;
 }
 
+//getting descriptions for each wheel 
+function getDescriptions(wheel) {
+    const descriptions = wheel.sectors.map(sector => sector.description);
+    return descriptions;
+}
+
+console.log(highMIwheel[0])
     const highMIVideoPaths = getVideoPaths(highMIwheel[0]);
-    console.log(highMIVideoPaths)
     const lowMIVideoPaths = getVideoPaths(lowMIwheel[0]);
-    console.log(lowMIVideoPaths)
+
+    const highMIDescription = getDescriptions(highMIwheel[0]);
+    const lowMIDescription = getDescriptions(lowMIwheel[0]);
+    console.log(highMIDescription)
+
+    const descriptionListHigh = highMIDescription.join(" ");
+    const descriptionListLow = lowMIDescription.join(" ");
+
+    console.log(lowMIDescription)
 
     p.preloadHighMI = {
         type: jsPsychPreload,
         video: highMIVideoPaths,
-        message: 'Loading Spin the Wheel...',
+        message: 'Loading first Wheel...',
         on_success: function(file) {
             console.log('Loaded: ', file);
         },
@@ -139,7 +153,6 @@ MORE WHEEL SET UP
         usedVideos.add(newVidNumber);
         return newVidNumber;
 }
-
 
     function getShortName(longName) {
     // Iterate over each key in the wedges object
@@ -204,6 +217,7 @@ MORE WHEEL SET UP
     *
     */
 
+
     const html = {
         intro_preChk: [
             `<div class='parent'>
@@ -221,7 +235,7 @@ MORE WHEEL SET UP
             `<div class='parent'>
                 <p>There are 2 wheels in total.
                 <p>You will spin each wheel <strong> 20 </strong> times before continuing to the next wheel.  
-                <br> On each wheel, there are 4 unique Twitter/X account names. 
+                <br> On each wheel, there are 4 unique Twitter or 'X' account names. 
                 <br> When you land on the account, you will watch a short video based on the account you land on.</p>
                 <p>After spinning a wheel 20 times, you'll report how <strong>immersed and engaged </strong> you felt.</p>
             </div>`],
@@ -239,7 +253,24 @@ MORE WHEEL SET UP
                 <p>To finish this study, please continue to answer a few final questions.</p>
             </div>`
         ],
+
+        intro_DescriptionsHigh: [
+            `<div class='parent'>
+                <p>You will now spin the first wheel that will show videos from the following accounts:</p>
+                <ul> ${descriptionListHigh}
+                </ul>
+            </div>`
+        ],
+
+        intro_DescriptionsLow: [
+            `<div class='parent'>
+                <p>You will now spin the second wheel that will show videos from the following accounts:</p>
+                <ul> ${descriptionListLow}
+                </ul>
+            </div>`
+        ],
     };
+
 
     function MakeIntro() {
 
@@ -253,6 +284,13 @@ MORE WHEEL SET UP
         const intro_postChk = {
             type: jsPsychInstructions,
             pages: html.intro_postChk,
+            show_clickable_nav: true,
+            post_trial_gap: 500,
+        };
+
+        const intro_DescriptionsHigh = {
+            type: jsPsychInstructions,
+            pages: html.intro_DescriptionsHigh,
             show_clickable_nav: true,
             post_trial_gap: 500,
         };
@@ -325,8 +363,10 @@ MORE WHEEL SET UP
           },
         };
 
+
+
         const introTimeline = {
-            timeline: [instLoop, intro_postChk],
+            timeline: [instLoop, intro_postChk, intro_DescriptionsHigh],
         }
 
         this.timeline = [introTimeline];
@@ -340,9 +380,13 @@ MORE WHEEL SET UP
 
     p.intro = new MakeIntro();
 
- 
-
-//       
+    p.intro_DescriptionsLow = {
+            type: jsPsychInstructions,
+            pages: html.intro_DescriptionsLow,
+            show_clickable_nav: true,
+            post_trial_gap: 500,
+        };
+       
     // trial: flow DV
     const flowMeasure = {
         type: jsPsychSurveyLikert,
@@ -391,16 +435,6 @@ MORE WHEEL SET UP
 
 
     // timeline: main task
-
-/*
-    let dv;
-    if (settings.dv == "happiness") {
-        dv = happinessMeasure;
-    } else {
-        dv = flowMeasure;
-    };
-*/
-
 
 
     p.task_highMI = {
@@ -609,11 +643,12 @@ MORE WHEEL SET UP
 
 
 const timeline = [
-    exp.consent,
-    exp.preloadHighMI, 
+  //  exp.consent,
     exp.intro, 
+    exp.preloadHighMI, 
     exp.task_highMI, 
     dv, 
+    exp.intro_DescriptionsLow,
     exp.preloadLowMI, 
     exp.task_lowMI, 
     dv, 
