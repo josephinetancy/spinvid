@@ -90,7 +90,7 @@ const exp = (function() {
     p.preloadHighMI = {
         type: jsPsychPreload,
         video: highMIVideoPaths,
-        message: 'Loading spin the wheel...',
+        message: 'Loading Spin the Wheel...',
         on_success: function(file) {
             console.log('Loaded: ', file);
         },
@@ -101,10 +101,10 @@ const exp = (function() {
 
     p.preloadLowMI = {
         type: jsPsychPreload,
-        videos: lowMIVideoPaths,
-        message: 'Loading videos for the second wheel...',
+        video: lowMIVideoPaths,
+        message: 'Loading second wheel...',
         on_success: function(file) {
-        console.log('Loaded: ', file);
+            console.log('Loaded: ', file);
     }
 };
 
@@ -609,6 +609,7 @@ MORE WHEEL SET UP
 
 
 const timeline = [
+    exp.consent,
     exp.preloadHighMI, 
     exp.intro, 
     exp.task_highMI, 
