@@ -246,11 +246,6 @@ MORE WHEEL SET UP
             pages: html.intro_preChk,
             show_clickable_nav: true,
             post_trial_gap: 500,
-            on_load: function() {
-                jsPsych.addNodeToEndOfTimeline(preloadHighMI, () => {
-                    console.log("preloading initiated");
-            });
-        }
         };
 
         const intro_postChk = {
@@ -338,11 +333,13 @@ MORE WHEEL SET UP
         type: jsPsychExternalHtml,
         url: "./html/consent.html",
         cont_btn: "advance",
+        on_load: function() {
+            jsPsych.addNodeToEndOfTimeline(preloadHighMI, () => {
+                console.log("preloading initiated");
     };
 
     p.intro = new MakeIntro();
 
- 
 
 //       
     // trial: flow DV
@@ -611,6 +608,7 @@ MORE WHEEL SET UP
 
 
 const timeline = [
+    exp.consent,
     exp.intro, 
     exp.task_highMI, 
     dv, 
