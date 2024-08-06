@@ -87,7 +87,7 @@ const exp = (function() {
     const lowMIVideoPaths = getVideoPaths(lowMIwheel[0]);
     console.log(lowMIVideoPaths)
 
-    p.preloadHighMI = {
+preloadHighMI = {
         type: jsPsychPreload,
         video: highMIVideoPaths,
         message: 'Loading videos for the first wheel...',
