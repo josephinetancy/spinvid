@@ -611,7 +611,6 @@ MORE WHEEL SET UP
 
 
 const timeline = [
-    exp.preloadHighMI, 
     exp.intro, 
     exp.task_highMI, 
     dv, 
