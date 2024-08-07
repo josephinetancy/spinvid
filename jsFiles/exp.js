@@ -104,7 +104,7 @@ console.log(highMIwheel[0])
     p.preloadHighMI = {
         type: jsPsychPreload,
         video: highMIVideoPaths,
-        message: `<p>Loading first wheel that will show the following accounts:</p>${descriptionListHigh} <br>`,
+        message: `<p>Loading the first wheel that will show the following accounts:</p>${descriptionListHigh} <br>`,
         on_success: function(file) {
             console.log('Loaded: ', file);
         },
@@ -116,7 +116,7 @@ console.log(highMIwheel[0])
     p.preloadLowMI = {
         type: jsPsychPreload,
         video: lowMIVideoPaths,
-        message: `<p>Loading first wheel that will show the following accounts:</p>${descriptionListLow} <br>`,
+        message: `<p>Loading the second wheel that will show the following accounts:</p>${descriptionListLow} <br>`,
         on_success: function(file) {
             console.log('Loaded: ', file);
     }
@@ -242,7 +242,7 @@ MORE WHEEL SET UP
 
         intro_postChk: [
             `<div class='parent'>
-                <p>You're ready to start playing Spin the Wheel! On the next page, you will read some descriptions of the accounts on the wheel.</p>
+                <p>You're ready to start playing Spin the Wheel!</p> <p> On the next page, you will read some descriptions of the accounts on the wheel.</p> 
                 <p>Continue to the next screen to begin.</p>
             </div>`,      
         ],
@@ -267,6 +267,13 @@ MORE WHEEL SET UP
                 <p>You will now spin the second wheel that will show videos from the following accounts:</p>
                 <ul> ${descriptionListLow}
                 </ul>
+            </div>`
+        ],
+
+        intro_toSecond: [
+            `<div class='parent'>
+                <p>You will now spin the second wheel.</p>
+                <p>Continue to the next screen to begin.</p
             </div>`
         ],
     };
@@ -387,6 +394,15 @@ MORE WHEEL SET UP
             show_clickable_nav: true,
             post_trial_gap: 500,
         }; 
+
+
+    p.intro_toSecond = {
+            type: jsPsychInstructions,
+            pages: html.intro_toSecond,
+            show_clickable_nav: true,
+            post_trial_gap: 500,
+        }; 
+
        
     // trial: flow DV
     const flowMeasure = {
@@ -650,6 +666,7 @@ const timeline = [
     exp.task_highMI, 
     dv, 
  //   exp.intro_DescriptionsLow,
+    exp.intro_toSecond,
     exp.preloadLowMI, 
     exp.task_lowMI, 
     dv, 
