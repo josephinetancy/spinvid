@@ -15,7 +15,7 @@ const exp = (function() {
 
     // define each wedge
     const wedges = {
-        one: 
+        one: {color:"#000080", label:`<img src="./img/crazymemescrazyfights.jpeg" style="width:50px; height:50px; vertical-align:middle;"> @crazy memes\ncrazy fights`, shortName: "O1", description: "<li>The user <strong>'@crazy memes crazy fights'</strong> shows videos that make people mad.</li>", image: `./img/crazymemescrazyfights.jpeg`},
         two: {color:"#0000FF", label:`<img src="./img/karenclips.jpeg" style="width:50px; height:50px; vertical-align:middle;"> @karen clips`, shortName: "O2", description: "<li>The user <strong>'@karen clips'</strong>  shows videos that make people mad.</li>", image: `./img/karenclips.jpeg`},
         three: {color:"#B22222", label: `<img src="./img/yoda4ever.jpeg" style="width:50px; height:50px; vertical-align:middle;"> @yoda4ever`, shortName: "Af1", description: "<li>The user <strong>'@yoda4ever'</strong>  shows videos that make people warm.</li>", image: `./img/yoda4ever.jpeg`},
         four: {color:"#CD5C5C", label:`<img src="./img/buitengebieden.jpeg" style="width:50px; height:50px; vertical-align:middle;"> @buitengebieden`, shortName: "Af2", description: "<li>The user <strong>'@buitengebieden'</strong>  shows videos that make people warm.</li>", image: `./img/buitengebieden.jpeg`},
@@ -670,7 +670,7 @@ MORE WHEEL SET UP
 
 
 const timeline = [
-    exp.consent,
+   // exp.consent,
     exp.intro, 
     exp.preloadHighMI, 
     exp.task_highMI, 
