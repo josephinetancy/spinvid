@@ -16,13 +16,14 @@ const exp = (function() {
     // define each wedge
     const wedges = {
         one: 
-        two: {color:"#0000FF", label:`<img src="./img/karenclips.jpeg" style="width:50px; height:50px; vertical-align:middle;"> @karen clips`, shortName: "O2", description: "<li>The user <strong>'@karen clips'</strong>  shows videos that make people mad.</li>", image: `./img/karenclips.jpeg`},
-        three: {color:"#B22222", label: `<img src="./img/yoda4ever.jpeg" style="width:50px; height:50px; vertical-align:middle;"> @yoda4ever`, shortName: "Af1", description: "<li>The user <strong>'@yoda4ever'</strong>  shows videos that make people warm.</li>", image: `./img/yoda4ever.jpeg`},
-        four: {color:"#CD5C5C", label:`<img src="./img/buitengebieden.jpeg" style="width:50px; height:50px; vertical-align:middle;"> @buitengebieden`, shortName: "Af2", description: "<li>The user <strong>'@buitengebieden'</strong>  shows videos that make people warm.</li>", image: `./img/buitengebieden.jpeg`},
-        five: {color:"#FFFACD", label:`<img src="./img/wowterrifying.jpeg" style="width:50px; height:50px; vertical-align:middle;"> @wow terrifying`, shortName: "F1", description: "<li>The user <strong>'@wow terrifying'</strong>  shows videos that make people scared.</li>", image: `./img/wowterrifying.jpeg`},
-        six: {color:"#FFFF00", label:`<img src="./img/scaryclip.jpeg" style="width:50px; height:50px; vertical-align:middle;"> @scary clip`, shortName: "F2", description: "<li>The user <strong>'@scary clip'</strong>  shows videos that make people scared.</li>", image: `./img/scaryclip.jpeg`},
-        seven: {color:"#7FFF00", label:`<img src="./img/theworldoffunny.jpeg" style="width:50px; height:50px; vertical-align:middle;"> @the world\nof funny`, shortName: "Am1", description: "<li>The user <strong>'@the world of funny'</strong>  shows videos that make people laugh.</li>", image: `./img/theworldoffunny.jpeg`},
-        eight: {color:"#7CFC00", label:`<img src="./img/viralmemeguy2.jpeg" style="width:50px; height:50px; vertical-align:middle;"> @viral meme\nguy 2`, shortName: "Am2", description: "<li>The user <strong>'@viral meme guy 2'</strong>  shows videos that make people laugh.</li>", image: `./img/viralmemeguy2.jpeg`}
+        {color:"#000080", label:"@crazy memes\ncrazy fights", shortName: "O1", description: "<li>The user <strong>'@crazy memes crazy fights'</strong> shows videos that make people mad.</li>", image: `./img/crazymemescrazyfights.jpeg`},
+        two: {color:"#0000FF", label:"@karen clips", shortName: "O2", description: "<li>The user <strong>'@karen clips'</strong>  shows videos that make people mad.</li>", image: `./img/karenclips.jpeg`},
+        three: {color:"#B22222", label:"@yoda4ever", shortName: "Af1", description: "<li>The user <strong>'@yoda4ever'</strong>  shows videos that make people warm.</li>", image: `./img/yoda4ever.jpeg`},
+        four: {color:"#CD5C5C", label:"@buitengebieden", shortName: "Af2", description: "<li>The user <strong>'@buitengebieden'</strong>  shows videos that make people warm.</li>", image: `./img/buitengebieden.jpeg`},
+        five: {color:"#FFFACD", label:"@wow terrifying", shortName: "F1", description: "<li>The user <strong>'@wow terrifying'</strong>  shows videos that make people scared.</li>", image: `./img/wowterrifying.jpeg`},
+        six: {color:"#FFFF00", label:"@scary clip", shortName: "F2", description: "<li>The user <strong>'@scary clip'</strong>  shows videos that make people scared.</li>", image: `./img/scaryclip.jpeg`},
+        seven: {color:"#7FFF00", label:"@the world\nof funny", shortName: "Am1", description: "<li>The user <strong>'@the world of funny'</strong>  shows videos that make people laugh.</li>", image: `./img/theworldoffunny.jpeg`},
+        eight: {color:"#7CFC00", label:"@viral meme\nguy 2", shortName: "Am2", description: "<li>The user <strong>'@viral meme guy 2'</strong>  shows videos that make people laugh.</li>", image: `./img/viralmemeguy2.jpeg`}
     };
 
     // define each wheel
@@ -670,8 +671,8 @@ MORE WHEEL SET UP
 
 
 const timeline = [
-    exp.consent,
-    exp.intro, 
+  //  exp.consent,
+ //   exp.intro, 
     exp.preloadHighMI, 
     exp.task_highMI, 
     dv, 

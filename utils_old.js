@@ -195,9 +195,9 @@ const createSpinner = function(canvas, spinnerData, score, sectors, spin_num, nu
         currentAngle = oldAngle;
         //console.log('spin_num when decelerating' + spin_num)
         let sector = sectors[getIndex()];
-        spinnerData.outcomes.push(sector.label);
+ //       spinnerData.outcomes.push(sector.label);
         drawSector(sectors, getIndex());
-        updateScore(parseFloat(sector.label), sector.color); //you need this to move to the other video 
+        updateScore(parseFloat(sector.label), sector.color);
         window.cancelAnimationFrame(req);
       };
     };
@@ -206,7 +206,7 @@ const createSpinner = function(canvas, spinnerData, score, sectors, spin_num, nu
   /* generate random float in range min-max */
   const rand = (m, M) => Math.random() * (M - m) + m;
 
-  const updateScore = (label, color) => {
+  const updateScore = (points, color) => {
    // score += points;
    // spinnerData.score = score;
       spin_num--; 
@@ -290,7 +290,6 @@ const createSpinner = function(canvas, spinnerData, score, sectors, spin_num, nu
     ctx.stroke();
   }
 
-
   //* Draw sectors and prizes texts to canvas */
 const drawSector = (sectors, sector) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -309,78 +308,64 @@ const drawSector = (sectors, sector) => {
         ctx.restore(); // Restore to reset transformations
     }
 
-    // Prepare image data
-    const imagePromises = sectors.map((sector, i) => {
-        const imageTagMatch = sector.label.match(/<img.*?src="(.*?)".*?>/);
-        if (imageTagMatch) {
-            const imageSrc = imageTagMatch[1];
-            const img = new Image();
-            img.src = imageSrc;
+    // Draw text and image on top of all sectors
+    for (let i = 0; i < sectors.length; i++) {
+        const ang = arc * i;
+        ctx.save();
+        ctx.translate(rad, rad);
+        ctx.rotate((ang + arc / 2) + arc);
 
-            return new Promise((resolve) => {
-                img.onload = () => {
-                    console.log(`Image ${i} - Width: ${img.width}, Height: ${img.height}`);
-                    resolve({
-                        img,
-                        index: i,
-                        xPosition: -15, // Adjust this if necessary
-                        yPosition: -200 // Initial position = 140
-                    });
-                };
-            });
-        }
-        return Promise.resolve(null);
-    });
+        // Draw text
+        ctx.textAlign = "center";
+        ctx.fillStyle = "#fff";
+        ctx.font = isSpinning && i === sector ? "bolder 35px sans-serif" : "bold 27px sans-serif";
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 3;
 
-    Promise.all(imagePromises).then((imageData) => {
-        imageData.forEach((data) => {
-            if (data) {
-                ctx.save();
-                const ang = arc * data.index;
-                ctx.translate(rad, rad);
-                ctx.rotate((ang + arc / 2) + arc);
+        const lines = sectors[i].label.split('\n');
+        const lineHeight = 27; // Adjust as needed for line spacing
+        let imageYPosition = -140; // Initialize image Y position
 
-                const yPosition = data.yPosition; // Use calculated yPosition
-                ctx.drawImage(data.img, data.xPosition, yPosition, 30, 30);
-                console.log("Image drawn at position ", data.xPosition, yPosition);
-                
-                ctx.restore(); // Restore context
-            }
+        lines.forEach((line, index) => {
+            const yPosition = -140 + (index * lineHeight);
+            const xPosition = 0;
+            console.log(`Sector ${i}: Line ${index}`);
+            console.log(`Text - X: ${xPosition}, Y: ${yPosition}`);
+            ctx.strokeText(line, xPosition, yPosition);
+            ctx.fillText(line, xPosition, yPosition);
+            // Store image Y position
+            imageYPosition = yPosition;
         });
 
-        // Draw text after images
-        for (let i = 0; i < sectors.length; i++) {
-            const ang = arc * i;
-            ctx.save();
-            ctx.translate(rad, rad);
-            ctx.rotate((ang + arc / 2) + arc);
+        // Draw image
+        if (sectors[i].image) {
+            const img = new Image();
+            img.src = sectors[i].image;
 
-            // Draw text
-            ctx.textAlign = "center";
-            ctx.fillStyle = "#fff";
-            ctx.font = isSpinning && i === sector ? "bolder 35px sans-serif" : "bold 27px sans-serif";
-            ctx.strokeStyle = 'black';
-            ctx.lineWidth = 3;
+            img.onload = () => {
+                const imgSize = 30;
+                const imgX = 0; // X position for the image
+                const imgY = imageYPosition - imgSize; // Y position for the image
 
-            const text = sectors[i].label.replace(/<img.*?>/g, '').trim();
-            const lines = text.split('\n');
-            const lineHeight = 27; // Adjust as needed for line spacing
-            let textYPosition = -140; // Initial position, adjust as necessary
+                // Draw the image
+                ctx.drawImage(img, imgX, imgY, imgSize, imgSize);
 
-            lines.forEach((line, index) => {
-                const yPosition = textYPosition + (index * lineHeight);
-                const xPosition = 0;
-                ctx.strokeText(line, xPosition, yPosition);
-                ctx.fillText(line, xPosition, yPosition);
-                console.log("xPosition text " + xPosition);
-                console.log("yPosition text " + yPosition);
-            });
+                // Debugging output
+                console.log(`Drawing image at: X=${imgX}, Y=${imgY}`);
+                console.log(`Text should be around: X=${0}, Y=${imageYPosition}`);
 
-            ctx.restore(); // Restore context after finishing sector
+                // Restore after image is drawn
+                ctx.restore();
+            };
+
+            img.onerror = () => {
+                console.error('Error loading image', img.src);
+                ctx.restore(); // Restore if image fails to load
+            };
+        } else {
+            ctx.restore(); // Restore if no image is present
         }
-    }).catch((error) => {
-        console.error("Error loading images:", error);
-    });
+    }
 };
 
   drawSector(sectors, null);
