@@ -674,7 +674,7 @@ MORE WHEEL SET UP
 
 const timeline = [
    // exp.consent,
- //   exp.intro, 
+    exp.intro, 
     exp.preloadHighMI, 
     exp.task_highMI, 
     dv, 
