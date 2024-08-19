@@ -15,15 +15,15 @@ const exp = (function() {
 
     // define each wedge
     const wedges = {
-        one: {color:"#000080", label:`<img src="./img/crazymemescrazyfights.jpeg"> @crazy memes\ncrazy fights`, shortName: "O1", description: "<li>The user <strong>'@crazy memes crazy fights'</strong> shows videos that make people mad.</li>", image: `./img/crazymemescrazyfights.jpeg`},
-        two: {color:"#0000FF", label:`<img src="./img/karenclips.jpeg"> @karen clips`, shortName: "O2", description: "<li>The user <strong>'@karen clips'</strong>  shows videos that make people mad.</li>", image: `./img/karenclips.jpeg`},
-        three: {color:"#B22222", label: `<img src="./img/yoda4ever.jpeg"> @yoda4ever`, shortName: "Af1", description: "<li>The user <strong>'@yoda4ever'</strong>  shows videos that make people warm.</li>", image: `./img/yoda4ever.jpeg`},
-        four: {color:"#CD5C5C", label:`<img src="./img/buitengebieden.jpeg"> @buitengebieden`, shortName: "Af2", description: "<li>The user <strong>'@buitengebieden'</strong>  shows videos that make people warm.</li>", image: `./img/buitengebieden.jpeg`},
-        five: {color:"#FFFACD", label:`<img src="./img/wowterrifying.jpeg"> @wow terrifying`, shortName: "F1", description: "<li>The user <strong>'@wow terrifying'</strong>  shows videos that make people scared.</li>", image: `./img/wowterrifying.jpeg`},
-        six: {color:"#FFFF00", label:`<img src="./img/scaryclip.jpeg"> @scary clip`, shortName: "F2", description: "<li>The user <strong>'@scary clip'</strong>  shows videos that make people scared.</li>", image: `./img/scaryclip.jpeg`},
-        seven: {color:"#7FFF00", label:`<img src="./img/theworldoffunny.jpeg"> @the world\nof funny`, shortName: "Am1", description: "<li>The user <strong>'@the world of funny'</strong>  shows videos that make people laugh.</li>", image: `./img/theworldoffunny.jpeg`},
-        eight: {color:"#7CFC00", label:`<img src="./img/viralmemeguy2.jpeg> @viral meme\nguy 2`, shortName: "Am2", description: "<li>The user <strong>'@viral meme guy 2'</strong>  shows videos that make people laugh.</li>", image: `./img/viralmemeguy2.jpeg`}
-    };
+    one: {color:"#000080", label:`<img src="./img/crazymemescrazyfights.jpeg"> @crazy memes\ncrazy fights`, shortName: "O1", description: `<li><img src="./img/crazymemescrazyfights.jpeg" alt="@crazy memes crazy fights" style="vertical-align:middle; width:20px; height:20px;"> <strong>@crazy memes crazy fights</strong> shows videos that make people mad.</li>`, image: `./img/crazymemescrazyfights.jpeg`},
+    two: {color:"#0000FF", label:`<img src="./img/karenclips.jpeg"> @karen clips`, shortName: "O2", description: `<li><img src="./img/karenclips.jpeg" alt="@karen clips" style="vertical-align:middle; width:20px; height:20px;"> <strong>@karen clips</strong> shows videos that make people mad.</li>`, image: `./img/karenclips.jpeg`},
+    three: {color:"#B22222", label: `<img src="./img/yoda4ever.jpeg"> @yoda4ever`, shortName: "Af1", description: `<li><img src="./img/yoda4ever.jpeg" alt="@yoda4ever" style="vertical-align:middle; width:20px; height:20px;"> <strong>@yoda4ever</strong> shows videos that make people warm.</li>`, image: `./img/yoda4ever.jpeg`},
+    four: {color:"#CD5C5C", label:`<img src="./img/buitengebieden.jpeg"> @buitengebieden`, shortName: "Af2", description: `<li><img src="./img/buitengebieden.jpeg" alt="@buitengebieden" style="vertical-align:middle; width:20px; height:20px;"> <strong>@buitengebieden</strong> shows videos that make people warm.</li>`, image: `./img/buitengebieden.jpeg`},
+    five: {color:"#FFFACD", label:`<img src="./img/wowterrifying.jpeg"> @wow terrifying`, shortName: "F1", description: `<li><img src="./img/wowterrifying.jpeg" alt="@wow terrifying" style="vertical-align:middle; width:20px; height:20px;"> <strong>@wow terrifying</strong> shows videos that make people scared.</li>`, image: `./img/wowterrifying.jpeg`},
+    six: {color:"#FFFF00", label:`<img src="./img/scaryclip.jpeg"> @scary clip`, shortName: "F2", description: `<li><img src="./img/scaryclip.jpeg" alt="@scary clip" style="vertical-align:middle; width:20px; height:20px;"> <strong>@scary clip</strong> shows videos that make people scared.</li>`, image: `./img/scaryclip.jpeg`},
+    seven: {color:"#7FFF00", label:`<img src="./img/theworldoffunny.jpeg"> @the world\nof funny`, shortName: "Am1", description: `<li><img src="./img/theworldoffunny.jpeg" alt="@the world of funny" style="vertical-align:middle; width:20px; height:20px;"> <strong>@the world of funny</strong> shows videos that make people laugh.</li>`, image: `./img/theworldoffunny.jpeg`},
+    eight: {color:"#7CFC00", label:`<img src="./img/viralmemeguy2.jpeg"> @viral meme\nguy 2`, shortName: "Am2", description: `<li><img src="./img/viralmemeguy2.jpeg" alt="@viral meme guy 2" style="vertical-align:middle; width:20px; height:20px;"> <strong>@viral meme guy 2</strong> shows videos that make people laugh.</li>`, image: `./img/viralmemeguy2.jpeg`}
+};
 
     // define each wheel
 
@@ -85,7 +85,7 @@ const exp = (function() {
 //getting descriptions for each account/wheel 
 function getDescriptions(wheel) {
     const descriptions = wheel.sectors.map(sector => sector.description);
-    return descriptions;
+    return `<ul>${descriptions.join('')}</ul>`; // Combine descriptions into an unordered list
 }
 
 //getting images for each account/wheel 
@@ -106,27 +106,27 @@ console.log(highMIwheel[0])
     const highMIImages = getImages(highMIwheel[0]);
     const lowMIImages = getImages(lowMIwheel[0]);
 
-    const descriptionListHigh = highMIDescription.join(" ");
-    const descriptionListLow = lowMIDescription.join(" ");
+//    const descriptionListHigh = highMIDescription.join(" ");
+//    const descriptionListLow = lowMIDescription.join(" ");
 
     console.log(lowMIDescription)
 
-    p.preloadHighMI = {
-        type: jsPsychPreload,
-        video: highMIVideoPaths,
-        message: `<p>Loading the first wheel that will show the following accounts:</p>${descriptionListHigh} <br>`,
-        on_success: function(file) {
-            console.log('Loaded: ', file);
-        },
-        on_error: function(file) {
-            console.error('Failed to load:', file);
-        }
+p.preloadHighMI = {
+    type: jsPsychPreload,
+    video: highMIVideoPaths,
+    message: `<p>Loading the first wheel that will show the following accounts:</p>${highMIDescription} <br>`,
+    on_success: function(file) {
+        console.log('Loaded: ', file);
+    },
+    on_error: function(file) {
+        console.error('Failed to load:', file);
+    }
 };
 
     p.preloadLowMI = {
         type: jsPsychPreload,
         video: lowMIVideoPaths,
-        message: `<p>Loading the second wheel that will show the following accounts:</p>${descriptionListLow} <br>`,
+        message: `<p>Loading the second wheel that will show the following accounts:</p>${lowMIDescription} <br>`,
         on_success: function(file) {
             console.log('Loaded: ', file);
     }
@@ -263,7 +263,7 @@ MORE WHEEL SET UP
                 <p>To finish this study, please continue to answer a few final questions.</p>
             </div>`
         ],
-
+/*
         intro_DescriptionsHigh: [
             `<div class='parent'>
                 <p>You will now spin the first wheel that will show videos from the following accounts:</p>
@@ -279,7 +279,7 @@ MORE WHEEL SET UP
                 </ul>
             </div>`
         ],
-
+*/
         intro_toSecond: [
             `<div class='parent'>
                 <p>You will now spin the second wheel.</p>
@@ -304,14 +304,14 @@ MORE WHEEL SET UP
             show_clickable_nav: true,
             post_trial_gap: 500,
         };
-
+/*
         const intro_DescriptionsHigh = {
             type: jsPsychInstructions,
             pages: html.intro_DescriptionsHigh,
             show_clickable_nav: true,
             post_trial_gap: 500,
         };
-
+*/
         const correctAnswers = {
             attnChk1 : `20`, 
             attnChk2 : `My level of immersion and engagement.`, 
@@ -397,14 +397,14 @@ MORE WHEEL SET UP
 
     p.intro = new MakeIntro();
 
-
+/*
     p.intro_DescriptionsLow = {
             type: jsPsychInstructions,
             pages: html.intro_DescriptionsLow,
             show_clickable_nav: true,
             post_trial_gap: 500,
         }; 
-
+*/
 
     p.intro_toSecond = {
             type: jsPsychInstructions,
