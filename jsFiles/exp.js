@@ -88,14 +88,16 @@ function getDescriptions(wheel) {
     return descriptions; // Combine descriptions into an unordered list
 }
 
+/*
 //getting images for each account/wheel 
 function getImages(wheel) {
     const images = wheel.sectors.map(sector => sector.image);
     console.log("Images:", images); // Log the images to the console
     return images; // Return the images array
-}
+} */
 
 console.log(highMIwheel[0])
+
     const highMIVideoPaths = getVideoPaths(highMIwheel[0]);
     const lowMIVideoPaths = getVideoPaths(lowMIwheel[0]);
 
@@ -103,15 +105,13 @@ console.log(highMIwheel[0])
     document.body.innerHTML += `<ul>${highMIDescription.join('')}</ul>`;
 
     const lowMIDescription = getDescriptions(lowMIwheel[0]);
-    console.log(highMIDescription)
+    document.body.innerHTML += `<ul>${lowMIDescription.join('')}</ul>`;
 
 //    const highMIImages = getImages(highMIwheel[0]);
 //    const lowMIImages = getImages(lowMIwheel[0]);
 
 //    const descriptionListHigh = highMIDescription.join(" ");
 //    const descriptionListLow = lowMIDescription.join(" ");
-
-    console.log(lowMIDescription)
 
 p.preloadHighMI = {
     type: jsPsychPreload,
@@ -152,7 +152,6 @@ MORE WHEEL SET UP
 
     let spin_num = 4; //change this to the number of spins. This will change the number of spins AFTER the wheel decelerates. 
 
-    let numOfWheels = 2 // change this to to the number of wheels present in the experiment.
 
     function generateUniqueVidNumber(max) {
         let newVidNumber;
@@ -428,6 +427,8 @@ MORE WHEEL SET UP
         scale_width: 600,data: {arrangement: jsPsych.timelineVariable('arrangement'), wheel: jsPsych.timelineVariable('wheel')},
         on_finish: function(data) {
             data.round = round;
+            spin_num = 4;
+            console.log(spin_num + " spin num after DV is done");
  //           let scoreArray = jsPsych.data.get().select('score').values;
  //           let outcomesArray = jsPsych.data.get().select('outcomes').values;
  //           data.score = scoreArray[scoreArray.length - 1];
@@ -673,7 +674,7 @@ MORE WHEEL SET UP
 
 const timeline = [
    // exp.consent,
-    exp.intro, 
+ //   exp.intro, 
     exp.preloadHighMI, 
     exp.task_highMI, 
     dv, 

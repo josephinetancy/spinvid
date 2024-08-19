@@ -1,5 +1,6 @@
 //checking data
 
+
 const jsPsych = initJsPsych({
     on_finish: (data) => {
         // Log all the collected data to the console
@@ -66,7 +67,7 @@ const getTotalErrors = (data, correctAnswers) => {
 };
 
 // code for spinner task
-const createSpinner = function(canvas, spinnerData, score, sectors, spin_num, numOfWheels) {
+const createSpinner = function(canvas, spinnerData, score, sectors, spin_num) {
 
   /* get context */
   const ctx = canvas.getContext("2d");
@@ -199,6 +200,7 @@ const createSpinner = function(canvas, spinnerData, score, sectors, spin_num, nu
         drawSector(sectors, getIndex());
         updateScore(parseFloat(sector.label), sector.color); //you need this to move to the other video 
         window.cancelAnimationFrame(req);
+
       };
     };
   };
@@ -206,25 +208,18 @@ const createSpinner = function(canvas, spinnerData, score, sectors, spin_num, nu
   /* generate random float in range min-max */
   const rand = (m, M) => Math.random() * (M - m) + m;
 
-  const updateScore = (label, color) => {
-   // score += points;
-   // spinnerData.score = score;
-      spin_num--; 
-      let s = spin_num <= 1 ? '' : 's';
-      if (spin_num <= 0) {
-          numOfWheels--; 
-          if (numOfWheels <= 0) {
-            spin_num = 4; //change this to the number of spins
-      }
-    }
-    spinNumMsg.innerHTML = `(${spin_num} spin${s} remaining)`; // this changes the number of spins AFTER it decelerates 
+const updateScore = (label, color) => {
+    spin_num--; 
+    let s = spin_num <= 1 ? '' : 's';
+
+    spinNumMsg.innerHTML = `(${spin_num} spin${s} remaining)`; // Update spin message
+
     setTimeout(() => {
-//      scoreMsg.innerHTML = `${score}`
-      isSpinning = false;
-      drawSector(sectors, null);
-      onWheel ? canvas.style.cursor = "grab" : canvas.style.cursor = "";
+        isSpinning = false;
+        drawSector(sectors, null);
+        onWheel ? canvas.style.cursor = "grab" : canvas.style.cursor = "";
     }, 1000);
-  };
+};
 
   const getIndex = () => {
     let normAngle = 0;
