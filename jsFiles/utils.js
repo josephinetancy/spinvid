@@ -319,12 +319,13 @@ const drawSector = (sectors, sector) => {
 
             return new Promise((resolve) => {
                 img.onload = () => {
-                    console.log(`Image ${i} - Width: ${img.width}, Height: ${img.height}`);
+//                    console.log(`Image ${i} - Width: ${img.width}, Height: ${img.height}`);
                     resolve({
                         img,
                         index: i,
                         xPosition: -15, // Adjust this if necessary
-                        yPosition: -200 // Initial position = 140
+                        yPosition: -200, // Initial position = 140
+                        size: 40 // Diameter of the circle (and image size)
                     });
                 };
             });
@@ -340,9 +341,14 @@ const drawSector = (sectors, sector) => {
                 ctx.translate(rad, rad);
                 ctx.rotate((ang + arc / 2) + arc);
 
-                const yPosition = data.yPosition; // Use calculated yPosition
-                ctx.drawImage(data.img, data.xPosition, yPosition, 30, 30);
-                console.log("Image drawn at position ", data.xPosition, yPosition);
+                // Draw circular clipping region
+                ctx.beginPath();
+                ctx.arc(data.xPosition + data.size / 2, data.yPosition + data.size / 2, data.size / 2, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.clip(); // Apply the circular clipping region
+
+                // Draw the image within the circular region
+                ctx.drawImage(data.img, data.xPosition, data.yPosition, data.size, data.size);
                 
                 ctx.restore(); // Restore context
             }
@@ -372,8 +378,6 @@ const drawSector = (sectors, sector) => {
                 const xPosition = 0;
                 ctx.strokeText(line, xPosition, yPosition);
                 ctx.fillText(line, xPosition, yPosition);
-                console.log("xPosition text " + xPosition);
-                console.log("yPosition text " + yPosition);
             });
 
             ctx.restore(); // Restore context after finishing sector
@@ -384,7 +388,6 @@ const drawSector = (sectors, sector) => {
 };
 
   drawSector(sectors, null);
-  console.log('canvas size', canvas.width, canvas.height);
 
   /* add event listners */
   canvas.addEventListener('mousedown', function(e) {
