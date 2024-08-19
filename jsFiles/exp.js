@@ -100,11 +100,13 @@ console.log(highMIwheel[0])
     const lowMIVideoPaths = getVideoPaths(lowMIwheel[0]);
 
     const highMIDescription = getDescriptions(highMIwheel[0]);
+    document.body.innerHTML += `<ul>${highMIDescription.join('')}</ul>`;
+    
     const lowMIDescription = getDescriptions(lowMIwheel[0]);
     console.log(highMIDescription)
 
-    const highMIImages = getImages(highMIwheel[0]);
-    const lowMIImages = getImages(lowMIwheel[0]);
+//    const highMIImages = getImages(highMIwheel[0]);
+//    const lowMIImages = getImages(lowMIwheel[0]);
 
 //    const descriptionListHigh = highMIDescription.join(" ");
 //    const descriptionListLow = lowMIDescription.join(" ");
