@@ -859,7 +859,7 @@ MORE WHEEL SET UP
 
 const timeline = [
    // exp.consent,
-  //  exp.intro, 
+    exp.intro, 
     exp.intro_DescriptionsHigh,
     exp.intro_DescriptionsHigh_example0,
     exp.intro_DescriptionsHigh_example1,
