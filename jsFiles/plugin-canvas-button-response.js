@@ -1,4 +1,5 @@
 let remainingSpins = 4; // Initial number of spins. Change this if want to change the number of spins.
+let remainingSpinsReset = 4;
 
 var jsPsychCanvasButtonResponse = (function (jspsych) {
   'use strict';
@@ -181,7 +182,7 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
           remainingSpins--; 
 
           if (remainingSpins <= 0) {
-            remainingSpins = 4; //CHANGE HERE TOO
+            remainingSpins = remainingSpinsReset; //CHANGE HERE TOO
           } 
 
       }
