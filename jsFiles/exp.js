@@ -108,6 +108,7 @@ console.log(highMIwheel[0])
 
     const highMIDescription = getDescriptions(highMIwheel[0]);
     const highMIexamples = getExamples(highMIwheel[0]);
+    console.log(highMIexamples)
     const lowMIexamples = getExamples(lowMIwheel[0]);
 
 
@@ -126,6 +127,22 @@ p.preloadHighMI = {
     type: jsPsychPreload,
     video: highMIVideoPaths,
     message: `<p>Now loading the first wheel... As a reminder, the wheel will show the following accounts:</p><ul>${highMIDescription.join('')}</ul><br>`,
+    on_success: function(file) {
+        console.log('Loaded: ', file);
+    },
+    on_error: function(file) {
+        console.error('Failed to load:', file);
+    }
+};
+
+
+p.preloadHighMI_examples = {
+    type: jsPsychPreload,
+    video: highMIexamples,
+    message: `<p>You're almost ready to start playing!</p>
+                <p>Before that, here's descriptions of the accounts on the first wheel:</p>
+                </p><ul>${highMIDescription.join('')}</ul><br>
+                <p>On the next page, you'll see examples for each time you land on all 4 accounts. </p>`,
     on_success: function(file) {
         console.log('Loaded: ', file);
     },
@@ -860,7 +877,8 @@ MORE WHEEL SET UP
 const timeline = [
    // exp.consent,
     exp.intro, 
-    exp.intro_DescriptionsHigh,
+    exp.preloadHighMI_examples, 
+   // exp.intro_DescriptionsHigh,
     exp.intro_DescriptionsHigh_example0,
     exp.intro_DescriptionsHigh_example1,
     exp.intro_DescriptionsHigh_example2,
