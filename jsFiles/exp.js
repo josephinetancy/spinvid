@@ -163,7 +163,7 @@ p.preloadLowMI = {
 p.preloadLowMI_examples = {
     type: jsPsychPreload,
     video: lowMIexamples,
-    message: `<p>Thank you. You will now play the second wheel! </p>
+    message: `<p>You will now play the second wheel! </p>
                 <p>Before that, here's descriptions of the accounts on the second wheel:</p>
                 </p><ul>${lowMIDescription.join('')}</ul><br>
                 <p>Now loading the examples for each time you land on each account on the second wheel. </p>`,
