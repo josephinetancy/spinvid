@@ -126,7 +126,7 @@ console.log(highMIwheel[0])
 p.preloadHighMI = {
     type: jsPsychPreload,
     video: highMIVideoPaths,
-    message: `<p>Now loading the first wheel... As a reminder, the wheel will show the following accounts:</p><ul>${highMIDescription.join('')}</ul><br>`,
+    message: `<p>Now loading the first wheel... </p> <p> As a reminder, the wheel will show the following accounts:</p><ul>${highMIDescription.join('')}</ul><br>`,
     on_success: function(file) {
         console.log('Loaded: ', file);
     },
@@ -142,7 +142,7 @@ p.preloadHighMI_examples = {
     message: `<p>You're almost ready to start playing!</p>
                 <p>Before that, here's descriptions of the accounts on the first wheel:</p>
                 </p><ul>${highMIDescription.join('')}</ul><br>
-                <p>On the next page, you'll see examples for each time you land on all 4 accounts. </p>`,
+                <p>Now loading the examples for each time you land on each account on the first wheel. </p>`,
     on_success: function(file) {
         console.log('Loaded: ', file);
     },
@@ -154,9 +154,24 @@ p.preloadHighMI_examples = {
     p.preloadLowMI = {
         type: jsPsychPreload,
         video: lowMIVideoPaths,
-        message: `<p> Now loading the second wheel... As a reminder, the wheel will show the following accounts:</p>${lowMIDescription.join('')}<br>`,
+        message: `<p> Now loading the second wheel... </p> <p> As a reminder, the wheel will show the following accounts:</p>${lowMIDescription.join('')}<br>`,
         on_success: function(file) {
             console.log('Loaded: ', file);
+    }
+};
+
+p.preloadlowMI_examples = {
+    type: jsPsychPreload,
+    video: lowMIexamples,
+    message: `<p>You're almost ready to start playing!</p>
+                <p>Before that, here's descriptions of the accounts on the second wheel:</p>
+                </p><ul>${lowMIDescription.join('')}</ul><br>
+                <p>Now loading the examples for each time you land on each account on the second wheel. </p>`,
+    on_success: function(file) {
+        console.log('Loaded: ', file);
+    },
+    on_error: function(file) {
+        console.error('Failed to load:', file);
     }
 };
 
@@ -417,7 +432,7 @@ MORE WHEEL SET UP
                 <p>You'll now ready to spin the second wheel! </p>
                 <p>Before that, here's descriptions of the accounts on the second wheel:</p>
                 </p><ul>${lowMIDescription.join('')}</ul><br>
-                <p>On the next page, you'll see examples for each time you land on all 4 accounts. </p>
+                <p>On the next page, you'll see examples for each time you land on each accounts. </p>
             </div>`
         ],
     };
@@ -887,7 +902,8 @@ const timeline = [
     exp.preloadHighMI, 
     exp.task_highMI,
     dv, 
-   exp.intro_toSecond,
+    exp.intro_HighDescriptionsAfterExamples,
+ //  exp.intro_toSecond,
    exp.intro_DescriptionsLow,
    exp.intro_DescriptionsLow_example0,
    exp.intro_DescriptionsLow_example1,
