@@ -163,7 +163,7 @@ p.preloadHighMI_examples = {
 p.preloadlowMI_examples = {
     type: jsPsychPreload,
     video: lowMIexamples,
-    message: `<p>You're almost ready to start playing!</p>
+    message: `<p>Thank you. You will now play the second wheel! </p>
                 <p>Before that, here's descriptions of the accounts on the second wheel:</p>
                 </p><ul>${lowMIDescription.join('')}</ul><br>
                 <p>Now loading the examples for each time you land on each account on the second wheel. </p>`,
@@ -902,9 +902,9 @@ const timeline = [
     exp.preloadHighMI, 
     exp.task_highMI,
     dv, 
-    exp.intro_HighDescriptionsAfterExamples,
+ //   exp.intro_LowDescriptionsAfterExamples,
  //  exp.intro_toSecond,
-   exp.intro_DescriptionsLow,
+    exp.preloadLowMI_examples, 
    exp.intro_DescriptionsLow_example0,
    exp.intro_DescriptionsLow_example1,
    exp.intro_DescriptionsLow_example2,
