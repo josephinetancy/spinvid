@@ -151,7 +151,7 @@ p.preloadHighMI_examples = {
     }
 };
 
-    p.preloadLowMI = {
+p.preloadLowMI = {
         type: jsPsychPreload,
         video: lowMIVideoPaths,
         message: `<p> Now loading the second wheel... </p> <p> As a reminder, the wheel will show the following accounts:</p>${lowMIDescription.join('')}<br>`,
@@ -160,7 +160,7 @@ p.preloadHighMI_examples = {
     }
 };
 
-p.preloadlowMI_examples = {
+p.preloadLowMI_examples = {
     type: jsPsychPreload,
     video: lowMIexamples,
     message: `<p>Thank you. You will now play the second wheel! </p>
