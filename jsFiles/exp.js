@@ -15,14 +15,14 @@ const exp = (function() {
 
     // define each wedge
     const wedges = {
-    one: {color:"#806b00", label:`<img src="./img/crazymemescrazyfights.jpeg"> @crazy memes\ncrazy fights`, shortName: "O1", description: `<li><img src="./img/crazymemescrazyfights.jpeg" alt="@crazy memes crazy fights" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@crazy memes crazy fights</strong> shows videos that make people mad.</li>`, example: `./example/crazymemescrazyfights.mp4`, descripExample: `<img src="./img/crazymemescrazyfights.jpeg" alt="@crazy memes crazy fights" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@crazy memes crazy fights</strong> that shows videos that make people mad.`},
-    two: {color:"#b100fe", label:`<img src="./img/karenclips.jpeg"> @karen clips`, shortName: "O2", description: `<li><img src="./img/karenclips.jpeg" alt="@karen clips" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@karen clips</strong> shows videos that make people mad.</li>`, example: `./example/karenclips.mp4`, descripExample: `<img src="./img/karenclips.jpeg" alt="@karen clips" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@karen clips</strong> that shows videos that make people mad.`},
-    three: {color:"#ffd800", label: `<img src="./img/yoda4ever.jpeg"> @yoda4ever`, shortName: "Af1", description: `<li><img src="./img/yoda4ever.jpeg" alt="@yoda4ever" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@yoda4ever</strong> shows videos that make people warm.</li>`, example: `./example/yoda4ever.mp4`, descripExample: `<li><img src="./img/yoda4ever.jpeg" alt="@yoda4ever" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"><strong>@yoda4ever</strong> that shows videos that make people warm.`},
-    four: {color:"#800001", label:`<img src="./img/buitengebieden.jpeg"> @buitengebieden`, shortName: "Af2", description: `<li><img src="./img/buitengebieden.jpeg" alt="@buitengebieden" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@buitengebieden</strong> shows videos that make people warm.</li>`, example: `./example/buitengebieden.mp4`, descripExample: `<img src="./img/buitengebieden.jpeg" alt="@buitengebieden" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@buitengebieden</strong> that shows videos that make people warm.`},
-    five: {color:"#fe6a00", label:`<img src="./img/wowterrifying.jpeg"> @wow terrifying`, shortName: "F1", description: `<li><img src="./img/wowterrifying.jpeg" alt="@wow terrifying" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@wow terrifying</strong> shows videos that make people scared.</li>`, example: `./example/wowterrifying.mp4`, descripExample:`<img src="./img/wowterrifying.jpeg" alt="@wow terrifying" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@wow terrifying</strong> that shows videos that make people scared.`},
-    six: {color:"#007f0e", label:`<img src="./img/scaryclip.jpeg"> @scary clip`, shortName: "F2", description: `<li><img src="./img/scaryclip.jpeg" alt="@scary clip" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@scary clip</strong> shows videos that make people scared.</li>`, example: `./example/scaryclip.mp4`, descripExample: `<img src="./img/scaryclip.jpeg" alt="@scary clip" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@scary clip</strong> that shows videos that make people scared.`},
-    seven: {color:"#fe0000", label:`<img src="./img/theworldoffunny.jpeg"> @the world\nof funny`, shortName: "Am1", description: `<li><img src="./img/theworldoffunny.jpeg" alt="@the world of funny" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@the world of funny</strong> shows videos that make people laugh.</li>`, example: `./example/theworldoffunny.mp4`, descripExample: `<img src="./img/theworldoffunny.jpeg" alt="@the world of funny" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@the world of funny</strong> that shows videos that make people laugh.`},
-    eight: {color:"#0094fe", label:`<img src="./img/viralmemeguy2.jpeg"> @viral meme\nguy 2`, shortName: "Am2", description: `<li><img src="./img/viralmemeguy2.jpeg" alt="@viral meme guy 2" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@viral meme guy 2</strong> shows videos that make people laugh.</li>`, example: `./example/viralmemeguy.mp4`, descripExample: `<img src="./img/viralmemeguy2.jpeg" alt="@viral meme guy 2" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@viral meme guy 2</strong> shows videos that make people laugh.`}
+    one: {color:"#806b00", label:`<img src="./img/crazymemescrazyfights.jpeg"> @crazy memes\ncrazy fights`, shortName: "O1", description: `<li><img src="./img/crazymemescrazyfights.jpeg" alt="@crazy memes crazy fights" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@crazy memes crazy fights</strong> shows videos that make people mad.</li>`, example: `./example/crazymemescrazyfights.mp4`, descripExample: `<img src="./img/crazymemescrazyfights.jpeg" alt="@crazy memes crazy fights" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@crazy memes crazy fights</strong>`},
+    two: {color:"#b100fe", label:`<img src="./img/karenclips.jpeg"> @karen clips`, shortName: "O2", description: `<li><img src="./img/karenclips.jpeg" alt="@karen clips" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@karen clips</strong> shows videos that make people mad.</li>`, example: `./example/karenclips.mp4`, descripExample: `<img src="./img/karenclips.jpeg" alt="@karen clips" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@karen clips</strong>`},
+    three: {color:"#ffd800", label: `<img src="./img/yoda4ever.jpeg"> @yoda4ever`, shortName: "Af1", description: `<li><img src="./img/yoda4ever.jpeg" alt="@yoda4ever" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@yoda4ever</strong> shows videos that make people warm.</li>`, example: `./example/yoda4ever.mp4`, descripExample: `<li><img src="./img/yoda4ever.jpeg" alt="@yoda4ever" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"><strong>@yoda4ever</strong>`},
+    four: {color:"#800001", label:`<img src="./img/buitengebieden.jpeg"> @buitengebieden`, shortName: "Af2", description: `<li><img src="./img/buitengebieden.jpeg" alt="@buitengebieden" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@buitengebieden</strong> shows videos that make people warm.</li>`, example: `./example/buitengebieden.mp4`, descripExample: `<img src="./img/buitengebieden.jpeg" alt="@buitengebieden" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@buitengebieden</strong>`},
+    five: {color:"#fe6a00", label:`<img src="./img/wowterrifying.jpeg"> @wow terrifying`, shortName: "F1", description: `<li><img src="./img/wowterrifying.jpeg" alt="@wow terrifying" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@wow terrifying</strong> shows videos that make people scared.</li>`, example: `./example/wowterrifying.mp4`, descripExample:`<img src="./img/wowterrifying.jpeg" alt="@wow terrifying" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@wow terrifying</strong>`},
+    six: {color:"#007f0e", label:`<img src="./img/scaryclip.jpeg"> @scary clip`, shortName: "F2", description: `<li><img src="./img/scaryclip.jpeg" alt="@scary clip" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@scary clip</strong> shows videos that make people scared.</li>`, example: `./example/scaryclip.mp4`, descripExample: `<img src="./img/scaryclip.jpeg" alt="@scary clip" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@scary clip</strong>`},
+    seven: {color:"#fe0000", label:`<img src="./img/theworldoffunny.jpeg"> @the world\nof funny`, shortName: "Am1", description: `<li><img src="./img/theworldoffunny.jpeg" alt="@the world of funny" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@the world of funny</strong> shows videos that make people laugh.</li>`, example: `./example/theworldoffunny.mp4`, descripExample: `<img src="./img/theworldoffunny.jpeg" alt="@the world of funny" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@the world of funny</strong>`},
+    eight: {color:"#0094fe", label:`<img src="./img/viralmemeguy2.jpeg"> @viral meme\nguy 2`, shortName: "Am2", description: `<li><img src="./img/viralmemeguy2.jpeg" alt="@viral meme guy 2" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@viral meme guy 2</strong> shows videos that make people laugh.</li>`, example: `./example/viralmemeguy.mp4`, descripExample: `<img src="./img/viralmemeguy2.jpeg" alt="@viral meme guy 2" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@viral meme guy 2</strong>`}
 };
 
     // define each wheel
@@ -139,10 +139,9 @@ p.preloadHighMI = {
 p.preloadHighMI_examples = {
     type: jsPsychPreload,
     video: highMIexamples,
-    message: `<p>You're almost ready to start playing!</p>
-                <p>Before that, here's descriptions of the accounts on the first wheel:</p>
+    message: ` <p>Before you start spinning the wheel, please read through the descriptions of the accounts on your first wheel:</p>
                 </p><ul>${highMIDescription.join('')}</ul><br>
-                <p>Now loading the examples for each time you land on each account on the first wheel. </p>`,
+                <p>Now loading a quick showcase of all four accounts.. </p>`,
     on_success: function(file) {
         console.log('Loaded: ', file);
     },
@@ -276,9 +275,9 @@ MORE WHEEL SET UP
                 <p><strong>Welcome to our study on the psychological effects of social media!</strong></p>
                 <p>We're exploring how social media content affects immersion and engagement. </p>
                 <p>All you'll need to do is to watch a few Twitter videos and report how immersed and engaged you felt. </p> 
-                <p>To add a fun twist, you'll get to control which videos you watch by spinning a wheel. </p>
-                <p>Each spin will lead you to new video based on where the wheel lands. </p> 
-                <p> Click "Next" to start! </p>
+                <p>To add a fun twist, you'll get to control which videos you watch by spinning a wheel, that looks like this: </p>
+                <img src="./img/examplewheel.jpeg" style="width:30%; height:auto;">
+                <p> Click "Next" to learn more about the wheel! </p>
             </div>`,
 /*
             `<div class='parent'>
@@ -288,9 +287,13 @@ MORE WHEEL SET UP
             </div>`, */
 
             `<div class='parent'>
-                <p>You'll be spinning two wheels for 20 spins, each featuring 4 unique Twitter or "X" accounts. </p>
-                <p> Each time you spin the wheel and land on the account, you'll watch a short video based on the account you land on.</p>
-                <p>After spinning the wheel 20 times, you'll report how immersed and engaged you felt and move to the next wheel. </p>
+                <p>Each wheel has 4 unique Twitter accounts. </p>
+                <p>When you spin the wheel, you'll land on an account and watch the video based on that account. </p> 
+                <p>For example, if you land on the account "@Yoda4ever", you'll watch a video from "@Yoda4ever" and so forth.</p>
+                <p>You'll spin the wheel 20 times. Then, you'll report how immersed and engaged you felt and move on to the next wheel. </p>
+                <p>You'll spin two wheels in total. </p>
+                <img src="./img/examplewheel.jpeg" style="width:30%; height:auto;">
+                <p> Click "Next" to learn more about how this works!</p>
             </div>`
             ],
 
@@ -312,54 +315,58 @@ MORE WHEEL SET UP
                 <p>You're almost ready to start playing!</p>
                 <p>Before that, here's descriptions of the accounts on the first wheel:</p>
                 </p><ul>${highMIDescription.join('')}</ul><br>
-                <p>On the next page, you'll see examples for each time you land on all 4 accounts. </p>
+                <p>On the next page, you'll go through one-by-one, what examples of the 4 accounts will look like. </p>
             </div>`
         ], 
 
         intro_DescriptionsLow_example0: [
             `<div class='parent'>
-             <p>Watch the video below for when you land on the account: </p>
-            <p>${lowMIDescripExamples[0]}</p>
+             <p>For example, when you land on the account, ${lowMIDescripExamples[0]}, you'll watch a video from ${lowMIDescripExamples[0]}. </p>
+             <p>To see how this works, watch the video below of a player landing on ${lowMIDescripExamples[0]}. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${lowMIexamples[0]}" style="width:60%; height:60%;" controls>
                 Your browser does not support the video tag.
             </video>
+            <p>Click "Next" to learn more about the second account. </p>
             </p>
         </div>`
         ],
 
         intro_DescriptionsLow_example1: [
             `<div class='parent'>
-             <p>Watch below for when you land on the account: </p>
-            <p>${lowMIDescripExamples[1]}</p>
+            <p>For example, when you land on the account, ${lowMIDescripExamples[1]}, you'll watch a video from ${lowMIDescripExamples[1]}. </p>
+            <p>To see how this works, watch the video below of a player landing on ${lowMIDescripExamples[1]}. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${lowMIexamples[1]}" style="width:60%; height:60%;" controls>
                 Your browser does not support the video tag.
             </video>
+             <p>Click "Next" to learn more about the third account. </p>
             </p>
         </div>`
         ],
 
         intro_DescriptionsLow_example2: [
             `<div class='parent'>
-             <p>Watch below for when you land on the account: </p>
-            <p>${lowMIDescripExamples[2]}</p>
+           <p>For example, when you land on the account, ${lowMIDescripExamples[2]}, you'll watch a video from ${lowMIDescripExamples[2]}. </p>
+            <p>To see how this works, watch the video below of a player landing on ${lowMIDescripExamples[2]}. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${lowMIexamples[2]}" style="width:60%; height:60%;" controls>
                 Your browser does not support the video tag.
             </video>
+             <p>Click "Next" to learn more about the last account. </p>
             </p>
         </div>`
         ],
 
         intro_DescriptionsLow_example3: [
             `<div class='parent'>
-             <p>Watch below for when you land on the account: </p>
-            <p>${lowMIDescripExamples[3]}</p>
+           <p>For example, when you land on the account, ${lowMIDescripExamples[3]}, you'll watch a video from ${lowMIDescripExamples[2]}. </p>
+            <p>To see how this works, watch the video below of a player landing on ${lowMIDescripExamples[3]}. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${lowMIexamples[3]}" style="width:60%; height:60%;" controls>
                 Your browser does not support the video tag.
             </video>
+            <p>Click "Next" to start playing the second wheel.</p>
             </p>
         </div>`
         ],
@@ -372,48 +379,51 @@ MORE WHEEL SET UP
 
                 intro_DescriptionsHigh_example0: [
             `<div class='parent'>
-             <p>Watch the video below for when you land on the account: </p>
-            <p>${highMIDescripExamples[0]}</p>
+           <p>For example, when you land on the account, ${highMIDescripExamples[0]}, you'll watch a video from ${highMIDescripExamples[0]}. </p>
+            <p>To see how this works, watch the video below of a player landing on ${highMIDescripExamples[0]}. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${highMIexamples[0]}" style="width:60%; height:60%;" controls>
                 Your browser does not support the video tag.
             </video>
+            <p>Click "Next" to learn more about the second account. </p>
             </p>
         </div>`
         ],
 
         intro_DescriptionsHigh_example1: [
             `<div class='parent'>
-             <p>Watch below for when you land on the account: </p>
-            <p>${highMIDescripExamples[1]}</p>
+            <p>For example, when you land on the account, ${highMIDescripExamples[1]}, you'll watch a video from ${highMIDescripExamples[1]}. </p>
+            <p>To see how this works, watch the video below of a player landing on ${highMIDescripExamples[1]}. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${highMIexamples[1]}" style="width:60%; height:60%;" controls>
                 Your browser does not support the video tag.
             </video>
+            <p>Click "Next" to learn more about the third account. </p>
             </p>
         </div>`
         ],
 
         intro_DescriptionsHigh_example2: [
             `<div class='parent'>
-             <p>Watch below for when you land on the account: </p>
-            <p>${highMIDescripExamples[2]}</p>
+            <p>For example, when you land on the account, ${highMIDescripExamples[2]}, you'll watch a video from ${highMIDescripExamples[2]}. </p>
+            <p>To see how this works, watch the video below of a player landing on ${highMIDescripExamples[2]}. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${highMIexamples[2]}" style="width:60%; height:60%;" controls>
                 Your browser does not support the video tag.
             </video>
+            <p>Click "Next" to learn more about the last account. </p>
             </p>
         </div>`
         ],
 
         intro_DescriptionsHigh_example3: [
             `<div class='parent'>
-             <p>Watch below for when you land on the account: </p>
-            <p>${highMIDescripExamples[3]}</p>
-            <p>Please make sure your volume is turned on. </p>
+            <p>For example, when you land on the account, ${highMIDescripExamples[3]}, you'll watch a video from ${highMIDescripExamples[3]}. </p>
+            <p>To see how this works, watch the video below of a player landing on ${highMIDescripExamples[3]}. </p>
             <video src= "${highMIexamples[3]}" style="width:60%; height:60%;" controls>
                 Your browser does not support the video tag.
             </video>
+            <p>Click "Next" to start playing the first wheel.</p>
             </p>
         </div>`
         ],
@@ -893,7 +903,7 @@ const timeline = [
    // exp.consent,
     exp.intro, 
     exp.preloadHighMI_examples, 
-   // exp.intro_DescriptionsHigh,
+    exp.intro_DescriptionsHigh,
     exp.intro_DescriptionsHigh_example0,
     exp.intro_DescriptionsHigh_example1,
     exp.intro_DescriptionsHigh_example2,
