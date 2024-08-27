@@ -276,7 +276,7 @@ MORE WHEEL SET UP
                 <p>We're exploring how social media content affects immersion and engagement. </p>
                 <p>All you'll need to do is to watch a few Twitter videos and report how immersed and engaged you felt. </p> 
                 <p>To add a fun twist, you'll get to control which videos you watch by spinning a wheel, that looks like this: </p>
-                <img src="./img/examplewheel.jpeg" style="width:30%; height:auto;">
+                <img src="./img/spin.gif" style="width:80%; height:auto;">
                 <p> Click "Next" to learn more about the wheel! </p>
             </div>`,
 /*
@@ -321,7 +321,7 @@ MORE WHEEL SET UP
 
         intro_DescriptionsLow_example0: [
             `<div class='parent'>
-             <p>For example, when you land on the account, ${lowMIDescripExamples[0]}, you'll watch a video from ${lowMIDescripExamples[0]}. </p>
+             <p>For example, when you land on the account, ${lowMIDescripExamples[0]}, you'll watch a video from that account. </p>
              <p>To see how this works, watch the video below of a player landing on ${lowMIDescripExamples[0]}. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${lowMIexamples[0]}" style="width:60%; height:60%;" controls>
@@ -334,7 +334,7 @@ MORE WHEEL SET UP
 
         intro_DescriptionsLow_example1: [
             `<div class='parent'>
-            <p>For example, when you land on the account, ${lowMIDescripExamples[1]}, you'll watch a video from ${lowMIDescripExamples[1]}. </p>
+            <p>For example, when you land on the account, ${lowMIDescripExamples[1]}, you'll watch a video from that account. </p>
             <p>To see how this works, watch the video below of a player landing on ${lowMIDescripExamples[1]}. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${lowMIexamples[1]}" style="width:60%; height:60%;" controls>
@@ -347,7 +347,7 @@ MORE WHEEL SET UP
 
         intro_DescriptionsLow_example2: [
             `<div class='parent'>
-           <p>For example, when you land on the account, ${lowMIDescripExamples[2]}, you'll watch a video from ${lowMIDescripExamples[2]}. </p>
+           <p>For example, when you land on the account, ${lowMIDescripExamples[2]}, you'll watch a video from that account. </p>
             <p>To see how this works, watch the video below of a player landing on ${lowMIDescripExamples[2]}. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${lowMIexamples[2]}" style="width:60%; height:60%;" controls>
@@ -360,7 +360,7 @@ MORE WHEEL SET UP
 
         intro_DescriptionsLow_example3: [
             `<div class='parent'>
-           <p>For example, when you land on the account, ${lowMIDescripExamples[3]}, you'll watch a video from ${lowMIDescripExamples[2]}. </p>
+           <p>For example, when you land on the account, ${lowMIDescripExamples[3]}, you'll watch a video from that account. </p>
             <p>To see how this works, watch the video below of a player landing on ${lowMIDescripExamples[3]}. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${lowMIexamples[3]}" style="width:60%; height:60%;" controls>
@@ -379,7 +379,7 @@ MORE WHEEL SET UP
 
                 intro_DescriptionsHigh_example0: [
             `<div class='parent'>
-           <p>For example, when you land on the account, ${highMIDescripExamples[0]}, you'll watch a video from ${highMIDescripExamples[0]}. </p>
+           <p>For example, when you land on the account, ${highMIDescripExamples[0]}, you'll watch a video from that account. </p>
             <p>To see how this works, watch the video below of a player landing on ${highMIDescripExamples[0]}. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${highMIexamples[0]}" style="width:60%; height:60%;" controls>
@@ -392,7 +392,7 @@ MORE WHEEL SET UP
 
         intro_DescriptionsHigh_example1: [
             `<div class='parent'>
-            <p>For example, when you land on the account, ${highMIDescripExamples[1]}, you'll watch a video from ${highMIDescripExamples[1]}. </p>
+            <p>For example, when you land on the account, ${highMIDescripExamples[1]}, you'll watch a video from that account. </p>
             <p>To see how this works, watch the video below of a player landing on ${highMIDescripExamples[1]}. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${highMIexamples[1]}" style="width:60%; height:60%;" controls>
@@ -405,7 +405,7 @@ MORE WHEEL SET UP
 
         intro_DescriptionsHigh_example2: [
             `<div class='parent'>
-            <p>For example, when you land on the account, ${highMIDescripExamples[2]}, you'll watch a video from ${highMIDescripExamples[2]}. </p>
+            <p>For example, when you land on the account, ${highMIDescripExamples[2]}, you'll watch a video from that account. </p>
             <p>To see how this works, watch the video below of a player landing on ${highMIDescripExamples[2]}. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${highMIexamples[2]}" style="width:60%; height:60%;" controls>
@@ -418,7 +418,7 @@ MORE WHEEL SET UP
 
         intro_DescriptionsHigh_example3: [
             `<div class='parent'>
-            <p>For example, when you land on the account, ${highMIDescripExamples[3]}, you'll watch a video from ${highMIDescripExamples[3]}. </p>
+            <p>For example, when you land on the account, ${highMIDescripExamples[3]}, you'll watch a video from that account. </p>
             <p>To see how this works, watch the video below of a player landing on ${highMIDescripExamples[3]}. </p>
             <video src= "${highMIexamples[3]}" style="width:60%; height:60%;" controls>
                 Your browser does not support the video tag.
@@ -903,7 +903,7 @@ const timeline = [
    // exp.consent,
     exp.intro, 
     exp.preloadHighMI_examples, 
-    exp.intro_DescriptionsHigh,
+   // exp.intro_DescriptionsHigh,
     exp.intro_DescriptionsHigh_example0,
     exp.intro_DescriptionsHigh_example1,
     exp.intro_DescriptionsHigh_example2,
