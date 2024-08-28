@@ -17,7 +17,7 @@ const exp = (function() {
     const wedges = {
     one: {color:"#806b00", label:`<img src="./img/crazymemescrazyfights.jpeg"> @crazy memes\ncrazy fights`, shortName: "O1", description: `<li><img src="./img/crazymemescrazyfights.jpeg" alt="@crazy memes crazy fights" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@crazy memes crazy fights</strong> shows videos that make people mad.</li>`, example: `./example/crazymemescrazyfights.mp4`, descripExample: `<img src="./img/crazymemescrazyfights.jpeg" alt="@crazy memes crazy fights" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@crazy memes crazy fights</strong>`},
     two: {color:"#b100fe", label:`<img src="./img/karenclips.jpeg"> @karen clips`, shortName: "O2", description: `<li><img src="./img/karenclips.jpeg" alt="@karen clips" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@karen clips</strong> shows videos that make people mad.</li>`, example: `./example/karenclips.mp4`, descripExample: `<img src="./img/karenclips.jpeg" alt="@karen clips" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@karen clips</strong>`},
-    three: {color:"#ffd800", label: `<img src="./img/yoda4ever.jpeg"> @yoda4ever`, shortName: "Af1", description: `<li><img src="./img/yoda4ever.jpeg" alt="@yoda4ever" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@yoda4ever</strong> shows videos that make people warm.</li>`, example: `./example/yoda4ever.mp4`, descripExample: `<li><img src="./img/yoda4ever.jpeg" alt="@yoda4ever" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"><strong>@yoda4ever</strong>`},
+    three: {color:"#ffd800", label: `<img src="./img/yoda4ever.jpeg"> @yoda4ever`, shortName: "Af1", description: `<li><img src="./img/yoda4ever.jpeg" alt="@yoda4ever" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@yoda4ever</strong> shows videos that make people warm.</li>`, example: `./example/yoda4ever.mp4`, descripExample: `<img src="./img/yoda4ever.jpeg" alt="@yoda4ever" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"><strong>@yoda4ever</strong>`},
     four: {color:"#800001", label:`<img src="./img/buitengebieden.jpeg"> @buitengebieden`, shortName: "Af2", description: `<li><img src="./img/buitengebieden.jpeg" alt="@buitengebieden" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@buitengebieden</strong> shows videos that make people warm.</li>`, example: `./example/buitengebieden.mp4`, descripExample: `<img src="./img/buitengebieden.jpeg" alt="@buitengebieden" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@buitengebieden</strong>`},
     five: {color:"#fe6a00", label:`<img src="./img/wowterrifying.jpeg"> @wow terrifying`, shortName: "F1", description: `<li><img src="./img/wowterrifying.jpeg" alt="@wow terrifying" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@wow terrifying</strong> shows videos that make people scared.</li>`, example: `./example/wowterrifying.mp4`, descripExample:`<img src="./img/wowterrifying.jpeg" alt="@wow terrifying" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@wow terrifying</strong>`},
     six: {color:"#007f0e", label:`<img src="./img/scaryclip.jpeg"> @scary clip`, shortName: "F2", description: `<li><img src="./img/scaryclip.jpeg" alt="@scary clip" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@scary clip</strong> shows videos that make people scared.</li>`, example: `./example/scaryclip.mp4`, descripExample: `<img src="./img/scaryclip.jpeg" alt="@scary clip" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"> <strong>@scary clip</strong>`},
@@ -139,9 +139,7 @@ p.preloadHighMI = {
 p.preloadHighMI_examples = {
     type: jsPsychPreload,
     video: highMIexamples,
-    message: ` <p>Before you start spinning the wheel, please read through the descriptions of the accounts on your first wheel:</p>
-                </p><ul>${highMIDescription.join('')}</ul><br>
-                <p>Now loading a quick showcase of all four accounts.. </p>`,
+    message: ` <p>Now loading a quick preview of all four accounts on the first wheel... </p>`,
     on_success: function(file) {
         console.log('Loaded: ', file);
     },
@@ -162,10 +160,7 @@ p.preloadLowMI = {
 p.preloadLowMI_examples = {
     type: jsPsychPreload,
     video: lowMIexamples,
-    message: `<p>You will now play the second wheel! </p>
-                <p>Before that, here's descriptions of the accounts on the second wheel:</p>
-                </p><ul>${lowMIDescription.join('')}</ul><br>
-                <p>Now loading the examples for each time you land on each account on the second wheel. </p>`,
+    message: `<p>Now loading a quick preview of all four accounts on the second wheel... </p>`,
     on_success: function(file) {
         console.log('Loaded: ', file);
     },
@@ -275,7 +270,7 @@ MORE WHEEL SET UP
                 <p><strong>Welcome to our study on the psychological effects of social media!</strong></p>
                 <p>We're exploring how social media content affects immersion and engagement. </p>
                 <p>All you'll need to do is to watch a few Twitter videos and report how immersed and engaged you felt. </p> 
-                <p>To add a fun twist, you'll get to control which videos you watch by spinning a wheel, that looks like this: </p>
+                <p>To add a fun twist, you'll get to control which videos you watch by spinning a wheel that looks like this: </p>
                 <img src="./img/spin.gif" style="width:80%; height:auto;">
                 <p> Click "Next" to learn more about the wheel! </p>
             </div>`,
@@ -293,7 +288,7 @@ MORE WHEEL SET UP
                 <p>You'll spin the wheel 20 times. Then, you'll report how immersed and engaged you felt and move on to the next wheel. </p>
                 <p>You'll spin two wheels in total. </p>
                 <img src="./img/examplewheel.jpeg" style="width:30%; height:auto;">
-                <p> Click "Next" to learn more about how this works!</p>
+                <p> Click "Next" to watch a preview of the 4 accounts!</p>
             </div>`
             ],
 
@@ -312,10 +307,9 @@ MORE WHEEL SET UP
 
         intro_DescriptionsHigh: [
             `<div class='parent'>
-                <p>You're almost ready to start playing!</p>
-                <p>Before that, here's descriptions of the accounts on the first wheel:</p>
+                <p>Here are the descriptions of the accounts on the first wheel:</p>
                 </p><ul>${highMIDescription.join('')}</ul><br>
-                <p>On the next page, you'll go through one-by-one, what examples of the 4 accounts will look like. </p>
+                <p>On the next page, you'll preview examples of each of the accounts one-by-one. </p>
             </div>`
         ], 
 
@@ -442,7 +436,7 @@ MORE WHEEL SET UP
                 <p>You'll now ready to spin the second wheel! </p>
                 <p>Before that, here's descriptions of the accounts on the second wheel:</p>
                 </p><ul>${lowMIDescription.join('')}</ul><br>
-                <p>On the next page, you'll see examples for each time you land on each accounts. </p>
+                <p>Click "Next" to watch a preview of the 4 accounts! </p>
             </div>`
         ],
     };
@@ -903,7 +897,7 @@ const timeline = [
    // exp.consent,
     exp.intro, 
     exp.preloadHighMI_examples, 
-   // exp.intro_DescriptionsHigh,
+    exp.intro_DescriptionsHigh,
     exp.intro_DescriptionsHigh_example0,
     exp.intro_DescriptionsHigh_example1,
     exp.intro_DescriptionsHigh_example2,
@@ -913,7 +907,7 @@ const timeline = [
     exp.task_highMI,
     dv, 
  //   exp.intro_LowDescriptionsAfterExamples,
- //  exp.intro_toSecond,
+  exp.intro_toSecond,
     exp.preloadLowMI_examples, 
    exp.intro_DescriptionsLow_example0,
    exp.intro_DescriptionsLow_example1,
