@@ -559,22 +559,22 @@ MORE WHEEL SET UP
                 {
                     prompt: `${lowMIDescripExamples[0]} makes people...`, 
                     name: `attnChk_low0`, 
-                    options: [ `${lowMIEmotion[2]}`, `${lowMIEmotion[0]}`, `${lowMIEmotion[3]}`,`${lowMIEmotion[1]}`],
+                    options: [ `${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
                 },
                 {
                     prompt: `${lowMIDescripExamples[1]} makes people...`, 
                     name: `attnChk_low1`, 
-                    options: [`${lowMIEmotion[2]}`, `${lowMIEmotion[0]}`, `${lowMIEmotion[3]}`,`${lowMIEmotion[1]}`],
+                    options: [`${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
                 },
                 {
                     prompt: `${lowMIDescripExamples[2]} makes people...`, 
                     name: `attnChk_low2`, 
-                    options: [`${lowMIEmotion[2]}`, `${lowMIEmotion[0]}`, `${lowMIEmotion[3]}`,`${lowMIEmotion[1]}`],
+                    options: [`${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
                 },
                 {
                     prompt: `${lowMIDescripExamples[3]} makes people...`, 
                     name: `attnChk_low3`, 
-                    options: [`${lowMIEmotion[2]}`, `${lowMIEmotion[0]}`, `${lowMIEmotion[3]}`,`${lowMIEmotion[1]}`],
+                    options: [`${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
                 },
             ],
             randomize_question_order: true,
@@ -982,7 +982,7 @@ MORE WHEEL SET UP
 
 const timeline = [
    // exp.consent,
-    exp.intro_preChk,
+   exp.intro_preChk,
     exp.intro, 
     exp.preloadHighMI_examples, 
     exp.intro_DescriptionsHigh_example0,
