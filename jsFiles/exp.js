@@ -30,42 +30,42 @@ const exp = (function() {
     const wheels = [
 
         //1-16
-            {sectors: [ wedges.one, wedges.three, wedges.five, wedges.seven ], arrangement: "O1, Af1, F1, Am1", wheel: "0", MI: "high", img: `<img src="./img/0.jpeg" style="width:30%; height:auto;">`},
-            {sectors: [ wedges.one, wedges.three, wedges.five, wedges.eight ], arrangement: "O1, Af1, F1, Am2", wheel: "1", MI: "high", img: `<img src="./img/1.jpeg" style="width:30%; height:auto;">`},
-            {sectors: [ wedges.one, wedges.three, wedges.six, wedges.seven ], arrangement: "O1, Af1, F2, Am1", wheel: "2", MI: "high", img: `<img src="./img/2.jpeg" style="width:30%; height:auto;">`},
-            {sectors: [ wedges.one, wedges.three, wedges.six, wedges.eight], arrangement: "O1, Af1, F2, Am2", wheel: "3", MI: "high", img: `<img src="./img/3.jpeg" style="width:30%; height:auto;">`},
-            {sectors: [ wedges.one, wedges.four, wedges.five, wedges.seven ], arrangement: "O1, Af2, F1, Am1", wheel: "4", MI: "high", img: `<img src="./img/4.jpeg" style="width:30%; height:auto;">`},
-            {sectors: [ wedges.one, wedges.four, wedges.five, wedges.eight ], arrangement: "O1, Af2, F1, Am2", wheel: "5", MI: "high", img: `<img src="./img/5.jpeg" style="width:30%; height:auto;">`},
-            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.seven ], arrangement: "O1, Af2, F2, Am1", wheel: "6", MI: "high", img: `<img src="./img/6.jpeg" style="width:30%; height:auto;">`},
-            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.eight ], arrangement: "O1, Af2, F2, Am2", wheel: "7", MI: "high", img: `<img src="./img/7.jpeg" style="width:30%; height:auto;">`},
-            {sectors: [ wedges.two, wedges.three, wedges.five, wedges.seven ], arrangement: "O2, Af1, F1, Am1", wheel: "8", MI: "high", img: `<img src="./img/8.jpeg" style="width:30%; height:auto;">`},
-            {sectors: [ wedges.two, wedges.three, wedges.five, wedges.eight ], arrangement: "O2, Af1, F1, Am2", wheel: "9", MI: "high", img: `<img src="./img/9.jpeg" style="width:30%; height:auto;">`},
-            {sectors: [ wedges.two, wedges.three, wedges.six, wedges.seven ], arrangement: "O2, Af1, F2, Am1", wheel: "10", MI: "high", img: `<img src="./img/10.jpeg" style="width:30%; height:auto;">`},
-            {sectors: [ wedges.two, wedges.three, wedges.six, wedges.eight ], arrangement: "O2, Af1, F2, Am2", wheel: "11", MI: "high", img: `<img src="./img/11.jpeg" style="width:30%; height:auto;">`},
-            {sectors: [ wedges.two, wedges.four, wedges.five, wedges.seven ], arrangement: "O2, Af2, F1, Am1", wheel: "12", MI: "high", img: `<img src="./img/12.jpeg" style="width:30%; height:auto;">`},
-            {sectors: [ wedges.two, wedges.four, wedges.five, wedges.eight ], arrangement: "O2, Af2, F1, Am2", wheel: "13", MI: "high", img: `<img src="./img/13.jpeg" style="width:30%; height:auto;">`},
-            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.seven ], arrangement: "O2, Af2, F2, Am1", wheel: "14", MI: "high", img: `<img src="./img/14.jpeg" style="width:30%; height:auto;">`},
-            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.eight ], arrangement: "O2, Af2, F2, Am2", wheel: "15", MI: "high", img: `<img src="./img/15.jpeg" style="width:30%; height:auto;">`},
+            {sectors: [ wedges.one, wedges.three, wedges.five, wedges.seven ], arrangement: "O1, Af1, F1, Am1", wheel: "0", MI: "high", img: `<img src="./img/0.jpeg" style="width:40%; height:auto;">`},
+            {sectors: [ wedges.one, wedges.three, wedges.five, wedges.eight ], arrangement: "O1, Af1, F1, Am2", wheel: "1", MI: "high", img: `<img src="./img/1.jpeg" style="width:40%; height:auto;">`},
+            {sectors: [ wedges.one, wedges.three, wedges.six, wedges.seven ], arrangement: "O1, Af1, F2, Am1", wheel: "2", MI: "high", img: `<img src="./img/2.jpeg" style="width:40%; height:auto;">`},
+            {sectors: [ wedges.one, wedges.three, wedges.six, wedges.eight], arrangement: "O1, Af1, F2, Am2", wheel: "3", MI: "high", img: `<img src="./img/3.jpeg" style="width:40%; height:auto;">`},
+            {sectors: [ wedges.one, wedges.four, wedges.five, wedges.seven ], arrangement: "O1, Af2, F1, Am1", wheel: "4", MI: "high", img: `<img src="./img/4.jpeg" style="width:40%; height:auto;">`},
+            {sectors: [ wedges.one, wedges.four, wedges.five, wedges.eight ], arrangement: "O1, Af2, F1, Am2", wheel: "5", MI: "high", img: `<img src="./img/5.jpeg" style="width:40%; height:auto;">`},
+            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.seven ], arrangement: "O1, Af2, F2, Am1", wheel: "6", MI: "high", img: `<img src="./img/6.jpeg" style="width:40%; height:auto;">`},
+            {sectors: [ wedges.one, wedges.four, wedges.six, wedges.eight ], arrangement: "O1, Af2, F2, Am2", wheel: "7", MI: "high", img: `<img src="./img/7.jpeg" style="width:40%; height:auto;">`},
+            {sectors: [ wedges.two, wedges.three, wedges.five, wedges.seven ], arrangement: "O2, Af1, F1, Am1", wheel: "8", MI: "high", img: `<img src="./img/8.jpeg" style="width:40%; height:auto;">`},
+            {sectors: [ wedges.two, wedges.three, wedges.five, wedges.eight ], arrangement: "O2, Af1, F1, Am2", wheel: "9", MI: "high", img: `<img src="./img/9.jpeg" style="width:40%; height:auto;">`},
+            {sectors: [ wedges.two, wedges.three, wedges.six, wedges.seven ], arrangement: "O2, Af1, F2, Am1", wheel: "10", MI: "high", img: `<img src="./img/10.jpeg" style="width:40%; height:auto;">`},
+            {sectors: [ wedges.two, wedges.three, wedges.six, wedges.eight ], arrangement: "O2, Af1, F2, Am2", wheel: "11", MI: "high", img: `<img src="./img/11.jpeg" style="width:40%; height:auto;">`},
+            {sectors: [ wedges.two, wedges.four, wedges.five, wedges.seven ], arrangement: "O2, Af2, F1, Am1", wheel: "12", MI: "high", img: `<img src="./img/12.jpeg" style="width:40%; height:auto;">`},
+            {sectors: [ wedges.two, wedges.four, wedges.five, wedges.eight ], arrangement: "O2, Af2, F1, Am2", wheel: "13", MI: "high", img: `<img src="./img/13.jpeg" style="width:40%; height:auto;">`},
+            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.seven ], arrangement: "O2, Af2, F2, Am1", wheel: "14", MI: "high", img: `<img src="./img/14.jpeg" style="width:40%; height:auto;">`},
+            {sectors: [ wedges.two, wedges.four, wedges.six, wedges.eight ], arrangement: "O2, Af2, F2, Am2", wheel: "15", MI: "high", img: `<img src="./img/15.jpeg" style="width:40%; height:auto;">`},
 
         // F, F, Am, Am
 
-            {sectors: [ wedges.five, wedges.six, wedges.seven, wedges.eight ], arrangement: "F1, F2, Am1, Am2", wheel: "16", MI: "low", img: `<img src="./img/1.jpeg" style="width:30%; height:auto;">`},
+            {sectors: [ wedges.five, wedges.six, wedges.seven, wedges.eight ], arrangement: "F1, F2, Am1, Am2", wheel: "16", MI: "low", img: `<img src="./img/1.jpeg" style="width:50%; height:auto;">`},
 
             // F, F, Aff, Aff
-            {sectors: [ wedges.five, wedges.six, wedges.three, wedges.four ], arrangement: "F1, F2, Aff1, Aff2", wheel: "17", MI: "low", img: `<img src="./img/1.jpeg" style="width:30%; height:auto;">`},
+            {sectors: [ wedges.five, wedges.six, wedges.three, wedges.four ], arrangement: "F1, F2, Aff1, Aff2", wheel: "17", MI: "low", img: `<img src="./img/1.jpeg" style="width:50%; height:auto;">`},
 
             //O, O, Am, Am
-            {sectors: [ wedges.one, wedges.two, wedges.seven, wedges.eight ], arrangement: "O1, O2, Am1, Am2", wheel: "18", MI: "low", img: `<img src="./img/1.jpeg" style="width:30%; height:auto;">`},
+            {sectors: [ wedges.one, wedges.two, wedges.seven, wedges.eight ], arrangement: "O1, O2, Am1, Am2", wheel: "18", MI: "low", img: `<img src="./img/1.jpeg" style="width:50%; height:auto;">`},
 
             //O, O, Aff, Aff
 
-            {sectors: [ wedges.one, wedges.two, wedges.three, wedges.four ], arrangement: "O1, O2, Aff1, Aff2", wheel: "19", MI: "low", img: `<img src="./img/1.jpeg" style="width:30%; height:auto;">`},
+            {sectors: [ wedges.one, wedges.two, wedges.three, wedges.four ], arrangement: "O1, O2, Aff1, Aff2", wheel: "19", MI: "low", img: `<img src="./img/1.jpeg" style="width:50%; height:auto;">`},
 
          //   {sectors: [ wedges.one, wedges.one, wedges.one, wedges.one ], arrangement: "O1, O2, Aff1, Aff2", wheel: "19", MI: "low"} testing
 
         ];
 
-
+ 
 
     const highMIwheel = [wheels[Math.floor(Math.random() * 16)]];// random integer from 0 - 15
     //const highMIwheel = [wheels[20]]; testing
@@ -95,6 +95,12 @@ function getPreviewWheel(wheel) {
 }
 
 //getting example videos
+function getEmotion(wheel) {
+    const emotion = wheel.sectors.map(sector => sector.emotion);
+    return emotion; 
+}
+
+//getting example videos
 function getExamples(wheel) {
     const examples = wheel.sectors.map(sector => sector.example);
     return examples; 
@@ -109,26 +115,33 @@ function getdescripExample(wheel) {
 
 console.log(highMIwheel[0])
 
+//video paths
     const highMIVideoPaths = getVideoPaths(highMIwheel[0]);
     const lowMIVideoPaths = getVideoPaths(lowMIwheel[0]);
 
-    const highMIDescription = getDescriptions(highMIwheel[0]);
-    const highMIexamples = getExamples(highMIwheel[0]);
-    console.log(highMIexamples)
-    const lowMIexamples = getExamples(lowMIwheel[0]);
-
-
-    document.body.innerHTML += `<ul>${highMIDescription.join('')}</ul>`;
-
-    const lowMIDescription = getDescriptions(lowMIwheel[0]);
-    document.body.innerHTML += `<ul>${lowMIDescription.join('')}</ul>`;
-
+//examples 
     const highMIDescripExamples = getdescripExample(highMIwheel[0]);
     const lowMIDescripExamples = getdescripExample(lowMIwheel[0]);
 
+//preview wheels
     const highpreviewWheel = getPreviewWheel(highMIwheel[0]);
     console.log(highpreviewWheel)
     const lowpreviewWheel = getPreviewWheel(lowMIwheel[0]);
+
+//descriptions + examples for high
+    const highMIDescription = getDescriptions(highMIwheel[0]);
+    const highMIexamples = getExamples(highMIwheel[0]);
+
+//descriptions + examples for low
+    const lowMIDescription = getDescriptions(lowMIwheel[0]);
+    const lowMIexamples = getExamples(lowMIwheel[0]);
+
+//emotion labels for attention checks for high + low
+    const highMIEmotion = getEmotion(highMIwheel[0]);
+    const lowMIEmotion = getEmotion(lowMIwheel[0]);
+
+    document.body.innerHTML += `<ul>${highMIDescription.join('')}</ul>`;
+    document.body.innerHTML += `<ul>${lowMIDescription.join('')}</ul>`;
 
 p.preloadHighMI = {
     type: jsPsychPreload,
@@ -146,7 +159,7 @@ p.preloadHighMI = {
 p.preloadHighMI_examples = {
     type: jsPsychPreload,
     video: highMIexamples,
-    message: ` <p>Now loading a quick preview of all four accounts on the first wheel... </p>`,
+    message: ` <p>Now loading a quick preview of the first wheel... </p>`,
     on_success: function(file) {
         console.log('Loaded: ', file);
     },
@@ -167,7 +180,7 @@ p.preloadLowMI = {
 p.preloadLowMI_examples = {
     type: jsPsychPreload,
     video: lowMIexamples,
-    message: `<p>Now loading a quick preview of all four accounts on the second wheel... </p>`,
+    message: `<p>Now loading a quick preview of the second wheel... </p>`,
     on_success: function(file) {
         console.log('Loaded: ', file);
     },
@@ -275,9 +288,9 @@ MORE WHEEL SET UP
         intro_preChk: [
             `<div class='parent'>
                 <p><strong> Welcome to "Spin the Wheel"! </strong></p>
-                <p>You'll watch a few Twitter videos and report your experience. </p> 
+                <p>In this study, you'll watch a few Twitter videos and report your experience. </p> 
                 <p>To add a fun twist, you'll get to control which videos you watch by spinning a wheel that looks like this: </p>
-                <img src="./img/spin.gif" style="width:80%; height:auto;">
+                <img src="./img/spin.gif" style="width:100%; height:auto;">
                 <p> Click "Next" to learn more about the wheel! </p>
             </div>`,
 /*
@@ -290,15 +303,15 @@ MORE WHEEL SET UP
             `<div class='parent'>
                 <p>Each wheel has 4 different Twitter accounts. </p>
                 <p>When you spin the wheel, you'll land on an account and watch one video posted by that account. </p> 
-                <p>For example, if you land on the account "@Yoda4ever", you'll watch one video posted from @Yoda4ever's feed.</p>
-                <img src="./img/examplewheel.jpeg" style="width:30%; height:auto;">
+                <p>For example, if you land on <img src="./img/yoda4ever.jpeg" alt="@yoda4ever" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"><strong>@yoda4ever</strong>, you'll watch one video posted from <img src="./img/yoda4ever.jpeg" alt="@yoda4ever" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"><strong>@yoda4ever</strong>'s feed.</p>
+                <img src="./img/examplewheel.jpeg" style="width:40%; height:auto;">
             <div>`,
 
             `<div class='parent'>
                 <p>For each round, you'll spin the wheel 20 times. Then, you'll answer some questions about your experience spinning the wheel. </p>
-                <p>You'll play two rounds of "Spin the Wheel". </p>
+                <p>You'll play two rounds of Spin the Wheel. </p>
                 <p>Each round will feature a different wheel. </p>
-                <img src="./img/examplewheel.jpeg" style="width:30%; height:auto;">
+                <img src="./img/examplewheel.jpeg" style="width:40%; height:auto;">
             </div>`
             ],
 
@@ -317,57 +330,52 @@ MORE WHEEL SET UP
 
         intro_DescriptionsHigh: [
             `<div class='parent'>
-                <p> Here is the first wheel that you'll be playing: </p>
+                <p> <strong> You'll be spinning this wheel in the first round: </strong></p> 
                 <p>${highpreviewWheel}</p>
                 <p> Here are the descriptions of the accounts:</p>
-                </p><ul>${highMIDescription.join('')}</ul><br>
+                <div style="margin-top: -10px;">
+                <p><ul>${highMIDescription.join('')}</ul><br>
+                </div>
                 <p>On the next page, you'll preview examples of each of the accounts one-by-one. </p>
             </div>`
         ], 
 
         intro_DescriptionsLow_example0: [
             `<div class='parent'>
-             <p>For example, when you land on the account, ${lowMIDescripExamples[0]}, you'll watch a video from that account. </p>
-             <p>To see how this works, watch the video below of a player landing on ${lowMIDescripExamples[0]}. </p>
+             <p>Watch the video below to see the type of videos on ${lowMIDescripExamples[0]}'s feed. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${lowMIexamples[0]}" style="width:60%; height:60%;" controls>
                 Your browser does not support the video tag.
             </video>
-            <p>Click "Next" to learn more about the second account. </p>
             </p>
         </div>`
         ],
 
         intro_DescriptionsLow_example1: [
             `<div class='parent'>
-            <p>For example, when you land on the account, ${lowMIDescripExamples[1]}, you'll watch a video from that account. </p>
-            <p>To see how this works, watch the video below of a player landing on ${lowMIDescripExamples[1]}. </p>
+           <p>Watch the video below to see the type of videos on ${lowMIDescripExamples[1]}'s feed. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${lowMIexamples[1]}" style="width:60%; height:60%;" controls>
                 Your browser does not support the video tag.
             </video>
-             <p>Click "Next" to learn more about the third account. </p>
             </p>
         </div>`
         ],
 
         intro_DescriptionsLow_example2: [
             `<div class='parent'>
-           <p>For example, when you land on the account, ${lowMIDescripExamples[2]}, you'll watch a video from that account. </p>
-            <p>To see how this works, watch the video below of a player landing on ${lowMIDescripExamples[2]}. </p>
+            <p>Watch the video below to see the type of videos on ${lowMIDescripExamples[2]}'s feed. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${lowMIexamples[2]}" style="width:60%; height:60%;" controls>
                 Your browser does not support the video tag.
             </video>
-             <p>Click "Next" to learn more about the last account. </p>
             </p>
         </div>`
         ],
 
         intro_DescriptionsLow_example3: [
             `<div class='parent'>
-           <p>For example, when you land on the account, ${lowMIDescripExamples[3]}, you'll watch a video from that account. </p>
-            <p>To see how this works, watch the video below of a player landing on ${lowMIDescripExamples[3]}. </p>
+            <p>Watch the video below to see the type of videos on ${lowMIDescripExamples[3]}'s feed. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${lowMIexamples[3]}" style="width:60%; height:60%;" controls>
                 Your browser does not support the video tag.
@@ -379,57 +387,52 @@ MORE WHEEL SET UP
 
         intro_HighDescriptionsAfterExamples: [
             `<div class='parent'>
-             <p>You're now ready to play!</p> <p>Please make sure you're volume is on. </p> <p> Click "Next" to start playing the first wheel.</p>
+             <p>You're now ready to play!</p> 
+             <p>Please make sure you're volume is on. </p> 
+             <p> Click "Next" to start playing the first wheel. Just grab it with your cursor and give it a spin!</p>
         </div>`
         ],
 
                 intro_DescriptionsHigh_example0: [
             `<div class='parent'>
-           <p>For example, when you land on the account, ${highMIDescripExamples[0]}, you'll watch a video from that account. </p>
-            <p>To see how this works, watch the video below of a player landing on ${highMIDescripExamples[0]}. </p>
+            <p>Watch the video below to see the type of videos on ${highMIDescripExamples[0]}'s feed. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${highMIexamples[0]}" style="width:60%; height:60%;" controls>
                 Your browser does not support the video tag.
             </video>
-            <p>Click "Next" to learn more about the second account. </p>
             </p>
         </div>`
         ],
 
         intro_DescriptionsHigh_example1: [
             `<div class='parent'>
-            <p>For example, when you land on the account, ${highMIDescripExamples[1]}, you'll watch a video from that account. </p>
-            <p>To see how this works, watch the video below of a player landing on ${highMIDescripExamples[1]}. </p>
+           <p>Watch the video below to see the type of videos on ${highMIDescripExamples[1]}'s feed. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${highMIexamples[1]}" style="width:60%; height:60%;" controls>
                 Your browser does not support the video tag.
             </video>
-            <p>Click "Next" to learn more about the third account. </p>
             </p>
         </div>`
         ],
 
         intro_DescriptionsHigh_example2: [
             `<div class='parent'>
-            <p>For example, when you land on the account, ${highMIDescripExamples[2]}, you'll watch a video from that account. </p>
-            <p>To see how this works, watch the video below of a player landing on ${highMIDescripExamples[2]}. </p>
+            <p>Watch the video below to see the type of videos on ${highMIDescripExamples[2]}'s feed. </p>
             <p>Please make sure your volume is turned on. </p>
             <video src= "${highMIexamples[2]}" style="width:60%; height:60%;" controls>
                 Your browser does not support the video tag.
             </video>
-            <p>Click "Next" to learn more about the last account. </p>
             </p>
         </div>`
         ],
 
         intro_DescriptionsHigh_example3: [
             `<div class='parent'>
-            <p>For example, when you land on the account, ${highMIDescripExamples[3]}, you'll watch a video from that account. </p>
-            <p>To see how this works, watch the video below of a player landing on ${highMIDescripExamples[3]}. </p>
+            <p>Watch the video below to see the type of videos on ${highMIDescripExamples[3]}'s feed. </p>
+            <p>Please make sure your volume is turned on. </p>
             <video src= "${highMIexamples[3]}" style="width:60%; height:60%;" controls>
                 Your browser does not support the video tag.
             </video>
-            <p>Click "Next" to start playing the first wheel.</p>
             </p>
         </div>`
         ],
@@ -471,37 +474,58 @@ MORE WHEEL SET UP
         };
 
         const correctAnswers = {
-            attnChk1 : `20`, 
-            attnChk2 : `My level of immersion and engagement.`, 
+            attnChk0 : `${highMIEmotion[0]}`, 
+            attnChk1 : `${highMIEmotion[1]}`, 
+            attnChk2 : `${highMIEmotion[2]}`, 
+            attnChk3 : `${highMIEmotion[3]}`, 
         };
 
 
         const errorMessage = {
             type: jsPsychInstructions,
-            pages: [`<div class='parent'><p>You provided the wrong answer.<br>To make sure you understand Spin the Wheel, please continue to re-read the instructions.</p></div>`],
+            pages: [`<div class='parent'><p>You provided the wrong answer.<br>To make sure you understand Spin the Wheel, please re-read the instructions.</p></div>`],
             show_clickable_nav: true,
             allow_keys: false,
         };
+
 
 
         
         const attnChk = {
             type: jsPsychSurveyMultiChoice,
             preamble: `<div class='parent'>
-                <p>Please answer the following questions.</p>
+               <p> <strong> You'll be spinning this wheel in the first round: </strong></p> 
+                <p>${highpreviewWheel}</p>
+                <p> <ul style="list-style-position: inside; padding-left: 0; margin-left: 0;"> ${highMIDescription.join('')}</ul></p>
+                <br>
                 </div>`,
             questions: [
                 {
-                    prompt: "How many times will you spin each wheel before continuing to the next wheel?", 
-                    name: `attnChk1`, 
-                    options: [`1`, `2`, `5`, `10`, `20`],
+                    prompt: `${highMIDescripExamples[0]} makes people...`, 
+                    name: `attnChk0`, 
+                    options: [`${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
+                    css_classes: ['centered-question', 'centered-options']
                 },
                 {
-                    prompt: "What will you be answering questions about?", 
+                    prompt: `${highMIDescripExamples[1]} makes people...`, 
+                    name: `attnChk1`, 
+                    options: [`${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
+                    css_classes: ['centered-question', 'centered-options']
+                },
+                {
+                    prompt: `${highMIDescripExamples[2]} makes people...`, 
                     name: `attnChk2`, 
-                    options: [`My level of happiness.`, `My level of immersion and engagement.`],
+                    options: [`${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
+                    css_classes: ['centered-question', 'centered-options']
+                },
+                {
+                    prompt: `${highMIDescripExamples[3]} makes people...`, 
+                    name: `attnChk3`, 
+                    options: [`${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
+                    css_classes: ['centered-question', 'centered-options']
                 },
             ],
+            randomize_question_order: true,
             scale_width: 500,
             on_finish: (data) => {
                   const totalErrors = getTotalErrors(data.response, correctAnswers);
@@ -661,7 +685,6 @@ MORE WHEEL SET UP
         on_finish: function(data) {
             data.round = round;
             spin_num = remainingSpinsReset;
-            console.log(spin_num + " spin num after DV is done");
  //           let scoreArray = jsPsych.data.get().select('score').values;
  //           let outcomesArray = jsPsych.data.get().select('outcomes').values;
  //           data.score = scoreArray[scoreArray.length - 1];
@@ -910,7 +933,7 @@ const timeline = [
  
     exp.intro, 
     exp.preloadHighMI_examples, 
-    exp.intro_DescriptionsHigh,
+  //  exp.intro_DescriptionsHigh,
     exp.intro_DescriptionsHigh_example0,
     exp.intro_DescriptionsHigh_example1,
     exp.intro_DescriptionsHigh_example2,
