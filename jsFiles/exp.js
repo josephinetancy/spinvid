@@ -267,9 +267,8 @@ MORE WHEEL SET UP
     const html = {
         intro_preChk: [
             `<div class='parent'>
-                <p><strong>Welcome to our study on the psychological effects of social media!</strong></p>
-                <p>We're exploring how social media content affects immersion and engagement. </p>
-                <p>All you'll need to do is to watch a few Twitter videos and report how immersed and engaged you felt. </p> 
+                <p><strong> Welcome to "Spin the Wheel"! </strong></p>
+                <p>You'll watch a few Twitter videos and report your experience. </p> 
                 <p>To add a fun twist, you'll get to control which videos you watch by spinning a wheel that looks like this: </p>
                 <img src="./img/spin.gif" style="width:80%; height:auto;">
                 <p> Click "Next" to learn more about the wheel! </p>
@@ -282,11 +281,15 @@ MORE WHEEL SET UP
             </div>`, */
 
             `<div class='parent'>
-                <p>Each wheel has 4 unique Twitter accounts. </p>
-                <p>When you spin the wheel, you'll land on an account and watch the video based on that account. </p> 
-                <p>For example, if you land on the account "@Yoda4ever", you'll watch a video from "@Yoda4ever" and so forth.</p>
-                <p>You'll spin the wheel 20 times. Then, you'll report how immersed and engaged you felt and move on to the next wheel. </p>
-                <p>You'll spin two wheels in total. </p>
+                <p>Each wheel has 4 different Twitter accounts. </p>
+                <p>When you spin the wheel, you'll land on an account and watch one video posted by that account. </p> 
+                <p>For example, if you land on the account "@Yoda4ever", you'll watch one video posted from @Yoda4ever's feed.</p>
+            <div>`,
+
+            `<div class='parent'>
+                <p>You'll spin the wheel 20 times. Then, you'll answer some questions about your experience spinning the wheel. </p>
+                <p>You'll play two rounds of "Spin the Wheel". </p>
+                <p>Each round will feature different accounts with different videos posted from that account. </p>
                 <img src="./img/examplewheel.jpeg" style="width:30%; height:auto;">
                 <p> Click "Next" to watch a preview of the 4 accounts!</p>
             </div>`
@@ -307,7 +310,7 @@ MORE WHEEL SET UP
 
         intro_DescriptionsHigh: [
             `<div class='parent'>
-                <p>Here are the descriptions of the accounts on the first wheel:</p>
+                <p>Before previewing the examples, here are the descriptions of the accounts on the first wheel:</p>
                 </p><ul>${highMIDescription.join('')}</ul><br>
                 <p>On the next page, you'll preview examples of each of the accounts one-by-one. </p>
             </div>`
