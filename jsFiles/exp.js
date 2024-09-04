@@ -293,12 +293,6 @@ MORE WHEEL SET UP
                 <img src="./img/spin.gif" style="width:100%; height:auto;">
                 <p> Click "Next" to learn more about the wheel! </p>
             </div>`,
-/*
-            `<div class='parent'>
-                <p>To spin the wheel, just grab it with your cursor and give it a spin!
-                <br>Watch the animation below to see how it's done.</p>
-                <img src="./img/spinGif.gif" style="width:60%; height:60%">
-            </div>`, */
 
             `<div class='parent'>
                 <p>Each wheel has 4 different Twitter accounts. </p>
@@ -309,16 +303,9 @@ MORE WHEEL SET UP
 
             `<div class='parent'>
                 <p>For each round, you'll spin the wheel 20 times. Then, you'll answer some questions about your experience spinning the wheel. </p>
-                <p>You'll play two rounds of Spin the Wheel. </p>
-                <p>Each round will feature a different wheel. </p>
+                <p>You'll play two rounds of Spin the Wheel. Each round will feature a different wheel. </p>
                 <img src="./img/examplewheel.jpeg" style="width:40%; height:auto;">
             </div>`
-            ],
-
-        intro_postChk: [
-            `<div class='parent'>
-                <p>You're almost ready to start playing!</p> <p> Next up, you'll read some instructions and watch sample videos from the accounts on the wheel.</p> 
-            </div>`,      
         ],
 
         postTask: [
@@ -330,7 +317,7 @@ MORE WHEEL SET UP
 
         intro_DescriptionsHigh: [
             `<div class='parent'>
-                <p> <strong> You'll be spinning this wheel in the first round: </strong></p> 
+                <p> For the first round, you'll be spinning this wheel: </p> 
                 <p>${highpreviewWheel}</p>
                 <p> Here are the descriptions of the accounts:</p>
                 <div style="margin-top: -10px;">
@@ -389,7 +376,8 @@ MORE WHEEL SET UP
             `<div class='parent'>
              <p>You're now ready to play!</p> 
              <p>Please make sure you're volume is on. </p> 
-             <p> Click "Next" to start playing the first wheel. Just grab it with your cursor and give it a spin!</p>
+             <p> Just grab the wheel with your cursor and give it a spin!</p>
+             <p> Click "Next" to start playing the first wheel. </p>
         </div>`
         ],
 
@@ -437,18 +425,9 @@ MORE WHEEL SET UP
         </div>`
         ],
 
-/*
-        intro_DescriptionsLow: [
-            `<div class='parent'>
-                <p>You will now spin the second wheel that will show videos from the following accounts:</p>
-                <ul> ${descriptionListLow}
-                </ul>
-            </div>`
-        ],
-*/
         intro_toSecond: [
             `<div class='parent'>
-                <p>You'll now ready to spin the second wheel! </p>
+                <p>You're now ready to spin the second wheel! </p>
                 <p>Before that, here's descriptions of the accounts on the second wheel:</p>
                 </p><ul>${lowMIDescription.join('')}</ul><br>
                 <p>Click "Next" to watch a preview of the 4 accounts! </p>
@@ -458,20 +437,6 @@ MORE WHEEL SET UP
 
 
     function MakeIntro() {
-
-        const intro_preChk = {
-            type: jsPsychInstructions,
-            pages: html.intro_preChk,
-            show_clickable_nav: true,
-            post_trial_gap: 500,
-        };
-
-        const intro_postChk = {
-            type: jsPsychInstructions,
-            pages: html.intro_postChk,
-            show_clickable_nav: true,
-            post_trial_gap: 500,
-        };
 
         const correctAnswers = {
             attnChk0 : `${highMIEmotion[0]}`, 
@@ -489,8 +454,6 @@ MORE WHEEL SET UP
         };
 
 
-
-        
         const attnChk = {
             type: jsPsychSurveyMultiChoice,
             preamble: `<div class='parent'>
@@ -504,25 +467,21 @@ MORE WHEEL SET UP
                     prompt: `${highMIDescripExamples[0]} makes people...`, 
                     name: `attnChk0`, 
                     options: [`${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
-                    css_classes: ['centered-question', 'centered-options']
                 },
                 {
                     prompt: `${highMIDescripExamples[1]} makes people...`, 
                     name: `attnChk1`, 
                     options: [`${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
-                    css_classes: ['centered-question', 'centered-options']
                 },
                 {
                     prompt: `${highMIDescripExamples[2]} makes people...`, 
                     name: `attnChk2`, 
                     options: [`${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
-                    css_classes: ['centered-question', 'centered-options']
                 },
                 {
                     prompt: `${highMIDescripExamples[3]} makes people...`, 
                     name: `attnChk3`, 
                     options: [`${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
-                    css_classes: ['centered-question', 'centered-options']
                 },
             ],
             randomize_question_order: true,
@@ -555,7 +514,7 @@ MORE WHEEL SET UP
         };
 
         const instLoop = {
-          timeline: [intro_preChk, attnChk, conditionalNode],
+          timeline: [attnChk, conditionalNode],
           loop_function: () => {
             const fail = jsPsych.data.get().last(2).select('totalErrors').sum() > 0 ? true : false;
             return fail;
@@ -578,6 +537,13 @@ MORE WHEEL SET UP
     };
 
     p.intro = new MakeIntro();
+
+    p.intro_preChk = {
+            type: jsPsychInstructions,
+            pages: html.intro_preChk,
+            show_clickable_nav: true,
+            post_trial_gap: 500,
+        };
 
 
     p.intro_DescriptionsHigh = {
@@ -624,7 +590,6 @@ MORE WHEEL SET UP
         };   
 
 
-
     p.intro_DescriptionsLow_example0 = {
             type: jsPsychInstructions,
             pages: html.intro_DescriptionsLow_example0,
@@ -654,15 +619,6 @@ MORE WHEEL SET UP
             post_trial_gap: 500,
         }; 
   
-
-/*
-    p.intro_DescriptionsLow = {
-            type: jsPsychInstructions,
-            pages: html.intro_DescriptionsLow,
-            show_clickable_nav: true,
-            post_trial_gap: 500,
-        }; 
-*/
 
     p.intro_toSecond = {
             type: jsPsychInstructions,
@@ -884,7 +840,7 @@ MORE WHEEL SET UP
 
         const finalWord = {
             type: jsPsychSurveyText,
-            questions: [{prompt: "Questions? Comments? Complains? Provide your feedback here!", rows: 10, columns: 100, name: "finalWord"}],
+            questions: [{prompt: "Questions? Comments? Complaints? Provide your feedback here!", rows: 10, columns: 100, name: "finalWord"}],
             on_finish: (data) => {
                 saveSurveyData(data); 
             },
@@ -930,7 +886,7 @@ MORE WHEEL SET UP
 
 const timeline = [
    // exp.consent,
- 
+    exp.intro_preChk,
     exp.intro, 
     exp.preloadHighMI_examples, 
   //  exp.intro_DescriptionsHigh,
@@ -942,8 +898,7 @@ const timeline = [
     exp.preloadHighMI, 
     exp.task_highMI,
     dv, 
- //   exp.intro_LowDescriptionsAfterExamples,
-  exp.intro_toSecond,
+    exp.intro_toSecond,
     exp.preloadLowMI_examples, 
    exp.intro_DescriptionsLow_example0,
    exp.intro_DescriptionsLow_example1,
