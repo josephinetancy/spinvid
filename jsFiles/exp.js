@@ -49,17 +49,17 @@ const exp = (function() {
 
         // F, F, Am, Am
 
-            {sectors: [ wedges.five, wedges.six, wedges.seven, wedges.eight ], arrangement: "F1, F2, Am1, Am2", wheel: "16", MI: "low", img: `<img src="./img/1.jpeg" style="width:50%; height:auto;">`},
+            {sectors: [ wedges.five, wedges.six, wedges.seven, wedges.eight ], arrangement: "F1, F2, Am1, Am2", wheel: "16", MI: "low", img: `<img src="./img/16.jpeg" style="width:50%; height:auto;">`},
 
             // F, F, Aff, Aff
-            {sectors: [ wedges.five, wedges.six, wedges.three, wedges.four ], arrangement: "F1, F2, Aff1, Aff2", wheel: "17", MI: "low", img: `<img src="./img/1.jpeg" style="width:50%; height:auto;">`},
+            {sectors: [ wedges.five, wedges.six, wedges.three, wedges.four ], arrangement: "F1, F2, Aff1, Aff2", wheel: "17", MI: "low", img: `<img src="./img/17.jpeg" style="width:50%; height:auto;">`},
 
             //O, O, Am, Am
-            {sectors: [ wedges.one, wedges.two, wedges.seven, wedges.eight ], arrangement: "O1, O2, Am1, Am2", wheel: "18", MI: "low", img: `<img src="./img/1.jpeg" style="width:50%; height:auto;">`},
+            {sectors: [ wedges.one, wedges.two, wedges.seven, wedges.eight ], arrangement: "O1, O2, Am1, Am2", wheel: "18", MI: "low", img: `<img src="./img/18.jpeg" style="width:50%; height:auto;">`},
 
             //O, O, Aff, Aff
 
-            {sectors: [ wedges.one, wedges.two, wedges.three, wedges.four ], arrangement: "O1, O2, Aff1, Aff2", wheel: "19", MI: "low", img: `<img src="./img/1.jpeg" style="width:50%; height:auto;">`},
+            {sectors: [ wedges.one, wedges.two, wedges.three, wedges.four ], arrangement: "O1, O2, Aff1, Aff2", wheel: "19", MI: "low", img: `<img src="./img/19.jpeg" style="width:50%; height:auto;">`},
 
          //   {sectors: [ wedges.one, wedges.one, wedges.one, wedges.one ], arrangement: "O1, O2, Aff1, Aff2", wheel: "19", MI: "low"} testing
 
@@ -428,9 +428,7 @@ MORE WHEEL SET UP
         intro_toSecond: [
             `<div class='parent'>
                 <p>You're now ready to spin the second wheel! </p>
-                <p>Before that, here's descriptions of the accounts on the second wheel:</p>
-                </p><ul>${lowMIDescription.join('')}</ul><br>
-                <p>Click "Next" to watch a preview of the 4 accounts! </p>
+                <p>Click "Next" to continue. </p>
             </div>`
         ],
     };
@@ -530,6 +528,101 @@ MORE WHEEL SET UP
         this.timeline = [introTimeline];
     }
 
+     function MakeIntroLow() {
+
+    const correctAnswers_low = {
+            attnChk_low0 : `${lowMIEmotion[0]}`, 
+            attnChk_low1 : `${lowMIEmotion[1]}`, 
+            attnChk_low2 : `${lowMIEmotion[2]}`, 
+            attnChk_low3 : `${lowMIEmotion[3]}`, 
+        };
+
+
+        const errorMessage_low = {
+            type: jsPsychInstructions,
+            pages: [`<div class='parent'><p>You provided the wrong answer.<br>To make sure you understand Spin the Wheel, please re-read the instructions.</p></div>`],
+            show_clickable_nav: true,
+            allow_keys: false,
+        };
+
+
+
+ const attnChk_low = {
+            type: jsPsychSurveyMultiChoice,
+            preamble: `<div class='parent'>
+               <p> <strong> You'll be spinning this wheel in the second round: </strong></p> 
+                <p>${lowpreviewWheel}</p>
+                <p> <ul style="list-style-position: inside; padding-left: 0; margin-left: 0;"> ${lowMIDescription.join('')}</ul></p>
+                <br>
+                </div>`,
+            questions: [
+                {
+                    prompt: `${lowMIDescripExamples[0]} makes people...`, 
+                    name: `attnChk_low0`, 
+                    options: [ `${lowMIEmotion[2]}`, `${lowMIEmotion[0]}`, `${lowMIEmotion[3]}`,`${lowMIEmotion[1]}`],
+                },
+                {
+                    prompt: `${lowMIDescripExamples[1]} makes people...`, 
+                    name: `attnChk_low1`, 
+                    options: [`${lowMIEmotion[2]}`, `${lowMIEmotion[0]}`, `${lowMIEmotion[3]}`,`${lowMIEmotion[1]}`],
+                },
+                {
+                    prompt: `${lowMIDescripExamples[2]} makes people...`, 
+                    name: `attnChk_low2`, 
+                    options: [`${lowMIEmotion[2]}`, `${lowMIEmotion[0]}`, `${lowMIEmotion[3]}`,`${lowMIEmotion[1]}`],
+                },
+                {
+                    prompt: `${lowMIDescripExamples[3]} makes people...`, 
+                    name: `attnChk_low3`, 
+                    options: [`${lowMIEmotion[2]}`, `${lowMIEmotion[0]}`, `${lowMIEmotion[3]}`,`${lowMIEmotion[1]}`],
+                },
+            ],
+            randomize_question_order: true,
+            scale_width: 500,
+            on_finish: (data) => {
+                  const totalErrors = getTotalErrors(data.response, correctAnswers_low);
+                  data.totalErrors = totalErrors;
+            },
+        };
+
+        function getTotalErrors(response, correctAnswers_low) {
+            let errorCount = 0;
+
+            // Compare each response with correct answers
+            for (const key in correctAnswers_low) {
+                if (response[key] !== correctAnswers_low[key]) {
+                    errorCount++;
+                }
+            }
+            return errorCount;
+        }
+
+
+        const conditionalNode_low = {
+          timeline: [errorMessage_low],
+          conditional_function: () => {
+            const fail = jsPsych.data.get().last(1).select('totalErrors').sum() > 0 ? true : false;
+            return fail;
+          },
+        };
+
+        const instLoop_low = {
+          timeline: [attnChk_low, conditionalNode_low],
+          loop_function: () => {
+            const fail = jsPsych.data.get().last(2).select('totalErrors').sum() > 0 ? true : false;
+            return fail;
+          },
+        };
+
+
+
+        const introTimeline_low = {
+            timeline: [instLoop_low],
+        }
+
+        this.timeline = [introTimeline_low];
+    }
+
     p.consent = {
         type: jsPsychExternalHtml,
         url: "./html/consent.html",
@@ -537,6 +630,8 @@ MORE WHEEL SET UP
     };
 
     p.intro = new MakeIntro();
+
+    p.intro_toSecondChk = new MakeIntroLow();
 
     p.intro_preChk = {
             type: jsPsychInstructions,
@@ -628,6 +723,7 @@ MORE WHEEL SET UP
         }; 
 
        
+      
     // trial: flow DV
     const flowMeasure = {
         type: jsPsychSurveyLikert,
@@ -889,7 +985,6 @@ const timeline = [
     exp.intro_preChk,
     exp.intro, 
     exp.preloadHighMI_examples, 
-  //  exp.intro_DescriptionsHigh,
     exp.intro_DescriptionsHigh_example0,
     exp.intro_DescriptionsHigh_example1,
     exp.intro_DescriptionsHigh_example2,
@@ -899,11 +994,12 @@ const timeline = [
     exp.task_highMI,
     dv, 
     exp.intro_toSecond,
+    exp.intro_toSecondChk,
     exp.preloadLowMI_examples, 
    exp.intro_DescriptionsLow_example0,
    exp.intro_DescriptionsLow_example1,
    exp.intro_DescriptionsLow_example2,
-   exp.intro_DescriptionsLow_example3,
+   exp.intro_DescriptionsLow_example3, 
    exp.preloadLowMI, 
    exp.task_lowMI, 
    dv, 
