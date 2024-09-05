@@ -159,7 +159,7 @@ p.preloadHighMI = {
 p.preloadHighMI_examples = {
     type: jsPsychPreload,
     video: highMIexamples,
-    message: ` <p>Now loading a quick preview of the first wheel... </p>`,
+    message: ` <p>Now loading example videos from accounts on the first wheel... </p><p>${highpreviewWheel}</p>`,
     on_success: function(file) {
         console.log('Loaded: ', file);
     },
@@ -180,7 +180,7 @@ p.preloadLowMI = {
 p.preloadLowMI_examples = {
     type: jsPsychPreload,
     video: lowMIexamples,
-    message: `<p>Now loading a quick preview of the second wheel... </p>`,
+    message: `<p>Now loading example videos from accounts on the second wheel... </p><p>${lowpreviewWheel}</p>`,
     on_success: function(file) {
         console.log('Loaded: ', file);
     },
@@ -288,22 +288,21 @@ MORE WHEEL SET UP
         intro_preChk: [
             `<div class='parent'>
                 <p><strong> Welcome to "Spin the Wheel"! </strong></p>
-                <p>In this study, you'll watch a few Twitter videos and report your experience. </p> 
-                <p>To add a fun twist, you'll get to control which videos you watch by spinning a wheel that looks like this: </p>
+                <p>In this study, you'll spin a wheel and report your experience. </p> 
+                <p>To add a fun twist, you'll watch a Twitter video after each spin. </p>
                 <img src="./img/spin.gif" style="width:100%; height:auto;">
-                <p> Click "Next" to learn more about the wheel! </p>
             </div>`,
 
             `<div class='parent'>
                 <p>Each wheel has 4 different Twitter accounts. </p>
-                <p>When you spin the wheel, you'll land on an account and watch one video posted by that account. </p> 
-                <p>For example, if you land on <img src="./img/yoda4ever.jpeg" alt="@yoda4ever" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"><strong>@yoda4ever</strong>, you'll watch one video posted from <img src="./img/yoda4ever.jpeg" alt="@yoda4ever" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"><strong>@yoda4ever</strong>'s feed.</p>
+                <p>When you spin the wheel, you'll land on an account and watch a video posted by that account. </p> 
+                <p>For example, if you land on <img src="./img/yoda4ever.jpeg" alt="@yoda4ever" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"><strong>@yoda4ever</strong>, you'll watch a video from <img src="./img/yoda4ever.jpeg" alt="@yoda4ever" style="vertical-align:middle; width:40px; height:40px; border-radius: 50%;"><strong>@yoda4ever</strong>'s feed.</p>
                 <img src="./img/examplewheel.jpeg" style="width:40%; height:auto;">
             <div>`,
 
             `<div class='parent'>
-                <p>For each round, you'll spin the wheel 20 times. Then, you'll answer some questions about your experience spinning the wheel. </p>
-                <p>You'll play two rounds of Spin the Wheel. Each round will feature a different wheel. </p>
+                <p>You'll play 2 rounds of Spin the Wheel. </p>
+                <p>For each round, you'll spin the wheel 20 times. </p> <p> After each round, you'll answer questions about your experience spinning the wheel. </p>
                 <img src="./img/examplewheel.jpeg" style="width:40%; height:auto;">
             </div>`
         ],
@@ -317,11 +316,13 @@ MORE WHEEL SET UP
 
         intro_DescriptionsHigh: [
             `<div class='parent'>
-                <p> For the first round, you'll be spinning this wheel: </p> 
+                <p>Next, we will familiarize you with the kind of videos posted by each account. </p> 
                 <p>${highpreviewWheel}</p>
-                <p> Here are the descriptions of the accounts:</p>
-                <div style="margin-top: -10px;">
-                <p><ul>${highMIDescription.join('')}</ul><br>
+                <p>You'll watch a video posted by each account on the wheel.</p>
+                <p>First, you'll watch an example video from ${highMIDescripExamples[0]}'s feed.</p>
+                <p>Then, you'll watch an example video from ${highMIDescripExamples[1]}'s feed.</p>
+                <p>Third, you'll watch an example video from ${highMIDescripExamples[2]}'s feed.</p>
+                <p>Lastly, you'll watch an example video from ${highMIDescripExamples[3]}'s feed.</p>
                 </div>
                 <p>On the next page, you'll preview examples of each of the accounts one-by-one. </p>
             </div>`
@@ -455,29 +456,29 @@ MORE WHEEL SET UP
         const attnChk = {
             type: jsPsychSurveyMultiChoice,
             preamble: `<div class='parent'>
-               <p> <strong> You'll be spinning this wheel in the first round: </strong></p> 
+               <p> For Round 1, you'll be spinning this wheel:</p> 
                 <p>${highpreviewWheel}</p>
                 <p> <ul style="list-style-position: inside; padding-left: 0; margin-left: 0;"> ${highMIDescription.join('')}</ul></p>
                 <br>
                 </div>`,
             questions: [
                 {
-                    prompt: `${highMIDescripExamples[0]} makes people...`, 
+                    prompt: `${highMIDescripExamples[0]} post videos that make people...`, 
                     name: `attnChk0`, 
                     options: [`${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
                 },
                 {
-                    prompt: `${highMIDescripExamples[1]} makes people...`, 
+                    prompt: `${highMIDescripExamples[1]} post videos that make people...`, 
                     name: `attnChk1`, 
                     options: [`${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
                 },
                 {
-                    prompt: `${highMIDescripExamples[2]} makes people...`, 
+                    prompt: `${highMIDescripExamples[2]} post videos that make people...`, 
                     name: `attnChk2`, 
                     options: [`${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
                 },
                 {
-                    prompt: `${highMIDescripExamples[3]} makes people...`, 
+                    prompt: `${highMIDescripExamples[3]} post videos that make people...`, 
                     name: `attnChk3`, 
                     options: [`${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
                 },
@@ -550,29 +551,29 @@ MORE WHEEL SET UP
  const attnChk_low = {
             type: jsPsychSurveyMultiChoice,
             preamble: `<div class='parent'>
-               <p> <strong> You'll be spinning this wheel in the second round: </strong></p> 
+               <p> <strong> For the second round, you'll be spinning this wheel: </strong></p> 
                 <p>${lowpreviewWheel}</p>
                 <p> <ul style="list-style-position: inside; padding-left: 0; margin-left: 0;"> ${lowMIDescription.join('')}</ul></p>
                 <br>
                 </div>`,
             questions: [
                 {
-                    prompt: `${lowMIDescripExamples[0]} makes people...`, 
+                    prompt: `${lowMIDescripExamples[0]} post videos that make people...`, 
                     name: `attnChk_low0`, 
                     options: [ `${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
                 },
                 {
-                    prompt: `${lowMIDescripExamples[1]} makes people...`, 
+                    prompt: `${lowMIDescripExamples[1]} post videos that make people...`, 
                     name: `attnChk_low1`, 
                     options: [`${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
                 },
                 {
-                    prompt: `${lowMIDescripExamples[2]} makes people...`, 
+                    prompt: `${lowMIDescripExamples[2]} post videos that make people...`, 
                     name: `attnChk_low2`, 
                     options: [`${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
                 },
                 {
-                    prompt: `${lowMIDescripExamples[3]} makes people...`, 
+                    prompt: `${lowMIDescripExamples[3]} post videos that make people...`, 
                     name: `attnChk_low3`, 
                     options: [`${highMIEmotion[1]}`, `${highMIEmotion[0]}`, `${highMIEmotion[3]}`, `${highMIEmotion[2]}`],
                 },
@@ -984,6 +985,7 @@ const timeline = [
    // exp.consent,
    exp.intro_preChk,
     exp.intro, 
+    exp.intro_DescriptionsHigh,
     exp.preloadHighMI_examples, 
     exp.intro_DescriptionsHigh_example0,
     exp.intro_DescriptionsHigh_example1,
