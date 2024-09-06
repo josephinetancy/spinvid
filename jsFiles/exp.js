@@ -159,7 +159,7 @@ p.preloadHighMI = {
 p.preloadHighMI_examples = {
     type: jsPsychPreload,
     video: highMIexamples,
-    message: ` <p>Now loading example videos from accounts on the first wheel... </p><p>${highpreviewWheel}</p>`,
+    message: ` <p>Now loading example videos for Round 1... </p><p>${highpreviewWheel}</p>`,
     on_success: function(file) {
         console.log('Loaded: ', file);
     },
@@ -180,7 +180,7 @@ p.preloadLowMI = {
 p.preloadLowMI_examples = {
     type: jsPsychPreload,
     video: lowMIexamples,
-    message: `<p>Now loading example videos from accounts on the second wheel... </p><p>${lowpreviewWheel}</p>`,
+    message: `<p>Now loading example videos for Round 2... </p><p>${lowpreviewWheel}</p>`,
     on_success: function(file) {
         console.log('Loaded: ', file);
     },
@@ -375,10 +375,10 @@ MORE WHEEL SET UP
 
         intro_HighDescriptionsAfterExamples: [
             `<div class='parent'>
-             <p>You're now ready to play!</p> 
+             <p>You're now ready to play Round 1!</p> 
              <p>Please make sure you're volume is on. </p> 
              <p> Just grab the wheel with your cursor and give it a spin!</p>
-             <p> Click "Next" to start playing the first wheel. </p>
+             <p> Click "Next" to continue. </p>
         </div>`
         ],
 
@@ -428,7 +428,7 @@ MORE WHEEL SET UP
 
         intro_toSecond: [
             `<div class='parent'>
-                <p>You're now ready to spin the second wheel! </p>
+                <p>You're now ready to play Round 2! </p>
                 <p>Click "Next" to continue. </p>
             </div>`
         ],
@@ -551,7 +551,7 @@ MORE WHEEL SET UP
  const attnChk_low = {
             type: jsPsychSurveyMultiChoice,
             preamble: `<div class='parent'>
-               <p> <strong> For the second round, you'll be spinning this wheel: </strong></p> 
+               <p> <strong> For Round 2, you'll be spinning this wheel: </strong></p> 
                 <p>${lowpreviewWheel}</p>
                 <p> <ul style="list-style-position: inside; padding-left: 0; margin-left: 0;"> ${lowMIDescription.join('')}</ul></p>
                 <br>
