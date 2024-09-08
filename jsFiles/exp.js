@@ -952,7 +952,7 @@ MORE WHEEL SET UP
         }; 
 
         const demos = {
-            timeline: [taskComplete, flowGenQuestions, gender, age, ethnicity, english, finalWord, pid]
+            timeline: [taskComplete, gender, age, ethnicity, english, finalWord, pid]
         };
 
         return demos;
